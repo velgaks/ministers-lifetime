@@ -10,12 +10,17 @@
   --grid: #e1e0d9;
   --baseline: #c3c2b7;
   --border: rgba(11, 11, 11, 0.10);
-  /* categorical era slots (validated order) */
-  --era-kravchuk: #2a78d6;
-  --era-kuchma: #eb6834;
-  --era-yushchenko: #1baf7a;
-  --era-yanukovych: #eda100;
-  --era-poroshenko: #e87ba4;
+  /* Presidential colours = the party that carried each president.
+     Yushchenko orange (Our Ukraine / Orange Revolution), Yanukovych blue
+     (Party of Regions), Poroshenko crimson (European Solidarity — their red;
+     blue is taken, and brighter red is indistinguishable from green under
+     deuteranopia), Zelensky green (Servant of the People). Kravchuk and Kuchma
+     ran as independents with no party branding, hence neutral blue-greys. */
+  --era-kravchuk: #7b8794;
+  --era-kuchma: #3d4852;
+  --era-yushchenko: #eb6834;
+  --era-yanukovych: #2a78d6;
+  --era-poroshenko: #d6336c;
   --era-zelensky: #008300;
   /* sequential (tenure length, light: light→dark = short→long) */
   --dur-0: #86b6ef;
@@ -36,12 +41,12 @@
     --grid: #2c2c2a;
     --baseline: #383835;
     --border: rgba(255, 255, 255, 0.10);
-    --era-kravchuk: #3987e5;
-    --era-kuchma: #d95926;
-    --era-yushchenko: #199e70;
-    --era-yanukovych: #c98500;
-    --era-poroshenko: #d55181;
-    --era-zelensky: #008300;
+    --era-kravchuk: #b3c2d1;
+    --era-kuchma: #55636f;
+    --era-yushchenko: #d95926;
+    --era-yanukovych: #3987e5;
+    --era-poroshenko: #e0558a;
+    --era-zelensky: #0ca30c;
     --dur-0: #184f95;
     --dur-1: #256abf;
     --dur-2: #3987e5;
@@ -60,12 +65,12 @@
   --grid: #2c2c2a;
   --baseline: #383835;
   --border: rgba(255, 255, 255, 0.10);
-  --era-kravchuk: #3987e5;
-  --era-kuchma: #d95926;
-  --era-yushchenko: #199e70;
-  --era-yanukovych: #c98500;
-  --era-poroshenko: #d55181;
-  --era-zelensky: #008300;
+  --era-kravchuk: #b3c2d1;
+  --era-kuchma: #55636f;
+  --era-yushchenko: #d95926;
+  --era-yanukovych: #3987e5;
+  --era-poroshenko: #e0558a;
+  --era-zelensky: #0ca30c;
   --dur-0: #184f95;
   --dur-1: #256abf;
   --dur-2: #3987e5;

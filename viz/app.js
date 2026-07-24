@@ -182,22 +182,19 @@
       minimumFractionDigits: 1, maximumFractionDigits: 1,
     }) + (state.lang === "uk" ? " р." : " y");
 
-  function eraOf(dateStr) {
+  // The era in force is the one whose start is the latest not after the date.
+  // Matching start-and-end and returning the first hit put anyone appointed
+  // exactly on a transition date into the OUTGOING era — which showed Avakov,
+  // appointed 22 Feb 2014, in Yanukovych's colour.
+  function latestBefore(list, dateStr) {
     const d = D(dateStr);
-    for (const p of DATA.eras.presidents) {
-      const s = D(p.start), e = p.end ? D(p.end) : T1;
-      if (d >= s && d <= e) return p;
-    }
-    return DATA.eras.presidents[0];
+    let hit = null;
+    for (const item of list) if (D(item.start) <= d) hit = item;
+    return hit;
   }
-  function cabinetOf(dateStr) {
-    const d = D(dateStr);
-    for (const c of DATA.eras.cabinets) {
-      const s = D(c.start), e = c.end ? D(c.end) : T1;
-      if (d >= s && d <= e) return c;
-    }
-    return null;
-  }
+  const eraOf = (dateStr) =>
+    latestBefore(DATA.eras.presidents, dateStr) || DATA.eras.presidents[0];
+  const cabinetOf = (dateStr) => latestBefore(DATA.eras.cabinets, dateStr);
   function durBucket(days) {
     const y = days / YEAR_DAYS;
     return y < 1 ? 0 : y < 2 ? 1 : y < 4 ? 2 : y < 7 ? 3 : 4;

@@ -18,6 +18,7 @@ suppressPackageStartupMessages({
   library(purrr)
   library(ggplot2)
   library(scales)
+  library(ggrepel)
 })
 
 # ---------------------------------------------------------------- paths -----
@@ -64,9 +65,13 @@ tenures <- as_tibble(raw$tenures) %>%
     finished  = !is.na(end) & end <= WINDOW_END,        # observed to actually end
     still_in  = !finished,
     core      = lineage %in% CORE,
+    # The president in office is the one whose term began most recently before
+    # the appointment. Matching on start-and-end and taking the first hit put
+    # anyone appointed exactly on a transition date into the OUTGOING era -
+    # which coloured Avakov, appointed on 22 Feb 2014, as a Yanukovych minister.
     president = map_chr(start, function(d) {
-      hit <- presidents$id[d >= presidents$start & d <= presidents$end]
-      if (length(hit)) hit[1] else NA_character_
+      idx <- which(presidents$start <= d)
+      if (length(idx)) presidents$id[max(idx)] else NA_character_
     })
   ) %>%
   filter(years > 0) %>%
@@ -92,9 +97,23 @@ resolved <- tenures %>% filter(!(still_in & start > FULL_YEAR_BY))
 observable <- tenures %>% filter(start <= FULL_YEAR_BY) %>% mutate(lasted_1y = years >= 1)
 
 # ------------------------------------------- palette & theme (light mode) ---
-ERA_COLS <- c(kravchuk = "#2a78d6", kuchma = "#eb6834", yushchenko = "#1baf7a",
-              yanukovych = "#eda100", poroshenko = "#e87ba4", zelensky = "#008300",
-              koretskyi = "#4a3aa7")
+# Presidential colours follow the party each president was carried by, so the
+# colour itself is a fact rather than a lookup:
+#   Yushchenko  Our Ukraine / the Orange Revolution   orange
+#   Yanukovych  Party of Regions                      blue
+#   Poroshenko  European Solidarity                   crimson (their red; blue is
+#               taken by Party of Regions, and a brighter red is indistinguishable
+#               from Zelensky's green for deuteranopes - #d6336c clears that gate)
+#   Zelensky    Servant of the People                 green
+# Kravchuk and Kuchma both ran as independents with no party branding, so they
+# get deliberately neutral blue-greys. Those two fail the palette validator's
+# chroma floor on purpose: reading as grey IS the point.
+ERA_COLS <- c(kravchuk = "#7b8794", kuchma = "#3d4852", yushchenko = "#eb6834",
+              yanukovych = "#2a78d6", poroshenko = "#d6336c", zelensky = "#008300")
+# Same colours keyed by display name, for scales that map the label not the id.
+# Keyed off presidents so a president absent from eras.json cannot introduce an
+# NA name - which previously blanked one swatch in the legend.
+ERA_COLS_LAB <- setNames(ERA_COLS[presidents$id], presidents$name_en)
 BLUE <- "#2a78d6"; ORANGE <- "#eb6834"
 INK <- "#0b0b0b"; INK2 <- "#52514e"; MUTED <- "#898781"; GRID <- "#e1e0d9"
 
@@ -127,9 +146,12 @@ CREDIT <- "Chart: Valentyn Hatsko, TG: @gorbach_squad"
 SOURCE <- paste("Source: Wikidata (P39 officeholder statements) and Ukrainian Wikipedia",
                 "minister lists, retrieved July 2026.")
 REPO   <- "Data, code and method: github.com/velgaks/ministers-lifetime"
+# ggplot does not wrap captions, so wrap them here or they run off the canvas
+wrap <- function(s, w = 125) paste(strwrap(s, width = w), collapse = "\n")
 cap <- function(...) {
   note <- paste0(c(...), collapse = " ")
-  paste(c(if (nzchar(note)) note, paste0(CREDIT, ". ", SOURCE), REPO), collapse = "\n")
+  paste(c(if (nzchar(note)) wrap(note), wrap(paste0(CREDIT, ". ", SOURCE)), REPO),
+        collapse = "\n")
 }
 
 # ======================================================================== Q1
@@ -257,6 +279,96 @@ p2 <- ggplot(roll, aes(yr, share)) +
   theme_min("y")
 save_fig("q2-trend.png", p2, 8.2, 4.2)
 
+# ======================================================================= Q2b
+# The same question at the level of individual ministers: every appointment as
+# one dot, so the reader sees the spread and the outliers rather than only an
+# aggregate. This is the flagship graphic; q2-trend is its aggregate companion.
+HALF_WIN <- 548   # days either side of each grid point (~1.5 years)
+
+scatter <- tenures %>%
+  filter(!is.na(president)) %>%
+  mutate(pres_lab = factor(president, levels = presidents$id, labels = presidents$name_en))
+
+grid <- seq(as.Date("1993-01-01"), WINDOW_END, by = "month")
+roll <- tibble(d = grid) %>%
+  mutate(v = map_dbl(d, function(dd) {
+    sel <- scatter$years[abs(as.numeric(scatter$start - dd)) <= HALF_WIN]
+    if (length(sel) >= 8) median(sel) else NA_real_
+  })) %>%
+  filter(!is.na(v)) %>%
+  mutate(mature = d <= WINDOW_END - HALF_WIN)
+
+# Era band across the top: short boundary ticks plus a named, colour-keyed label,
+# which does the work of a legend without a legend box.
+era_band <- presidents %>%
+  filter(start < WINDOW_END) %>%
+  mutate(stop = pmin(end, WINDOW_END),
+         mid = start + (stop - start) / 2)
+
+Y_TOP <- 8.0
+# Labels sit high, where the scatter is sparse, and each one leans away from the
+# nearest tall dot: Euromaidan to the left of its rule, the invasion to the right.
+events <- tibble(d = as.Date(c("2014-02-22", "2022-02-24")),
+                 lab = c("Euromaidan", "full-scale invasion"),
+                 hj = c(1.06, -0.06))
+
+cat("\n== Q2b: individual tenures, rolling median (+/-1.5 years) ==\n\n")
+cat(sprintf("  %d ministers plotted; rolling median spans %s to %s\n",
+            nrow(scatter), min(roll$d), max(roll$d)))
+cat(sprintf("  median at the start of the series %.2fy, at the end %.2fy\n",
+            roll$v[1], roll$v[nrow(roll)]))
+write.csv(roll, file.path(out_dir, "q2b_rolling_median.csv"), row.names = FALSE)
+
+p2b <- ggplot(scatter, aes(start, years)) +
+  # wartime breaks, full height and dashed so they read as context
+  geom_vline(data = events, aes(xintercept = d), linetype = "22",
+             colour = MUTED, linewidth = 0.4) +
+  geom_text(data = events, aes(x = d, y = 7.55, label = lab, hjust = hj),
+            inherit.aes = FALSE, size = 2.7, colour = MUTED) +
+  # era boundary ticks at the top only
+  geom_segment(data = era_band %>% filter(start > min(scatter$start)),
+               aes(x = start, xend = start, y = Y_TOP + 0.15, yend = Y_TOP + 0.75),
+               inherit.aes = FALSE, colour = GRID, linewidth = 0.5) +
+  geom_point(data = era_band, aes(x = mid, y = Y_TOP + 0.5, colour = id),
+             inherit.aes = FALSE, size = 1.9, show.legend = FALSE) +
+  geom_text(data = era_band, aes(x = mid, y = Y_TOP + 0.5, label = name_en),
+            inherit.aes = FALSE, hjust = 0, nudge_x = 130, size = 3.1,
+            colour = INK2, fontface = "bold") +
+  # ministers still in office are hollow: their length is a lower bound
+  geom_point(data = scatter %>% filter(!still_in), aes(colour = pres_lab),
+             size = 1.9, alpha = 0.85, show.legend = FALSE) +
+  geom_point(data = scatter %>% filter(still_in), aes(colour = pres_lab),
+             shape = 21, fill = "white", stroke = 1.1, size = 2.1, show.legend = FALSE) +
+  # rolling median: faint throughout, overdrawn solid where the data has matured
+  geom_line(data = roll, aes(d, v), inherit.aes = FALSE,
+            colour = INK, linewidth = 0.9, alpha = 0.28) +
+  geom_line(data = roll %>% filter(mature), aes(d, v), inherit.aes = FALSE,
+            colour = INK, linewidth = 0.9) +
+  ggrepel::geom_text_repel(
+    data = scatter %>% slice_max(years, n = 8),
+    aes(label = name_en), size = 2.9, colour = INK, seed = 1,
+    min.segment.length = 0.2, segment.colour = MUTED, segment.size = 0.3,
+    box.padding = 0.45, point.padding = 0.3, max.overlaps = Inf,
+    # keep name labels clear of the era band and event labels above
+    ylim = c(NA, 7.15)) +
+  scale_colour_manual(values = c(ERA_COLS, ERA_COLS_LAB)) +
+  scale_x_date(date_breaks = "5 years", date_labels = "%Y",
+               expand = expansion(mult = c(0.02, 0.06))) +
+  scale_y_continuous(breaks = seq(0, 8, 2), labels = label_number(suffix = " y"),
+                     limits = c(0, Y_TOP + 0.9), expand = expansion(mult = c(0.01, 0))) +
+  coord_cartesian(clip = "off") +
+  labs(title = "Ministers' time in office, one dot per appointment",
+       subtitle = paste("Each dot is a minister (prime ministers excluded):",
+                        "when they were appointed against how long they lasted.",
+                        "\nBlack line is the rolling median over a three-year window."),
+       x = NULL, y = NULL,
+       caption = cap("Hollow dots were still in office when the government changed, so their length is a lower bound.",
+                     "The median line fades over its final 18 months, where the newest appointments have not yet run their course.",
+                     "Prime ministers are excluded; an acting spell and its confirmation count as one tenure.")) +
+  theme_min("y") +
+  theme(plot.margin = margin(14, 20, 10, 14))
+save_fig("q2b-scatter.png", p2b, 9.4, 5.4)
+
 # ======================================================================== Q3
 # Who served longest?
 q3 <- tenures %>%
@@ -274,8 +386,6 @@ q3 %>% arrange(desc(years)) %>% head(8) %>%
   as.data.frame() %>% print(row.names = FALSE, right = FALSE)
 write.csv(q3 %>% arrange(desc(years)) %>% mutate(years = round(years, 2)),
           file.path(out_dir, "q3_longest.csv"), row.names = FALSE)
-
-ERA_COLS_LAB <- setNames(ERA_COLS, presidents$name_en[match(names(ERA_COLS), presidents$id)])
 
 p3 <- ggplot(q3, aes(years, name_en, fill = pres_lab)) +
   geom_col(width = 0.68) +
