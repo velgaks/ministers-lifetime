@@ -52,7 +52,7 @@ python pipeline/build.py     # rebuild again to apply enrichment
 ```
 
 Then re-run the analysis (needs R with jsonlite, dplyr, tidyr, purrr, ggplot2,
-scales, survival):
+scales):
 
 ```bash
 Rscript analysis/tenure_trends.R
@@ -64,32 +64,39 @@ that were temporarily abolished or merged).
 
 ## Findings
 
-Run `Rscript analysis/tenure_trends.R` to reproduce all of this.
+Run `Rscript analysis/tenure_trends.R` to reproduce all of this. The analysis
+window ends **16 July 2026**, when the Koretskyi cabinet was seated; that
+intake is excluded because those ministers had been in office about a week.
 
-**The headline depends on a definition, not on the data.** Comparing ministers
-appointed 1991–1999 with those appointed 2016–2026, the median tenure fell 30%
-— but if never-confirmed acting officials are excluded it *rose* 11%. Both
-numbers come from the same dataset. The interactive page shows the first
-specification; `analysis/figures/specifications.png` shows all five side by side.
+**Yes, ministers under Zelensky last the shortest** — median 0.86 years against
+1.11 for the next lowest (Yanukovych). It is driven by the short tail: 24 of his
+ministers lasted under six months, more than in any other era. But it is not a
+collapse into pure churn, since 8% still served four years or more.
+→ `figures/q1-by-president.png`
 
-**What genuinely changed is who runs ministries.** The share of ministry spells
-held by an official never confirmed as minister went 1% → 3.5% → 13% → 25%
-across the four decades. Those spells are short by nature (median ~3 months),
-which is what drags the recent median down. Confirmed ministers last about as
-long as they always did.
+**There is no steady decline over the years.** The share of ministers who reach
+a full year in office goes 56% in the 1990s, 65% in the 2000s, 48% in the 2010s,
+58% in the 2020s. It oscillates with political shocks rather than trending down.
+→ `figures/q2-trend.png`
 
-**Outcomes polarised rather than shortened.** In the balanced 11-ministry panel,
-recent appointees are *both* more likely to leave within six months (36% vs 22%)
-and more likely to last beyond three years (22% vs 19%). The Kaplan-Meier
-curves cross near the two-year mark — so a log-rank test does not apply here,
-and its high p-value is an artifact of that cancellation, not evidence the eras
-are alike.
+**The ministry matters more than the era.** An education minister lasts a median
+2.6 years, an economy or regional-development minister 0.75 — a three-fold
+spread, wider than any gap between presidents. Economy has burned through 34
+ministers since 1991. → `figures/q4-by-ministry.png`
 
-**Naive medians overstate the recent decline.** Counting ongoing tenures as if
-they ended on the build date biases the recent median down 31% (0.60y naive vs
-0.86y Kaplan-Meier), largely because a new cabinet was seated days before the
-build. Ongoing tenures should be treated as censored, which is why the analysis
-is done with `survival` rather than plain medians.
+**War steadied the cabinet; revolution shook it.** 2014 saw 39 ministerial
+appointments, the all-time peak. 2022, the year of the full-scale invasion, saw
+three. → `figures/q5-turnover.png`
+
+**What changed most is who runs ministries.** The share of ministry spells held
+by an official never confirmed as minister went 1% → 3.5% → 13% → 27% across the
+four decades. → `figures/acting-share.png`
+
+**A caution on any single headline number.** Comparing 1991–1999 against
+2016–2026, the median tenure fell 19% counting everyone, but *rose* 35% if
+never-confirmed acting officials are excluded. The sign flips with the
+definition, which is why the charts above use distributions and plain shares
+rather than one summary statistic. See `output/specifications.csv`.
 
 ## Provenance & method
 

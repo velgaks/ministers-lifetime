@@ -1,0 +1,30 @@
+"president","name_en","bucket","n","share","total","median_y"
+"kravchuk","Kravchuk","under 6 months",12,0.27906976744186,43,1.14715947980835
+"kravchuk","Kravchuk","6-12 months",9,0.209302325581395,43,1.14715947980835
+"kravchuk","Kravchuk","1-2 years",7,0.162790697674419,43,1.14715947980835
+"kravchuk","Kravchuk","2-4 years",12,0.27906976744186,43,1.14715947980835
+"kravchuk","Kravchuk","4+ years",3,0.0697674418604651,43,1.14715947980835
+"kuchma","Kuchma","under 6 months",9,0.09375,96,1.4031485284052
+"kuchma","Kuchma","6-12 months",26,0.270833333333333,96,1.4031485284052
+"kuchma","Kuchma","1-2 years",34,0.354166666666667,96,1.4031485284052
+"kuchma","Kuchma","2-4 years",20,0.208333333333333,96,1.4031485284052
+"kuchma","Kuchma","4+ years",7,0.0729166666666667,96,1.4031485284052
+"poroshenko","Poroshenko","under 6 months",12,0.210526315789474,57,1.36071184120465
+"poroshenko","Poroshenko","6-12 months",16,0.280701754385965,57,1.36071184120465
+"poroshenko","Poroshenko","1-2 years",10,0.175438596491228,57,1.36071184120465
+"poroshenko","Poroshenko","2-4 years",13,0.228070175438596,57,1.36071184120465
+"poroshenko","Poroshenko","4+ years",6,0.105263157894737,57,1.36071184120465
+"yanukovych","Yanukovych","under 6 months",9,0.160714285714286,56,1.1129363449692
+"yanukovych","Yanukovych","6-12 months",17,0.303571428571429,56,1.1129363449692
+"yanukovych","Yanukovych","1-2 years",18,0.321428571428571,56,1.1129363449692
+"yanukovych","Yanukovych","2-4 years",11,0.196428571428571,56,1.1129363449692
+"yanukovych","Yanukovych","4+ years",1,0.0178571428571429,56,1.1129363449692
+"yushchenko","Yushchenko","under 6 months",4,0.0533333333333333,75,1.37166324435318
+"yushchenko","Yushchenko","6-12 months",24,0.32,75,1.37166324435318
+"yushchenko","Yushchenko","1-2 years",28,0.373333333333333,75,1.37166324435318
+"yushchenko","Yushchenko","2-4 years",19,0.253333333333333,75,1.37166324435318
+"zelensky","Zelensky","under 6 months",24,0.282352941176471,85,0.862422997946612
+"zelensky","Zelensky","6-12 months",22,0.258823529411765,85,0.862422997946612
+"zelensky","Zelensky","1-2 years",17,0.2,85,0.862422997946612
+"zelensky","Zelensky","2-4 years",15,0.176470588235294,85,0.862422997946612
+"zelensky","Zelensky","4+ years",7,0.0823529411764706,85,0.862422997946612
