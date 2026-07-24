@@ -1,0 +1,6 @@
+"spec","label","early_y","late_y","n_early","n_late","change_pct"
+"A","All ministries, all spells",1.23066392881588,0.862422997946612,100,117,-29.9221357063404
+"B","Minus never-confirmed acting spells",1.23477070499658,1.37303216974675,99,90,11.1973392461197
+"C","Core 11 ministries (balanced panel)",1.4154688569473,0.596851471594798,59,69,-57.8336557059961
+"D","Completed tenures only",1.23066392881588,0.862422997946612,100,100,-29.9221357063404
+"E","Core panel, confirmed ministers only",1.48117727583847,1.13347022587269,58,51,-23.4750462107209

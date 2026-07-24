@@ -34,7 +34,13 @@ between is merged into a single tenure with the sub-spells preserved
 | `pipeline/build.py` | clean → patch → merge → audit → stats → outputs |
 | `pipeline/enrich.py` | fill QIDs/photos for patch-added ministers |
 | `pipeline/reconcile.py` | diff external research lists against the dataset (used during curation) |
-| `viz/` | the visualization (vanilla JS + SVG, no dependencies) |
+| `analysis/tenure_trends.R` | the statistical analysis: specifications, survival curves, plots |
+| `analysis/figures/` | generated PNG figures |
+| `analysis/output/` | generated CSV result tables |
+| `viz/` | the interactive visualization (vanilla JS + SVG, no dependencies) |
+
+Division of tools: Python for ingest (HTTP/SPARQL and JSON munging), **R for
+analysis and static plots**, vanilla JS for the interactive timeline.
 
 ## Rebuilding
 
@@ -45,9 +51,45 @@ python pipeline/enrich.py    # look up QIDs/photos for any new patch-added names
 python pipeline/build.py     # rebuild again to apply enrichment
 ```
 
+Then re-run the analysis (needs R with jsonlite, dplyr, tidyr, purrr, ggplot2,
+scales, survival):
+
+```bash
+Rscript analysis/tenure_trends.R
+```
+
 Check `data/report.md` after a rebuild: `ack` entries in `patches.json`
 silence flags that were verified as legitimate (real vacancies, ministries
 that were temporarily abolished or merged).
+
+## Findings
+
+Run `Rscript analysis/tenure_trends.R` to reproduce all of this.
+
+**The headline depends on a definition, not on the data.** Comparing ministers
+appointed 1991–1999 with those appointed 2016–2026, the median tenure fell 30%
+— but if never-confirmed acting officials are excluded it *rose* 11%. Both
+numbers come from the same dataset. The interactive page shows the first
+specification; `analysis/figures/specifications.png` shows all five side by side.
+
+**What genuinely changed is who runs ministries.** The share of ministry spells
+held by an official never confirmed as minister went 1% → 3.5% → 13% → 25%
+across the four decades. Those spells are short by nature (median ~3 months),
+which is what drags the recent median down. Confirmed ministers last about as
+long as they always did.
+
+**Outcomes polarised rather than shortened.** In the balanced 11-ministry panel,
+recent appointees are *both* more likely to leave within six months (36% vs 22%)
+and more likely to last beyond three years (22% vs 19%). The Kaplan-Meier
+curves cross near the two-year mark — so a log-rank test does not apply here,
+and its high p-value is an artifact of that cancellation, not evidence the eras
+are alike.
+
+**Naive medians overstate the recent decline.** Counting ongoing tenures as if
+they ended on the build date biases the recent median down 31% (0.60y naive vs
+0.86y Kaplan-Meier), largely because a new cabinet was seated days before the
+build. Ongoing tenures should be treated as censored, which is why the analysis
+is done with `survival` rather than plain medians.
 
 ## Provenance & method
 
@@ -66,9 +108,14 @@ that were temporarily abolished or merged).
 
 - **Tenures beginning before 24 Aug 1991 are clipped** at independence day
   (several first ministers served since the UkrSSR).
-- **Ongoing tenures are right-censored**: their duration is counted up to the
-  build date and marked (`ongoing`); the trend line's recent years are drawn
-  as provisional in the viz.
+- **Ongoing tenures are right-censored**: `ministers.json` counts their duration
+  up to the build date and marks them `ongoing`, and the viz draws the recent
+  trend line as provisional. That naive treatment understates them — see
+  Findings; the R analysis handles it with Kaplan-Meier instead.
+- **The acting-official share is an upper bound.** Recent Ukrainian politics is
+  documented far more granularly than the 1990s, so a two-week acting deputy in
+  1994 may never have been recorded while every 2025 one was. The rising trend
+  is real; part of its magnitude is a source-coverage artifact.
 - **Early-1990s branch ministries are not covered** (machine-building,
   communications, statistics, etc. — Soviet-legacy ministries liquidated in
   the first years). The 27 covered lineages form a consistent panel across
