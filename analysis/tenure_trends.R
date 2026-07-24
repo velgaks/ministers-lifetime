@@ -298,12 +298,17 @@ roll <- tibble(d = grid) %>%
   filter(!is.na(v)) %>%
   mutate(mature = d <= WINDOW_END - HALF_WIN)
 
-# Era band across the top: short boundary ticks plus a named, colour-keyed label,
-# which does the work of a legend without a legend box.
+# Era ribbon across the top: one coloured bar per presidency spanning its actual
+# dates, with the name centred over it. This does the work of a legend, and
+# unlike a dot-plus-label it shows where each era begins and ends - the earlier
+# version put the text to the right of a midpoint marker, so a label appeared to
+# cover a span it did not.
 era_band <- presidents %>%
   filter(start < WINDOW_END) %>%
   mutate(stop = pmin(end, WINDOW_END),
-         mid = start + (stop - start) / 2)
+         mid = start + (stop - start) / 2,
+         # inset each bar so neighbours read as separate blocks
+         bar_start = start + 40, bar_stop = stop - 40)
 
 Y_TOP <- 8.0
 # Labels sit high, where the scatter is sparse, and each one leans away from the
@@ -320,19 +325,19 @@ cat(sprintf("  median at the start of the series %.2fy, at the end %.2fy\n",
 write.csv(roll, file.path(out_dir, "q2b_rolling_median.csv"), row.names = FALSE)
 
 p2b <- ggplot(scatter, aes(start, years)) +
-  # wartime breaks, full height and dashed so they read as context
-  geom_vline(data = events, aes(xintercept = d), linetype = "22",
-             colour = MUTED, linewidth = 0.4) +
+  # wartime breaks: dashed, stopping below the ribbon so they do not cross it
+  geom_segment(data = events, aes(x = d, xend = d, y = 0, yend = Y_TOP),
+               inherit.aes = FALSE, linetype = "22", colour = MUTED, linewidth = 0.4) +
   geom_text(data = events, aes(x = d, y = 7.55, label = lab, hjust = hj),
             inherit.aes = FALSE, size = 2.7, colour = MUTED) +
-  # era boundary ticks at the top only
-  geom_segment(data = era_band %>% filter(start > min(scatter$start)),
-               aes(x = start, xend = start, y = Y_TOP + 0.15, yend = Y_TOP + 0.75),
-               inherit.aes = FALSE, colour = GRID, linewidth = 0.5) +
-  geom_point(data = era_band, aes(x = mid, y = Y_TOP + 0.5, colour = id),
-             inherit.aes = FALSE, size = 1.9, show.legend = FALSE) +
-  geom_text(data = era_band, aes(x = mid, y = Y_TOP + 0.5, label = name_en),
-            inherit.aes = FALSE, hjust = 0, nudge_x = 130, size = 3.1,
+  # era ribbon: a bar over each presidency's real span, name centred above it
+  geom_segment(data = era_band,
+               aes(x = bar_start, xend = bar_stop, y = Y_TOP + 0.45,
+                   yend = Y_TOP + 0.45, colour = id),
+               inherit.aes = FALSE, linewidth = 3, lineend = "butt",
+               show.legend = FALSE) +
+  geom_text(data = era_band, aes(x = mid, y = Y_TOP + 0.95, label = name_en),
+            inherit.aes = FALSE, hjust = 0.5, size = 2.9,
             colour = INK2, fontface = "bold") +
   # ministers still in office are hollow: their length is a lower bound
   geom_point(data = scatter %>% filter(!still_in), aes(colour = pres_lab),
@@ -355,7 +360,7 @@ p2b <- ggplot(scatter, aes(start, years)) +
   scale_x_date(date_breaks = "5 years", date_labels = "%Y",
                expand = expansion(mult = c(0.02, 0.06))) +
   scale_y_continuous(breaks = seq(0, 8, 2), labels = label_number(suffix = " y"),
-                     limits = c(0, Y_TOP + 0.9), expand = expansion(mult = c(0.01, 0))) +
+                     limits = c(0, Y_TOP + 1.3), expand = expansion(mult = c(0.01, 0))) +
   coord_cartesian(clip = "off") +
   labs(title = "Ministers' time in office, one dot per appointment",
        subtitle = paste("Each dot is a minister (prime ministers excluded):",
