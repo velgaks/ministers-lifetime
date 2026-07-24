@@ -35,7 +35,7 @@
         "Кожен прямокутник — одна безперервна каденція. Напівпрозорі — виконувачі обов'язків (в.о.). Клік відкриває Вікіпедію.",
       trendTitle: "Чи стали каденції коротшими?",
       trendCap:
-        "Кожна точка — один міністр (без прем'єрів): дата призначення проти тривалості каденції. Лінія — ковзна медіана (±3,5 року). Кільця — чинні міністри (каденція ще триває, тож це нижня межа). Останні роки лінії напівпрозорі — дані ще «не дозріли».",
+        "Кожна точка — один міністр (без прем'єрів): дата призначення проти тривалості каденції. Лінія — ковзна медіана (вікно ±1,5 року). Кільця — міністри, які були на посаді на момент зміни уряду (це нижня межа). Підписані найдовші каденції. Останній відрізок лінії напівпрозорий — найновіші призначення ще «не дозріли».",
       eraTitle: "Медіанна каденція за президентами",
       eraCap: "Міністри, призначені за каденції відповідного президента.",
       recordsTitle: "Рекорди",
@@ -68,8 +68,10 @@
       heroCapB: "призначені у 2016–2026",
       heroNote:
         "Медіана враховує і в.о., і чинних міністрів (для чинних тривалість рахується до сьогодні — це нижня межа). Прем'єр-міністри в статистику не входять. Перемикач вище дозволяє прибрати в.о.",
+      credit: "Графіка: Валентин Гацко, TG: @gorbach_squad.",
+      repo: "Дані, код і метод: github.com/velgaks/ministers-lifetime",
       footer:
-        "Джерела: Wikidata (позиції P39) + Українська Вікіпедія (списки міністрів; виправлення зафіксовані у patches.json). Ранні галузеві міністерства 1990-х (машинобудування, зв'язку тощо) не охоплені. Каденції, що почалися до 24.08.1991, обрізані на дату незалежності. Зібрано ",
+        "Джерело: Wikidata (твердження про посади P39) та Українська Вікіпедія (списки міністрів), отримано в липні 2026 року; усі виправлення з посиланнями на джерела — у data/patches.json. Статистика завершується зміною уряду 16 липня 2026 року: міністри, призначені тоді, пробули на посаді близько тижня. Ранні галузеві міністерства 1990-х (машинобудування, зв'язку тощо) не охоплені. Каденції, що почалися до 24.08.1991, обрізані на дату незалежності. Зібрано ",
       years: (y) => {
         const yi = Math.floor(y);
         const f = yi % 10, ff = yi % 100;
@@ -94,7 +96,7 @@
         "Each rectangle is one continuous tenure. Translucent = acting ministers. Click opens Wikipedia.",
       trendTitle: "Are tenures getting shorter?",
       trendCap:
-        "Each dot is one minister (PMs excluded): appointment date vs tenure length. The line is a rolling median (±3.5 years). Rings are current ministers (still serving, so a lower bound). The line's last years are translucent — that data hasn't 'matured' yet.",
+        "Each dot is one minister (PMs excluded): appointment date vs tenure length. The line is a rolling median (±1.5-year window). Rings are ministers still in office when the government changed, so a lower bound. The longest tenures are named. The line's final stretch is translucent — the newest appointments have not 'matured' yet.",
       eraTitle: "Median tenure by president",
       eraCap: "Ministers appointed during each president's time in office.",
       recordsTitle: "Records",
@@ -127,8 +129,10 @@
       heroCapB: "appointed 2016–2026",
       heroNote:
         "The median includes acting and current ministers (current tenures are counted up to today — a lower bound). Prime ministers are excluded from the stats. Use the toggle above to drop acting ministers.",
+      credit: "Chart: Valentyn Hatsko, TG: @gorbach_squad.",
+      repo: "Data, code and method: github.com/velgaks/ministers-lifetime",
       footer:
-        "Sources: Wikidata (P39 positions) + Ukrainian Wikipedia (minister lists; corrections tracked in patches.json). Early-1990s branch ministries (machine-building, communications, etc.) are not covered. Tenures that began before 24 Aug 1991 are clipped at independence. Built ",
+        "Source: Wikidata (P39 officeholder statements) and Ukrainian Wikipedia minister lists, retrieved July 2026; every correction is recorded with its source in data/patches.json. Statistics end at the government change of 16 July 2026 — ministers appointed then had been in office about a week. Early-1990s branch ministries (machine-building, communications, etc.) are not covered. Tenures that began before 24 Aug 1991 are clipped at independence. Built ",
       years: (y) => {
         const yi = Math.floor(y);
         return yi === 1 ? "1 year" : `${yi} years`;
@@ -203,7 +207,25 @@
       ? "f-" + eraOf(ten.start).id
       : "f-dur-" + durBucket(ten.days);
   }
-  const ministersOnly = () => DATA.tenures.filter((x) => x.lineage !== "pm");
+  // Statistics stop at the July 2026 government change. Ministers appointed
+  // then had been in office about a week; counting them drags every recent
+  // figure down for no reason but when the data was collected. The timeline
+  // above still shows them — only the numbers below exclude them.
+  const WINDOW_END = D("2026-07-16");
+  const ministersOnly = () =>
+    DATA.tenures
+      .map((x, i) => ({ x, i }))
+      .filter(({ x }) => x.lineage !== "pm" && D(x.start) < WINDOW_END)
+      .map(({ x, i }) => {
+        const ended = x.end && D(x.end) < WINDOW_END;
+        const endEff = ended ? D(x.end) : WINDOW_END;
+        return {
+          ...x,
+          _idx: i,
+          days: Math.max(1, Math.round((endEff - D(x.start)) / MS_DAY)),
+          ongoing: !ended,
+        };
+      });
   const statsPool = () =>
     ministersOnly().filter((x) => !(state.exclActing && x.acting));
   function median(xs) {
@@ -223,6 +245,17 @@
   }
   const nameOf = (x) =>
     state.lang === "uk" ? x.name_uk || x.name_en : x.name_en || x.name_uk;
+  // Source names mix "Surname Given Patronymic" with "Given Surname". For chart
+  // labels drop the patronymic so the annotations stay short and comparable;
+  // tooltips and the table keep the full form.
+  const shortName = (x) => {
+    const parts = nameOf(x).split(/\s+/);
+    if (parts.length < 3) return nameOf(x);
+    const kept = parts.filter(
+      (p) => !/(ович|евич|євич|йович|івна|ївна|овна|евна)$/i.test(p)
+    );
+    return (kept.length >= 2 ? kept : parts).slice(0, 2).join(" ");
+  };
   const lnameOf = (l) => (state.lang === "uk" ? l.name_uk : l.name_en);
 
   // ------------------------------------------------------------- tooltip
@@ -489,7 +522,7 @@
     const plotW = width - mL - mR, plotH = height - mT - mB;
     const maxY = Math.max(...pool.map((p) => p.days)) / YEAR_DAYS;
     const yMax = Math.ceil(maxY);
-    const x = (dateStr) => mL + ((D(dateStr) - T0) / (T1 - T0)) * plotW;
+    const x = (dateStr) => mL + ((D(dateStr) - T0) / (WINDOW_END - T0)) * plotW;
     const y = (days) => mT + plotH - (days / YEAR_DAYS / yMax) * plotH;
 
     const svg = svgel("svg", { width, height, viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": t("trendTitle") });
@@ -501,29 +534,32 @@
       lbl.textContent = yy;
       svg.appendChild(lbl);
     }
-    for (let yr = 1995; yr <= T1.getFullYear(); yr += 5) {
+    for (let yr = 1995; yr <= WINDOW_END.getFullYear(); yr += 5) {
       const px = x(`${yr}-01-01`);
       const lbl = svgel("text", { x: px, y: height - 8, class: "axis", "text-anchor": "middle" });
       lbl.textContent = yr;
       svg.appendChild(lbl);
     }
 
-    // rolling median: monthly grid, +-42-month window, min 8 points
+    // Rolling median on a monthly grid. A +-18-month window (3 years total)
+    // tracks the shocks; anything wider flattens 2005 and 2014 into the trend.
     const pts = pool
       .map((p) => ({ t: D(p.start).getTime(), days: p.days }))
       .sort((a, b) => a.t - b.t);
-    const win = 42 * 30.44 * MS_DAY;
+    const win = 18 * 30.44 * MS_DAY;
     const pathPts = [];
-    for (let d = new Date(1993, 0, 1); d <= T1; d = new Date(d.getFullYear(), d.getMonth() + 2, 1)) {
+    for (let d = new Date(1993, 0, 1); d <= WINDOW_END; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) {
       const tt = d.getTime();
       const sel = pts.filter((p) => Math.abs(p.t - tt) <= win).map((p) => p.days);
       pathPts.push(sel.length >= 8 ? { t: tt, v: median(sel) } : null);
     }
-    const matured = T1.getTime() - 2 * YEAR_DAYS * MS_DAY;
+    // The last stretch is drawn faint: with an 18-month half-window the newest
+    // appointments have not had time to reveal how long they will last.
+    const matured = WINDOW_END.getTime() - 1.5 * YEAR_DAYS * MS_DAY;
     let dSolid = "", dProv = "", pen = false, penP = false;
     pathPts.forEach((p) => {
       if (!p) { pen = penP = false; return; }
-      const px = mL + ((p.t - T0.getTime()) / (T1 - T0)) * plotW;
+      const px = mL + ((p.t - T0.getTime()) / (WINDOW_END - T0)) * plotW;
       const py = y(p.v);
       if (p.t <= matured) {
         dSolid += (pen ? "L" : "M") + px.toFixed(1) + " " + py.toFixed(1);
@@ -539,7 +575,7 @@
 
     // dots
     pool.forEach((ten) => {
-      const idx = DATA.tenures.indexOf(ten);
+      const idx = ten._idx;
       const cls = state.colorBy === "era" ? "f-" + eraOf(ten.start).id : "f-dur-" + durBucket(ten.days);
       const c = svgel("circle", {
         cx: x(ten.start).toFixed(1), cy: y(ten.days).toFixed(1), r: 4.5,
@@ -548,6 +584,35 @@
       });
       attachTenureEvents(c, ten, idx);
       svg.appendChild(c);
+    });
+
+    // Name the standout long tenures. Placement is greedy: try right of the dot,
+    // then left, then above/below, and skip the label entirely rather than let
+    // it collide with one already placed or run outside the plot.
+    const placed = [];
+    [...pool].sort((a, b) => b.days - a.days).slice(0, 7).forEach((ten) => {
+      const cx = x(ten.start), cy = y(ten.days);
+      const text = shortName(ten);
+      const w = text.length * 5.3, h = 11;
+      const options = [
+        [cx + 9, cy + 3.5, "start"],
+        [cx - 9, cy + 3.5, "end"],
+        [cx, cy - 9, "middle"],
+        [cx, cy + 15, "middle"],
+      ];
+      for (const [tx, ty, anchor] of options) {
+        const x0 = anchor === "start" ? tx : anchor === "end" ? tx - w : tx - w / 2;
+        const box = { x0, x1: x0 + w, y0: ty - h, y1: ty + 3 };
+        const clashes = placed.some(
+          (p) => !(box.x1 < p.x0 || box.x0 > p.x1 || box.y1 < p.y0 || box.y0 > p.y1)
+        );
+        if (clashes || box.x0 < mL || box.x1 > mL + plotW || box.y0 < mT) continue;
+        placed.push(box);
+        const lbl = svgel("text", { x: tx.toFixed(1), y: ty.toFixed(1), class: "outlier", "text-anchor": anchor });
+        lbl.textContent = text;
+        svg.appendChild(lbl);
+        break;
+      }
     });
 
     host.appendChild(svg);
@@ -691,7 +756,11 @@
     $("#era-title").textContent = t("eraTitle");
     $("#era-cap").textContent = t("eraCap");
     $("#table-summary").textContent = t("tableSummary");
-    $("#footer-text").textContent = t("footer") + DATA.meta.built + ".";
+    $("#footer-note").textContent = t("footer") + DATA.meta.built + ".";
+    $("#footer-credit").textContent = t("credit");
+    const repoLink = $("#footer-repo");
+    repoLink.textContent = t("repo");
+    repoLink.href = "https://github.com/velgaks/ministers-lifetime";
     const themeBtn = $("#theme-btn");
     const dark = document.documentElement.getAttribute("data-theme") === "dark" ||
       (!document.documentElement.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);

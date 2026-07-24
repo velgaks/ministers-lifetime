@@ -150,6 +150,7 @@ svg .rowlabel.defunct { fill: var(--muted); }
 svg .axis { font-size: 11px; fill: var(--muted); }
 svg .eralabel { font-size: 11px; font-weight: 600; fill: var(--ink-2); }
 svg .eventlabel { font-size: 10.5px; fill: var(--muted); }
+svg .outlier { font-size: 10.5px; fill: var(--ink-2); pointer-events: none; }
 svg .gridline { stroke: var(--grid); stroke-width: 1; }
 svg .erabound { stroke: var(--baseline); stroke-width: 1; }
 svg .eventline { stroke: var(--muted); stroke-width: 1; }
@@ -249,5 +250,12 @@ table.dataview { border-collapse: collapse; width: 100%; font-size: 12.5px; }
 .dataview th { position: sticky; top: 0; background: var(--surface); color: var(--muted); font-weight: 600; }
 .dataview td.num { font-variant-numeric: tabular-nums; }
 
-footer { color: var(--muted); font-size: 12.5px; max-width: 100ch; }
-footer a { color: var(--ink-2); }
+/* attribution block: muted method note, then a strong credit line and repo link */
+footer { max-width: 104ch; margin-top: 22px; }
+footer .fnote {
+  color: var(--muted); font-size: 12px; line-height: 1.5; margin: 0 0 10px;
+  padding-top: 12px; border-top: 1px solid var(--border);
+}
+footer .fcredit { color: var(--ink); font-size: 12.5px; font-weight: 650; margin: 0; }
+footer .fcredit a { color: var(--ink-2); font-weight: 400; margin-left: 6px; }
+footer .fcredit a:hover { color: var(--accent); }

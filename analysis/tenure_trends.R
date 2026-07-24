@@ -103,7 +103,8 @@ theme_min <- function(grid = "y") {
     theme(
       plot.title = element_text(face = "bold", size = 13, colour = INK),
       plot.subtitle = element_text(size = 9.5, colour = INK2, margin = margin(b = 10)),
-      plot.caption = element_text(size = 8, colour = MUTED, hjust = 0),
+      plot.caption = element_text(size = 7.6, colour = MUTED, hjust = 0, lineheight = 1.35,
+                                  margin = margin(t = 10)),
       axis.title = element_text(size = 9, colour = MUTED),
       axis.text = element_text(colour = INK2),
       panel.grid.minor = element_blank(),
@@ -117,6 +118,18 @@ theme_min <- function(grid = "y") {
 }
 save_fig <- function(name, plot, w, h) {
   ggsave(file.path(fig_dir, name), plot, width = w, height = h, dpi = 200, bg = "white")
+}
+
+# Every chart carries the same attribution block: the chart-specific note first,
+# then who made it and where the data came from, so a screenshot travelling on
+# its own still says who to credit and how to check it.
+CREDIT <- "Chart: Valentyn Hatsko, TG: @gorbach_squad"
+SOURCE <- paste("Source: Wikidata (P39 officeholder statements) and Ukrainian Wikipedia",
+                "minister lists, retrieved July 2026.")
+REPO   <- "Data, code and method: github.com/velgaks/ministers-lifetime"
+cap <- function(...) {
+  note <- paste0(c(...), collapse = " ")
+  paste(c(if (nzchar(note)) note, paste0(CREDIT, ". ", SOURCE), REPO), collapse = "\n")
 }
 
 # ======================================================================== Q1
@@ -188,9 +201,9 @@ p1 <- ggplot(q1, aes(share, row_lab, fill = bucket)) +
   labs(title = "Ministers under Zelensky do last the shortest",
        subtitle = "How long each president's ministers stayed in office",
        x = NULL, y = NULL,
-       caption = paste("Every minister whose tenure has ended is counted, however brief.",
-                       "Only 3 tenures are left out: still\nrunning and begun within the last year,",
-                       "so their eventual length cannot be known yet.")) +
+       caption = cap("Every minister whose tenure has ended is counted, however brief.",
+                     "Only 3 tenures are left out: still running and begun within the last",
+                     "year, so their eventual length cannot be known yet.")) +
   theme_min("x") +
   theme(panel.grid.major.x = element_blank(),
         legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
@@ -238,10 +251,9 @@ p2 <- ggplot(roll, aes(yr, share)) +
   labs(title = "No steady decline in how long ministers last",
        subtitle = "Share of ministers appointed each year who stayed at least one year (5-year average)",
        x = NULL, y = NULL,
-       caption = paste("Ministers who lasted under a year are counted here as well - they are what",
-                       "pulls the share down.\nGrey dots are single years, sized by how many were",
-                       "appointed; they swing wildly because some years\nhave only two or three.",
-                       "Stops at 2024: later appointees have not yet had a full year to be judged.")) +
+       caption = cap("Ministers who lasted under a year are counted here too - they are what pulls the share down.",
+                     "Grey dots are single years, sized by how many were appointed.",
+                     "Stops at 2024: later appointees have not yet had a full year to be judged.")) +
   theme_min("y")
 save_fig("q2-trend.png", p2, 8.2, 4.2)
 
@@ -278,7 +290,7 @@ p3 <- ggplot(q3, aes(years, name_en, fill = pres_lab)) +
   labs(title = "The twenty longest-serving ministers since independence",
        subtitle = "Coloured by the president who appointed them; ministry named inside the bar",
        x = NULL, y = NULL,
-       caption = "Continuous service in one ministry, with an acting spell and its confirmation counted as one tenure.") +
+       caption = cap("Continuous service in one ministry, with an acting spell and its confirmation counted as one tenure.")) +
   theme_min("x") +
   theme(legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
         legend.key.size = unit(10, "pt"), legend.margin = margin(b = 4))
@@ -308,7 +320,8 @@ p4 <- ggplot(q4, aes(med, ministry)) +
   labs(title = "An education minister lasts three times longer than an economy minister",
        subtitle = "Median time a minister lasts, by ministry",
        x = NULL, y = NULL,
-       caption = "Ministries with at least eight ministers since 1991. Ongoing tenures count only the time served so far.") +
+       caption = cap("Ministries with at least eight ministers since 1991.",
+                     "Ongoing tenures count only the time served so far.")) +
   theme_min("x")
 save_fig("q4-by-ministry.png", p4, 7.6, 5.6)
 
@@ -344,12 +357,14 @@ p5 <- ggplot(q5, aes(yr, appointments)) +
   annotate("text", x = 2022.6, y = 22.5, hjust = 0,
            label = "invasion year:\ncabinet barely changed",
            size = 2.8, colour = INK2, lineheight = 0.95) +
-  scale_x_continuous(breaks = seq(1995, 2025, 5)) +
+  # extra room on the right so the invasion annotation is not clipped
+  scale_x_continuous(breaks = seq(1995, 2025, 5),
+                     expand = expansion(mult = c(0.01, 0.11))) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.14))) +
   labs(title = "Cabinet reshuffles come in waves, and war was not one of them",
        subtitle = "Number of ministers appointed each year",
        x = NULL, y = NULL,
-       caption = "2026 omitted: the window ends 16 July 2026, so that year is incomplete.") +
+       caption = cap("2026 omitted: the window ends 16 July 2026, so that year is incomplete.")) +
   theme_min("y")
 save_fig("q5-turnover.png", p5, 8.2, 4.2)
 
@@ -375,7 +390,8 @@ p6 <- ggplot(acting, aes(decade, share)) +
   labs(title = "More and more ministries are run by unconfirmed acting officials",
        subtitle = "Share of ministry spells whose holder was never confirmed as minister",
        x = NULL, y = NULL,
-       caption = "Part of the rise reflects better documentation of recent politics.") +
+       caption = cap("Part of the rise reflects better documentation of recent politics,",
+                     "so the direction is firmer than the magnitude.")) +
   theme_min("y")
 save_fig("acting-share.png", p6, 7.2, 4)
 
