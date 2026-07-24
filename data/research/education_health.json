@@ -1,0 +1,65 @@
+{
+  "lineages": {
+    "education": {
+      "ministers": [
+        {"name_uk": "Зязюн Іван Андрійович", "name_en": "Ivan Zyazyun", "start": "1990-08-03", "end": "1991-12-12", "acting": false, "notes": "Term began before independence (appointed 3 August 1990, Ukrainian SSR)."},
+        {"name_uk": "Таланчук Петро Михайлович", "name_en": "Petro Talanchuk", "start": "1991-12-12", "end": "1994-07-04", "acting": false, "notes": "First minister of the unified Ministry of Education of Ukraine."},
+        {"name_uk": "Згуровський Михайло Захарович", "name_en": "Mykhailo Zghurovskyi", "start": "1994-11-18", "end": "1999-01-14", "acting": false, "notes": "No officeholder listed between 4 July 1994 and 18 November 1994."},
+        {"name_uk": "Зайчук Валентин Олександрович", "name_en": "Valentyn Zaichuk", "start": "1999-01-14", "end": "1999-12-30", "acting": false, "notes": "Printed end 31 Dec 1999 overlaps successor start 30 Dec 1999; using 30 Dec."},
+        {"name_uk": "Кремень Василь Григорович", "name_en": "Vasyl Kremen", "start": "1999-12-30", "end": "2005-02-03", "acting": false, "notes": "First minister of renamed Ministry of Education and Science."},
+        {"name_uk": "Ніколаєнко Станіслав Миколайович", "name_en": "Stanislav Nikolayenko", "start": "2005-02-04", "end": "2007-12-18", "acting": false, "notes": "uk list says end 27 Sep 2007, en wiki 18 Dec 2007; using cabinet end 18 Dec 2007 (Nikolayenko served in Yanukovych II cabinet until its end)."},
+        {"name_uk": "Вакарчук Іван Олександрович", "name_en": "Ivan Vakarchuk", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Табачник Дмитро Володимирович", "name_en": "Dmytro Tabachnyk", "start": "2010-03-11", "end": "2014-02-23", "acting": false, "notes": "2010-2013 ministry named Education and Science, Youth and Sports."},
+        {"name_uk": "Квіт Сергій Миронович", "name_en": "Serhiy Kvit", "start": "2014-02-27", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Гриневич Лілія Михайлівна", "name_en": "Liliya Hrynevych", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Новосад Ганна Ігорівна", "name_en": "Hanna Novosad", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": ""},
+        {"name_uk": "Полюхович Юрій Юрійович", "name_en": "Yuriy Polyukhovych", "start": "2020-03-10", "end": "2020-03-25", "acting": true, "notes": "Acting."},
+        {"name_uk": "Мандзій Любомира Степанівна", "name_en": "Liubomyra Mandziy", "start": "2020-03-25", "end": "2020-06-25", "acting": true, "notes": "Acting."},
+        {"name_uk": "Шкарлет Сергій Миколайович", "name_en": "Serhiy Shkarlet", "start": "2020-06-25", "end": "2020-12-17", "acting": true, "notes": "Acting before confirmation."},
+        {"name_uk": "Шкарлет Сергій Миколайович", "name_en": "Serhiy Shkarlet", "start": "2020-12-17", "end": "2023-03-20", "acting": false, "notes": "Confirmed 17 Dec 2020."},
+        {"name_uk": "Лісовий Оксен Васильович", "name_en": "Oksen Lisovyi", "start": "2023-03-21", "end": "2026-07-16", "acting": false, "notes": "End per en wiki + uk navbox."},
+        {"name_uk": "Бутенко Андрій", "name_en": "Andrii Butenko", "start": "2026-07-16", "end": null, "acting": false, "notes": "Current minister per en wiki and uk navbox."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine"
+      ],
+      "caveats": "uk/en disagree on some dates (Zyazyun end, Talanchuk term, Nikolayenko end); vacancy 4 Jul – 18 Nov 1994."
+    },
+    "health": {
+      "ministers": [
+        {"name_uk": "Спіженко Юрій Прокопович", "name_en": "Yuriy Spizhenko", "start": "1991-06-01", "end": "1994-07-01", "acting": false, "notes": "Start known only as June 1991; held across independence."},
+        {"name_uk": "Мальцев Володимир Іванович", "name_en": "Volodymyr Maltsev", "start": "1994-07-01", "end": "1994-08-18", "acting": false, "notes": ""},
+        {"name_uk": "Бобров Володимир Олексійович", "name_en": "Volodymyr Bobrov", "start": "1994-08-22", "end": "1995-02-14", "acting": false, "notes": ""},
+        {"name_uk": "Короленко Євген Сергійович", "name_en": "Yevhen Korolenko", "start": "1995-07-03", "end": "1996-07-13", "acting": false, "notes": "Vacancy 14 Feb – 3 Jul 1995 (navbox lists Serdyuk 1995 with no dates)."},
+        {"name_uk": "Сердюк Андрій Михайлович", "name_en": "Andriy Serdyuk", "start": "1996-09-05", "end": "1999-01-21", "acting": false, "notes": "Printed end 27 Jan 1999 overlaps successor start 21 Jan; using 21 Jan."},
+        {"name_uk": "Богатирьова Раїса Василівна", "name_en": "Raisa Bohatyryova", "start": "1999-01-21", "end": "2000-01-12", "acting": false, "notes": "First term."},
+        {"name_uk": "Москаленко Віталій Федорович", "name_en": "Vitaliy Moskalenko", "start": "2000-01-12", "end": "2002-11-30", "acting": false, "notes": ""},
+        {"name_uk": "Підаєв Андрій Володимирович", "name_en": "Andriy Pidayev", "start": "2002-11-30", "end": "2005-02-03", "acting": false, "notes": ""},
+        {"name_uk": "Поліщук Микола Єфремович", "name_en": "Mykola Polishchuk", "start": "2005-02-04", "end": "2005-09-27", "acting": false, "notes": ""},
+        {"name_uk": "Поляченко Юрій Володимирович", "name_en": "Yuriy Polyachenko", "start": "2005-10-12", "end": "2007-03-23", "acting": false, "notes": ""},
+        {"name_uk": "Гайдаєв Юрій Олександрович", "name_en": "Yuriy Haidayev", "start": "2007-03-23", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Князевич Василь Михайлович", "name_en": "Vasyl Knyazevych", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Митник Зіновій Миколайович", "name_en": "Zinoviy Mytnyk", "start": "2010-03-11", "end": "2010-12-21", "acting": false, "notes": ""},
+        {"name_uk": "Ємець Ілля Миколайович", "name_en": "Illya Yemets", "start": "2010-12-21", "end": "2011-05-17", "acting": false, "notes": "First term."},
+        {"name_uk": "Аніщенко Олександр Володимирович", "name_en": "Oleksandr Anishchenko", "start": "2011-05-24", "end": "2012-02-14", "acting": false, "notes": ""},
+        {"name_uk": "Богатирьова Раїса Василівна", "name_en": "Raisa Bohatyryova", "start": "2012-02-14", "end": "2014-02-23", "acting": false, "notes": "Second term."},
+        {"name_uk": "Мусій Олег Степанович", "name_en": "Oleh Musiy", "start": "2014-02-27", "end": "2014-10-01", "acting": false, "notes": ""},
+        {"name_uk": "Лазоришинець Василь Васильович", "name_en": "Vasyl Lazoryshynets", "start": "2014-10-01", "end": "2014-12-02", "acting": true, "notes": "Acting."},
+        {"name_uk": "Квіташвілі Олександр Мерабович", "name_en": "Alexander Kvitashvili", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Павленко Олександра Сергіївна", "name_en": "Oleksandra Pavlenko", "start": "2016-04-14", "end": "2016-04-27", "acting": true, "notes": "Acting."},
+        {"name_uk": "Шафранський Віктор Вікторович", "name_en": "Viktor Shafranskyi", "start": "2016-04-27", "end": "2016-07-27", "acting": true, "notes": "Acting."},
+        {"name_uk": "Супрун Уляна Надія", "name_en": "Ulana Suprun", "start": "2016-08-01", "end": "2019-08-29", "acting": true, "notes": "Acting throughout tenure."},
+        {"name_uk": "Скалецька Зоряна Степанівна", "name_en": "Zoriana Skaletska", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": ""},
+        {"name_uk": "Ємець Ілля Миколайович", "name_en": "Illya Yemets", "start": "2020-03-04", "end": "2020-03-30", "acting": false, "notes": "Second term."},
+        {"name_uk": "Степанов Максим Володимирович", "name_en": "Maksym Stepanov", "start": "2020-03-30", "end": "2021-05-18", "acting": false, "notes": ""},
+        {"name_uk": "Ляшко Віктор Кирилович", "name_en": "Viktor Liashko", "start": "2021-05-20", "end": null, "acting": false, "notes": "Incumbent as of July 2026."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)"
+      ],
+      "caveats": "Spizhenko start = June 1991 (day set to 01). Vacancy 14 Feb – 3 Jul 1995; navbox-only Serdyuk 1995 stint without dates omitted. Short gaps reproduced as printed."
+    }
+  }
+}

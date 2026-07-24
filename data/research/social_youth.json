@@ -1,0 +1,56 @@
+{
+  "lineages": {
+    "social": {
+      "ministers": [
+        {"name_uk": "Віталій Васильченко", "name_en": "Vitalii Vasylchenko", "start": "1991-08-24", "end": "1991-10-29", "acting": false, "notes": "Minister of Labour from Aug 1990; truncated at independence."},
+        {"name_uk": "Михайло Каскевич", "name_en": "Mykhailo Kaskevych", "start": "1991-10-29", "end": "1996-08-08", "acting": false, "notes": ""},
+        {"name_uk": "Микола Білоблоцький", "name_en": "Mykola Biloblotskyi", "start": "1996-08-08", "end": "1998-06-25", "acting": false, "notes": "Continuous across 1997-07-25 merger of Labour + Social Protection into Labour & Social Policy."},
+        {"name_uk": "Іван Сахань", "name_en": "Ivan Sakhan", "start": "1998-06-25", "end": "2002-11-30", "acting": false, "notes": "First term."},
+        {"name_uk": "Михайло Папієв", "name_en": "Mykhailo Papiyev", "start": "2002-11-30", "end": "2005-02-03", "acting": false, "notes": "First term."},
+        {"name_uk": "В'ячеслав Кириленко", "name_en": "Vyacheslav Kyrylenko", "start": "2005-02-04", "end": "2005-09-27", "acting": false, "notes": ""},
+        {"name_uk": "Іван Сахань", "name_en": "Ivan Sakhan", "start": "2005-09-27", "end": "2006-08-04", "acting": false, "notes": "Second term."},
+        {"name_uk": "Михайло Папієв", "name_en": "Mykhailo Papiyev", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": "Second term."},
+        {"name_uk": "Людмила Денісова", "name_en": "Lyudmyla Denisova", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": "First term."},
+        {"name_uk": "Василь Надрага", "name_en": "Vasyl Nadraha", "start": "2010-03-11", "end": "2010-12-09", "acting": false, "notes": "Last Labour & Social Policy minister."},
+        {"name_uk": "Сергій Тігіпко", "name_en": "Serhiy Tihipko", "start": "2010-12-09", "end": "2012-12-24", "acting": false, "notes": "First Social Policy minister (also Vice PM)."},
+        {"name_uk": "Наталія Королевська", "name_en": "Natalia Korolevska", "start": "2012-12-24", "end": "2014-02-24", "acting": false, "notes": ""},
+        {"name_uk": "Людмила Денісова", "name_en": "Lyudmyla Denisova", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": "Second term."},
+        {"name_uk": "Павло Розенко", "name_en": "Pavlo Rozenko", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Андрій Рева", "name_en": "Andriy Reva", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Юлія Соколовська", "name_en": "Yuliya Sokolovska", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": ""},
+        {"name_uk": "Марина Лазебна", "name_en": "Maryna Lazebna", "start": "2020-03-04", "end": "2022-07-19", "acting": false, "notes": ""},
+        {"name_uk": "Оксана Жолнович", "name_en": "Oksana Zholnovych", "start": "2022-07-19", "end": "2025-07-17", "acting": false, "notes": ""},
+        {"name_uk": "Денис Улютін", "name_en": "Denys Uliutin", "start": "2025-07-17", "end": null, "acting": false, "notes": "Minister of Social Policy, Family & Unity (absorbed National Unity ministry). Incumbent as of Jul 2026."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України",
+        "https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Social_Policy_of_Ukraine"
+      ],
+      "caveats": "Labour ministry lineage; the parallel Ministry of Social Protection (Yershov 1991-1996, Ovcharenko 1996-1997) absorbed in the 1997 merger is not included."
+    },
+    "youth": {
+      "ministers": [
+        {"name_uk": "Валерій Борзов", "name_en": "Valeriy Borzov", "start": "1991-08-24", "end": "1996-08-20", "acting": false, "notes": "Appointed 6 Jun 1991; truncated at independence. Ministry downgraded to state committee 20 Aug 1996."},
+        {"name_uk": "Сюзанна Станік", "name_en": "Suzanna Stanik", "start": "1996-09-01", "end": "1997-08-01", "acting": false, "notes": "Minister for Family and Youth; month precision only."},
+        {"name_uk": "Валентина Довженко", "name_en": "Valentyna Dovzhenko", "start": "1997-08-21", "end": "1999-03-22", "acting": false, "notes": "Ministry downgraded to committee 22 Mar 1999 — no ministerial office 1999–2004."},
+        {"name_uk": "Валентина Довженко", "name_en": "Valentyna Dovzhenko", "start": "2004-02-06", "end": "2005-02-03", "acting": false, "notes": "Ministry restored 2004 (Family, Children and Youth)."},
+        {"name_uk": "Юрій Павленко", "name_en": "Yuriy Pavlenko", "start": "2005-02-07", "end": "2006-11-29", "acting": false, "notes": "First term; renamed Family, Youth and Sports Aug 2005."},
+        {"name_uk": "Віктор Корж", "name_en": "Viktor Korzh", "start": "2006-12-01", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Павленко", "name_en": "Yuriy Pavlenko", "start": "2007-12-20", "end": "2010-03-11", "acting": false, "notes": "Second term."},
+        {"name_uk": "Равіль Сафіуллін", "name_en": "Ravil Safiullin", "start": "2010-03-11", "end": "2010-12-09", "acting": false, "notes": "Merged into Education 9 Dec 2010 — gap until 28 Feb 2013."},
+        {"name_uk": "Равіль Сафіуллін", "name_en": "Ravil Safiullin", "start": "2013-02-28", "end": "2014-02-27", "acting": false, "notes": "Ministry of Youth and Sports re-established 28 Feb 2013."},
+        {"name_uk": "Дмитро Булатов", "name_en": "Dmytro Bulatov", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": ""},
+        {"name_uk": "Ігор Жданов", "name_en": "Ihor Zhdanov", "start": "2014-12-02", "end": "2019-08-29", "acting": false, "notes": "Merged into Culture, Youth & Sports 29 Aug 2019 — gap until 4 Mar 2020."},
+        {"name_uk": "Вадим Гутцайт", "name_en": "Vadym Guttsait", "start": "2020-03-04", "end": "2023-11-09", "acting": false, "notes": "Ministry separate again from 4 Mar 2020."},
+        {"name_uk": "Матвій Бідний", "name_en": "Matviy Bidnyi", "start": "2023-11-09", "end": "2024-09-05", "acting": true, "notes": "Acting."},
+        {"name_uk": "Матвій Бідний", "name_en": "Matviy Bidnyi", "start": "2024-09-05", "end": null, "acting": false, "notes": "Confirmed 5 Sep 2024; reappointed Jul 2025; NOT merged in 2025 reorganization. Incumbent as of Jul 2026."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)"
+      ],
+      "caveats": "Rank gaps (no ministerial office): 1999-03-22..2004-02-06 (state committee), 2010-12-09..2013-02-28 (in Education), 2019-08-29..2020-03-04 (in Culture). Committee-era heads excluded. Stanik dates are month-precision."
+    }
+  }
+}

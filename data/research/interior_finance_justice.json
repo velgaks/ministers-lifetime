@@ -1,0 +1,80 @@
+{
+  "lineages": {
+    "interior": {
+      "ministers": [
+        {"name_uk": "Андрій Василишин", "name_en": "Andriy Vasylyshyn", "start": "1991-08-24", "end": "1994-07-21", "acting": false, "notes": "Headed ministry before independence; truncated at 1991-08-24."},
+        {"name_uk": "Володимир Радченко", "name_en": "Volodymyr Radchenko", "start": "1994-07-21", "end": "1994-07-28", "acting": true, "notes": "Acting for one week."},
+        {"name_uk": "Володимир Радченко", "name_en": "Volodymyr Radchenko", "start": "1994-07-28", "end": "1995-07-03", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Кравченко", "name_en": "Yuriy Kravchenko", "start": "1995-07-03", "end": "2001-03-26", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Смирнов", "name_en": "Yuriy Smirnov", "start": "2001-03-26", "end": "2003-08-27", "acting": false, "notes": ""},
+        {"name_uk": "Микола Білоконь", "name_en": "Mykola Bilokon", "start": "2003-08-27", "end": "2005-02-03", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Луценко", "name_en": "Yuriy Lutsenko", "start": "2005-02-04", "end": "2006-12-01", "acting": false, "notes": "First term."},
+        {"name_uk": "Василь Цушко", "name_en": "Vasyl Tsushko", "start": "2006-12-01", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Луценко", "name_en": "Yuriy Lutsenko", "start": "2007-12-18", "end": "2010-01-28", "acting": false, "notes": "Second term."},
+        {"name_uk": "Юрій Луценко", "name_en": "Yuriy Lutsenko", "start": "2010-01-28", "end": "2010-01-29", "acting": true, "notes": "One-day acting spell."},
+        {"name_uk": "Михайло Клюєв", "name_en": "Mykhailo Kliuyev", "start": "2010-01-29", "end": "2010-03-11", "acting": true, "notes": "First deputy performing duties."},
+        {"name_uk": "Анатолій Могильов", "name_en": "Anatoliy Mohyliov", "start": "2010-03-11", "end": "2011-11-07", "acting": false, "notes": ""},
+        {"name_uk": "Віталій Захарченко", "name_en": "Vitaliy Zakharchenko", "start": "2011-11-07", "end": "2014-02-21", "acting": false, "notes": "Removed by Rada 21 Feb 2014."},
+        {"name_uk": "Арсен Аваков", "name_en": "Arsen Avakov", "start": "2014-02-22", "end": "2014-02-27", "acting": true, "notes": "Acting."},
+        {"name_uk": "Арсен Аваков", "name_en": "Arsen Avakov", "start": "2014-02-27", "end": "2021-07-15", "acting": false, "notes": "Dismissed by Rada 15 Jul 2021."},
+        {"name_uk": "Денис Монастирський", "name_en": "Denys Monastyrsky", "start": "2021-07-16", "end": "2023-01-18", "acting": false, "notes": "Died in office 18 Jan 2023."},
+        {"name_uk": "Ігор Клименко", "name_en": "Ihor Klymenko", "start": "2023-01-18", "end": "2023-02-07", "acting": true, "notes": "Acting after Monastyrsky's death."},
+        {"name_uk": "Ігор Клименко", "name_en": "Ihor Klymenko", "start": "2023-02-07", "end": "2026-07-16", "acting": false, "notes": "Left when new cabinet approved 16 Jul 2026."},
+        {"name_uk": "Іван Вигівський", "name_en": "Ivan Vyhivskyi", "start": "2026-07-16", "end": null, "acting": false, "notes": "Appointed with cabinet approved 16 Jul 2026. Incumbent."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України", "https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)", "https://lb.ua/news/2026/07/16/752378_verhovna_rada_onovila_sklad.html"],
+      "caveats": "Vasylyshyn start truncated at independence. Vyhivskyi appointment 2026-07-16 confirmed by news of the 16 Jul 2026 cabinet vote (new PM Koretskyi)."
+    },
+    "finance": {
+      "ministers": [
+        {"name_uk": "Олександр Коваленко", "name_en": "Oleksandr Kovalenko", "start": "1991-08-24", "end": "1991-10-29", "acting": false, "notes": "In office since 1990; truncated at independence."},
+        {"name_uk": "Григорій П'ятаченко", "name_en": "Hryhoriy Piatachenko", "start": "1991-10-29", "end": "1994-07-06", "acting": false, "notes": ""},
+        {"name_uk": "Петро Германчук", "name_en": "Petro Hermanchuk", "start": "1994-07-06", "end": "1996-06-18", "acting": false, "notes": ""},
+        {"name_uk": "Валентин Короневський", "name_en": "Valentyn Koronevskyi", "start": "1996-06-18", "end": "1997-02-25", "acting": false, "notes": ""},
+        {"name_uk": "Ігор Мітюков", "name_en": "Ihor Mitiukov", "start": "1997-02-26", "end": "2001-12-27", "acting": false, "notes": ""},
+        {"name_uk": "Ігор Юшко", "name_en": "Ihor Yushko", "start": "2001-12-27", "end": "2002-11-26", "acting": false, "notes": ""},
+        {"name_uk": "Микола Азаров", "name_en": "Mykola Azarov", "start": "2002-11-26", "end": "2005-02-03", "acting": false, "notes": "First term."},
+        {"name_uk": "Віктор Пинзеник", "name_en": "Viktor Pynzenyk", "start": "2005-02-04", "end": "2006-08-04", "acting": false, "notes": "First term."},
+        {"name_uk": "Микола Азаров", "name_en": "Mykola Azarov", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": "Second term."},
+        {"name_uk": "Віктор Пинзеник", "name_en": "Viktor Pynzenyk", "start": "2007-12-18", "end": "2009-02-17", "acting": false, "notes": "Second term; resigned."},
+        {"name_uk": "Ігор Уманський", "name_en": "Ihor Umansky", "start": "2009-04-08", "end": "2010-03-11", "acting": true, "notes": "Acting; post vacant 17 Feb – 8 Apr 2009."},
+        {"name_uk": "Федір Ярошенко", "name_en": "Fedir Yaroshenko", "start": "2010-03-11", "end": "2012-01-18", "acting": false, "notes": ""},
+        {"name_uk": "Валерій Хорошковський", "name_en": "Valeriy Khoroshkovskyi", "start": "2012-01-18", "end": "2012-02-22", "acting": false, "notes": "Post vacant 22–28 Feb 2012."},
+        {"name_uk": "Юрій Колобов", "name_en": "Yuriy Kolobov", "start": "2012-02-28", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Шлапак", "name_en": "Oleksandr Shlapak", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": ""},
+        {"name_uk": "Наталія Яресько", "name_en": "Natalie Jaresko", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Данилюк", "name_en": "Oleksandr Danylyuk", "start": "2016-04-14", "end": "2018-06-07", "acting": false, "notes": ""},
+        {"name_uk": "Оксана Маркарова", "name_en": "Oksana Markarova", "start": "2018-06-08", "end": "2020-03-04", "acting": false, "notes": "Acting until confirmed 22 Nov 2018."},
+        {"name_uk": "Ігор Уманський", "name_en": "Ihor Umansky", "start": "2020-03-04", "end": "2020-03-30", "acting": false, "notes": "Second spell, full minister."},
+        {"name_uk": "Сергій Марченко", "name_en": "Serhiy Marchenko", "start": "2020-03-30", "end": null, "acting": false, "notes": "Retained across Jul 2025 and 16 Jul 2026 reshuffles. Incumbent."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України", "https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)"],
+      "caveats": "Vacancies 2009-02-17..2009-04-08 and 2012-02-22..2012-02-28."
+    },
+    "justice": {
+      "ministers": [
+        {"name_uk": "Віталій Бойко", "name_en": "Vitaliy Boiko", "start": "1991-08-24", "end": "1992-03-20", "acting": false, "notes": "In office since Aug 1990; truncated at independence."},
+        {"name_uk": "Володимир Кампо", "name_en": "Volodymyr Kampo", "start": "1992-03-20", "end": "1992-04-21", "acting": false, "notes": "Post vacant 21 Apr – 27 Oct 1992."},
+        {"name_uk": "Василь Онопенко", "name_en": "Vasyl Onopenko", "start": "1992-10-27", "end": "1995-08-07", "acting": false, "notes": "Vacant until 27 Sep 1995 after him."},
+        {"name_uk": "Сергій Головатий", "name_en": "Serhiy Holovaty", "start": "1995-09-27", "end": "1997-08-21", "acting": false, "notes": "First spell."},
+        {"name_uk": "Сюзанна Станік", "name_en": "Suzanna Stanik", "start": "1997-08-21", "end": "2002-05-07", "acting": false, "notes": "Continuous across cabinets."},
+        {"name_uk": "Олександр Лавринович", "name_en": "Oleksandr Lavrynovych", "start": "2002-05-07", "end": "2005-02-03", "acting": false, "notes": "First spell."},
+        {"name_uk": "Роман Зварич", "name_en": "Roman Zvarych", "start": "2005-02-04", "end": "2005-09-27", "acting": false, "notes": "First spell."},
+        {"name_uk": "Сергій Головатий", "name_en": "Serhiy Holovaty", "start": "2005-09-27", "end": "2006-08-04", "acting": false, "notes": "Second spell."},
+        {"name_uk": "Роман Зварич", "name_en": "Roman Zvarych", "start": "2006-08-04", "end": "2006-11-01", "acting": false, "notes": "Second spell."},
+        {"name_uk": "Олександр Лавринович", "name_en": "Oleksandr Lavrynovych", "start": "2006-11-01", "end": "2007-12-18", "acting": false, "notes": "Second spell."},
+        {"name_uk": "Микола Оніщук", "name_en": "Mykola Onishchuk", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Лавринович", "name_en": "Oleksandr Lavrynovych", "start": "2010-03-11", "end": "2013-07-04", "acting": false, "notes": "Third spell."},
+        {"name_uk": "Олена Лукаш", "name_en": "Olena Lukash", "start": "2013-07-04", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Павло Петренко", "name_en": "Pavlo Petrenko", "start": "2014-02-27", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Денис Малюська", "name_en": "Denys Maliuska", "start": "2019-08-29", "end": "2024-09-04", "acting": false, "notes": ""},
+        {"name_uk": "Ольга Стефанішина", "name_en": "Olha Stefanishyna", "start": "2024-09-05", "end": "2025-07-16", "acting": false, "notes": ""},
+        {"name_uk": "Герман Галущенко", "name_en": "German Galushchenko", "start": "2025-07-17", "end": "2025-11-19", "acting": false, "notes": "Suspended 12 Nov 2025, dismissed by Rada 19 Nov 2025 (NABU energy corruption probe)."},
+        {"name_uk": "Людмила Сугак", "name_en": "Liudmyla Suhak", "start": "2025-11-19", "end": "2026-07-16", "acting": true, "notes": "Acting."},
+        {"name_uk": "Денис Маслов", "name_en": "Denys Maslov", "start": "2026-07-16", "end": null, "acting": false, "notes": "Appointed 16 Jul 2026. Incumbent."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України", "https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)", "https://pravo.ua/verkhovna-rada-zvilnyla-hermana-halushchenka-z-posady-ministra-iustytsii-ukrainy/"],
+      "caveats": "Vacancies 1992-04-21..1992-10-27 and 1995-08-07..1995-09-27. Holovaty year-precision resolved to two exact spells."
+    }
+  }
+}

@@ -1,0 +1,3899 @@
+{
+ "_comment": "Manual corrections applied by pipeline/build.py on top of data/raw.json. Actions: 'remove' (drop raw records), 'set' (override fields on matched raw records; optional start_was pins one of several statements), 'add' (insert a record missing from Wikidata), 'ack' (acknowledge a report flag as legitimate). Every entry should carry a source or reason.",
+ "patches": [
+  {
+   "action": "remove",
+   "match": {
+    "persons": [
+     "Q372463",
+     "Q212676",
+     "Q4469506",
+     "Q4521354",
+     "Q1999257",
+     "Q2027078",
+     "Q2030798",
+     "Q2060105",
+     "Q2061443",
+     "Q2376882",
+     "Q2424014",
+     "Q4135976",
+     "Q4337677",
+     "Q4341350",
+     "Q4373501",
+     "Q949887",
+     "Q662625",
+     "Q709220",
+     "Q4441358",
+     "Q12160462",
+     "Q12122016",
+     "Q2377176",
+     "Q2422261",
+     "Q3180361",
+     "Q4320037",
+     "Q9377990",
+     "Q510930",
+     "Q6149219",
+     "Q11837661",
+     "Q12079736",
+     "Q4237280",
+     "Q4265448",
+     "Q4282707"
+    ]
+   },
+   "reason": "Pre-independence officeholders (Ukrainian People's Republic 1917-1921 / Ukrainian SSR) with no dates in Wikidata; out of scope (dataset starts 1991-08-24)."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4706289",
+    "lineage": "agrarian"
+   },
+   "start_was": "2014-02-27",
+   "set": {
+    "end": "2014-12-02T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q16706401",
+    "lineage": "agrarian"
+   },
+   "start_was": "2018-11-23",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q65209892",
+    "lineage": "agrarian"
+   },
+   "start_was": "2019-02-07",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q79291635",
+    "lineage": "agrarian"
+   },
+   "start_was": "2022-03-24",
+   "set": {
+    "end": "2024-05-09T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q975419",
+    "lineage": "environment"
+   },
+   "start_was": "2014-02-27",
+   "set": {
+    "end": "2014-12-02T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q89189828",
+    "lineage": "culture"
+   },
+   "start_was": "2020-03-10",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q12162129",
+    "lineage": "culture"
+   },
+   "start_was": "2024-09-05",
+   "set": {
+    "end": "2025-07-17T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q65197482",
+    "lineage": "cabmin"
+   },
+   "start_was": "2020-03-04",
+   "set": {
+    "end": "2025-07-17T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q76402188",
+    "lineage": "education"
+   },
+   "start_was": "2020-03-10",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q88546691",
+    "lineage": "education"
+   },
+   "start_was": "2020-03-25",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q16723829",
+    "lineage": "education"
+   },
+   "start_was": "2020-06-25",
+   "set": {
+    "end": "2020-12-17T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q117195929",
+    "lineage": "education"
+   },
+   "start_was": "2023-03-21",
+   "set": {
+    "end": "2026-07-16T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q450278",
+    "lineage": "health"
+   },
+   "start_was": "1999-01-01",
+   "set": {
+    "start": "1999-01-21T00:00:00Z",
+    "end": "2000-01-12T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q21600039",
+    "lineage": "health"
+   },
+   "start_was": "2016-07-27",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q12157109",
+    "lineage": "energy"
+   },
+   "start_was": "2013-12-24",
+   "set": {
+    "start": "2012-12-24T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q16695896",
+    "lineage": "energy"
+   },
+   "start_was": "2020-12-21",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q458282",
+    "lineage": "interior"
+   },
+   "start_was": "2007-12-18",
+   "set": {
+    "end": "2010-01-28T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4224312",
+    "lineage": "interior"
+   },
+   "start_was": "2010-01-29",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q78363820",
+    "lineage": "interior"
+   },
+   "start_was": "2023-02-07",
+   "set": {
+    "end": "2026-07-16T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4475290",
+    "lineage": "finance"
+   },
+   "start_was": "2009-04-08",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q89034171",
+    "lineage": "finance"
+   },
+   "start_was": "2020-03-04",
+   "set": {
+    "start": "2020-03-30T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q7286384",
+    "lineage": "justice"
+   },
+   "start_was": "1995-01-01",
+   "set": {
+    "start": "1995-09-27T00:00:00Z",
+    "end": "1997-08-21T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q2066222",
+    "lineage": "justice"
+   },
+   "start_was": "2002-11-21",
+   "set": {
+    "start": "2002-05-07T00:00:00Z",
+    "end": "2005-02-03T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q7286384",
+    "lineage": "justice"
+   },
+   "start_was": "2005-01-01",
+   "set": {
+    "start": "2005-09-27T00:00:00Z",
+    "end": "2006-08-04T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q2066222",
+    "lineage": "justice"
+   },
+   "start_was": "2006-01-11",
+   "set": {
+    "start": "2006-11-01T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q66809435",
+    "lineage": "justice"
+   },
+   "start_was": "2020-03-04",
+   "set": {
+    "start": "2019-08-29T00:00:00Z",
+    "end": "2024-09-04T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q927269",
+    "lineage": "pm"
+   },
+   "start_was": "1993-09-22",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q715633",
+    "lineage": "pm"
+   },
+   "start_was": "1995-03-06",
+   "set": {
+    "end": "1995-06-08T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q964173",
+    "lineage": "pm"
+   },
+   "start_was": "1997-07-02",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q553216",
+    "lineage": "pm"
+   },
+   "start_was": "1997-07-16",
+   "set": {
+    "end": "1999-12-22T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q1459658",
+    "lineage": "pm"
+   },
+   "start_was": "2002-11-21",
+   "set": {
+    "end": "2004-12-07T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q57590",
+    "lineage": "pm"
+   },
+   "start_was": "2004-12-07",
+   "set": {
+    "end": "2004-12-28T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q48283",
+    "lineage": "pm"
+   },
+   "start_was": "2005-01-24",
+   "set": {
+    "end": "2005-02-04T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q311116",
+    "lineage": "pm"
+   },
+   "start_was": "2005-09-08",
+   "set": {
+    "end": "2005-09-22T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4086479",
+    "lineage": "defense"
+   },
+   "start_was": "1993-10-04",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4525616",
+    "lineage": "defense"
+   },
+   "start_was": "1994-08-25",
+   "set": {
+    "end": "1994-10-10T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4197099",
+    "lineage": "defense"
+   },
+   "start_was": "2009-06-05",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q3916289",
+    "lineage": "defense"
+   },
+   "start_was": "2014-02-27",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q15978427",
+    "lineage": "defense"
+   },
+   "start_was": "2014-03-25",
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q64495543",
+    "lineage": "defense"
+   },
+   "start_was": "2026-01-14",
+   "set": {
+    "end": "2026-07-15T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q130251916",
+    "lineage": "veterans"
+   },
+   "start_was": "2024-09-05",
+   "set": {
+    "end": "2026-07-16T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_у_справах_ветеранів_України"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q20070399",
+    "lineage": "stratindustry"
+   },
+   "start_was": "2020-03-04",
+   "set": {
+    "start": "2020-07-16T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_стратегічних_галузей_промисловості_України"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q113153569",
+    "lineage": "social"
+   },
+   "start_was": "2022-07-19",
+   "set": {
+    "end": "2025-07-17T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q123425487",
+    "lineage": "youth"
+   },
+   "start_was": "2023-11-09",
+   "set": {
+    "end": "2024-09-05T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q66809451",
+    "lineage": "transport"
+   },
+   "start_was": "2021-05-20",
+   "set": {
+    "end": "2024-05-09T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України"
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Oleksandr Tkachenko (agrarian)",
+   "name_uk": "Олександр Ткаченко",
+   "start": "1991-08-24",
+   "end": "1992-02-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Minister of Agriculture; headed ministry from May 1991, truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Vasyl Tkachuk",
+   "name_uk": "Василь Ткачук",
+   "start": "1992-02-29",
+   "end": "1992-12-08",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Yuriy Karasyk",
+   "name_uk": "Юрій Карасик",
+   "start": "1992-12-15",
+   "end": "1995-08-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Start known only as December 1992 (predecessor dismissed 8 Dec); mid-December used."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Pavlo Haidutskyi",
+   "name_uk": "Павло Гайдуцький",
+   "start": "1995-08-03",
+   "end": "1996-06-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Anatoliy Khorishko",
+   "name_uk": "Анатолій Хорішко",
+   "start": "1996-07-12",
+   "end": "1997-02-14",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Vacancies 11 Jun – 12 Jul 1996 and 14 Feb – 7 Apr 1997."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Mykhailo Zubets",
+   "name_uk": "Михайло Зубець",
+   "start": "1997-04-07",
+   "end": "1997-07-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Yuriy Karasyk",
+   "name_uk": "Юрій Карасик",
+   "start": "1997-07-25",
+   "end": "1998-04-23",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Second term (Agro-Industrial Complex)."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Borys Supikhanov",
+   "name_uk": "Борис Супіханов",
+   "start": "1998-04-23",
+   "end": "1999-07-15",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Mykhailo Hladiy",
+   "name_uk": "Михайло Гладій",
+   "start": "1999-07-19",
+   "end": "2000-01-10",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Ivan Kyrylenko",
+   "name_uk": "Іван Кириленко",
+   "start": "2000-01-10",
+   "end": "2002-04-19",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "First Minister of Agrarian Policy."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Serhiy Ryzhuk",
+   "name_uk": "Сергій Рижук",
+   "start": "2002-04-19",
+   "end": "2004-01-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Viktor Slauta",
+   "name_uk": "Віктор Слаута",
+   "start": "2004-01-11",
+   "end": "2004-12-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Oleksandr Baranivskyi",
+   "name_uk": "Олександр Баранівський",
+   "start": "2005-02-04",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Vacancy 17 Dec 2004 – 4 Feb 2005."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Yuriy Melnyk",
+   "name_uk": "Юрій Мельник",
+   "start": "2006-08-04",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Taras Vysotskyi",
+   "name_uk": "Тарас Висоцький",
+   "start": "2024-05-14",
+   "end": "2024-09-05",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Vitalii Koval",
+   "name_uk": "Віталій Коваль",
+   "start": "2024-09-05",
+   "end": "2025-07-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Merged into Economy, Environment & Agriculture 17 Jul 2025."
+  },
+  {
+   "action": "add",
+   "lineage": "agrarian",
+   "person": null,
+   "name_en": "Taras Vysotskyi",
+   "name_uk": "Тарас Висоцький",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України; https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)",
+   "note": "Ministry restored 16 Jul 2026 (Koretskyi government); incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Yuriy Shcherbak",
+   "name_uk": "Юрій Щербак",
+   "start": "1991-08-24",
+   "end": "1992-10-16",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Appointed 19 Jun 1991; truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Yuriy Kostenko",
+   "name_uk": "Юрій Костенко",
+   "start": "1992-10-27",
+   "end": "1998-05-08",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Continuous tenure across 1995 rename."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Vasyl Shevchuk",
+   "name_uk": "Василь Шевчук",
+   "start": "1998-08-23",
+   "end": "2000-01-31",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Vacancy 8 May – 23 Aug 1998."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Ivan Zayets",
+   "name_uk": "Іван Заєць",
+   "start": "2000-01-31",
+   "end": "2001-05-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Serhiy Kurykin",
+   "name_uk": "Сергій Курикін",
+   "start": "2001-06-09",
+   "end": "2002-11-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Vasyl Shevchuk",
+   "name_uk": "Василь Шевчук",
+   "start": "2002-11-30",
+   "end": "2003-06-06",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Serhiy Polyakov (ecology)",
+   "name_uk": "Сергій Поляков",
+   "start": "2003-07-15",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Different person from coal minister Serhiy Polyakov? Verify during integration — coal's Polyakov is Сергій Васильович; ecology 2003 minister is Поляков Сергій Іванович."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Pavlo Ihnatenko",
+   "name_uk": "Павло Ігнатенко",
+   "start": "2005-02-04",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Vasyl Dzharty",
+   "name_uk": "Василь Джарти",
+   "start": "2006-08-04",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Heorhiy Filipchuk",
+   "name_uk": "Георгій Філіпчук",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Viktor Boiko (ecology)",
+   "name_uk": "Віктор Бойко",
+   "start": "2010-03-11",
+   "end": "2010-07-02",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Oleh Proskuryakov",
+   "name_uk": "Олег Проскуряков",
+   "start": "2012-12-24",
+   "end": "2014-02-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Serhiy Kurykin",
+   "name_uk": "Сергій Курикін",
+   "start": "2015-08-12",
+   "end": "2016-01-27",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Acting; vacancy 2 Jul – 12 Aug 2015."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Hanna Vronska",
+   "name_uk": "Ганна Вронська",
+   "start": "2016-02-03",
+   "end": "2016-04-14",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Svitlana Hrynchuk",
+   "name_uk": "Світлана Гринчук",
+   "start": "2024-09-05",
+   "end": "2025-07-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Merged into Economy, Environment & Agriculture 17 Jul 2025; she moved to Energy."
+  },
+  {
+   "action": "add",
+   "lineage": "environment",
+   "person": null,
+   "name_en": "Ruslan Strilets",
+   "name_uk": "Руслан Стрілець",
+   "start": "2021-11-04",
+   "end": "2022-04-14",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України; https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Larysa Khorolets",
+   "name_uk": "Лариса Хоролець",
+   "start": "1991-08-24",
+   "end": "1992-11-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "Appointed 7 Jul 1991 (UkrSSR); truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Yuriy Bohutsky",
+   "name_uk": "Юрій Богуцький",
+   "start": "1999-08-04",
+   "end": "1999-12-07",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "First of three terms."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Bohdan Stupka",
+   "name_uk": "Богдан Ступка",
+   "start": "1999-12-30",
+   "end": "2001-05-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Yuriy Bohutsky",
+   "name_uk": "Юрій Богуцький",
+   "start": "2001-05-30",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Oksana Bilozir",
+   "name_uk": "Оксана Білозір",
+   "start": "2005-02-04",
+   "end": "2005-10-05",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Ihor Likhovyi",
+   "name_uk": "Ігор Ліховий",
+   "start": "2005-10-05",
+   "end": "2006-11-01",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Yuriy Bohutsky",
+   "name_uk": "Юрій Богуцький",
+   "start": "2006-11-01",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "Third term."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Vasyl Vovkun",
+   "name_uk": "Василь Вовкун",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Mykhailo Kulyniak",
+   "name_uk": "Михайло Кулиняк",
+   "start": "2010-03-11",
+   "end": "2012-12-24",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Rostyslav Karandieiev",
+   "name_uk": "Ростислав Карандєєв",
+   "start": "2023-07-28",
+   "end": "2024-09-04",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "Acting for over a year."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Halyna Hryhorenko",
+   "name_uk": "Галина Григоренко",
+   "start": "2025-07-17",
+   "end": "2025-07-28",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "Performed duties ex officio; no minister in Svyrydenko cabinet."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Tetiana Berezhna",
+   "name_uk": "Тетяна Бережна",
+   "start": "2025-07-28",
+   "end": "2025-10-21",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "culture",
+   "person": null,
+   "name_en": "Tetiana Berezhna",
+   "name_uk": "Тетяна Бережна",
+   "start": "2025-10-21",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_культури_України; https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)",
+   "note": "Full minister from 21 Oct 2025; reappointed 16 Jul 2026 as Vice PM for Humanitarian Policy — Minister of Culture. Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Heorhiy Hotovchyts",
+   "name_uk": "Георгій Готовчиць",
+   "start": "1991-08-24",
+   "end": "1994-12-31",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "Headed Мінчорнобиль from Aug 1990; truncated at independence; died in office."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Volodymyr Kholosha",
+   "name_uk": "Володимир Холоша",
+   "start": "1995-01-01",
+   "end": "1996-01-05",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "Acting (month precision on start)."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Volodymyr Kholosha",
+   "name_uk": "Володимир Холоша",
+   "start": "1996-01-05",
+   "end": "1996-08-31",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "Full minister from 5 Jan 1996."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Valeriy Kalchenko",
+   "name_uk": "Валерій Кальченко",
+   "start": "1996-08-31",
+   "end": "1999-02-08",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "MNS created Oct 1996 (merged Мінчорнобиль + Civil Defence)."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Vasyl Durdynets",
+   "name_uk": "Василь Дурдинець",
+   "start": "1999-03-22",
+   "end": "2002-11-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "Post vacant 8 Feb – 22 Mar 1999."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Hryhoriy Reva",
+   "name_uk": "Григорій Рева",
+   "start": "2002-11-30",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "David Zhvania",
+   "name_uk": "Давид Жванія",
+   "start": "2005-02-04",
+   "end": "2005-09-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Nestor Shufrych",
+   "name_uk": "Нестор Шуфрич",
+   "start": "2006-12-12",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "Post vacant Oct–Dec 2006."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Volodymyr Shandra",
+   "name_uk": "Володимир Шандра",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Nestor Shufrych",
+   "name_uk": "Нестор Шуфрич",
+   "start": "2010-03-11",
+   "end": "2010-07-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "emergencies",
+   "person": null,
+   "name_en": "Mykhailo Bolotskykh",
+   "name_uk": "Михайло Болотських",
+   "start": "2010-07-10",
+   "end": "2010-11-12",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України; https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Volodymyr Pekhota",
+   "name_uk": "Володимир Пєхота",
+   "start": "1992-02-26",
+   "end": "1992-10-16",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Post created 26 Feb 1992."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Anatoliy Lobov",
+   "name_uk": "Анатолій Лобов",
+   "start": "1992-10-16",
+   "end": "1993-04-02",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Ivan Dotsenko",
+   "name_uk": "Іван Доценко",
+   "start": "1993-09-01",
+   "end": "1994-07-01",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Month precision."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Anatoliy Tolstoukhov",
+   "name_uk": "Анатолій Толстоухов",
+   "start": "1997-07-25",
+   "end": "1999-12-20",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Post abolished Dec 1999."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Volodymyr Yatsuba",
+   "name_uk": "Володимир Яцуба",
+   "start": "2003-06-03",
+   "end": "2003-07-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Post re-created 3 Jun 2003."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Anatoliy Tolstoukhov",
+   "name_uk": "Анатолій Толстоухов",
+   "start": "2003-07-31",
+   "end": "2005-01-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Petro Krupko",
+   "name_uk": "Петро Крупко",
+   "start": "2005-03-23",
+   "end": "2005-09-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Post vacant 29 Jan – 23 Mar 2005."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Bohdan Butsa",
+   "name_uk": "Богдан Буца",
+   "start": "2005-09-27",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Anatoliy Tolstoukhov",
+   "name_uk": "Анатолій Толстоухов",
+   "start": "2006-08-04",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Third term."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Petro Krupko",
+   "name_uk": "Петро Крупко",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Anatoliy Tolstoukhov",
+   "name_uk": "Анатолій Толстоухов",
+   "start": "2010-03-11",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Fourth term; post abolished 9 Dec 2010."
+  },
+  {
+   "action": "add",
+   "lineage": "cabmin",
+   "person": null,
+   "name_en": "Vladyslav Zabarskyi",
+   "name_uk": "Владислав Забарський",
+   "start": "2013-07-04",
+   "end": "2014-02-27",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Anatoliy Minchenko",
+   "name_uk": "Мінченко Анатолій Каленикович",
+   "start": "1991-08-24",
+   "end": "1992-02-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Appointed 21 May 1991 (UkrSSR); truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Volodymyr Lanovyi",
+   "name_uk": "Лановий Володимир Тимофійович",
+   "start": "1992-03-06",
+   "end": "1992-07-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Also Vice PM for economic reform."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Viktor Pynzenyk",
+   "name_uk": "Пинзеник Віктор Михайлович",
+   "start": "1992-10-27",
+   "end": "1993-04-13",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Post vacant 11 Jul – 27 Oct 1992."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Yuriy Bannikov",
+   "name_uk": "Банніков Юрій Олександрович",
+   "start": "1993-04-13",
+   "end": "1993-08-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Roman Shpek",
+   "name_uk": "Шпек Роман Васильович",
+   "start": "1993-08-30",
+   "end": "1995-07-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Vasyl Hureyev",
+   "name_uk": "Гуреєв Василь Миколайович",
+   "start": "1995-07-03",
+   "end": "1997-02-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Viktor Suslov",
+   "name_uk": "Суслов Віктор Іванович",
+   "start": "1997-07-25",
+   "end": "1998-04-21",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Vasyl Rohovyi",
+   "name_uk": "Роговий Василь Васильович",
+   "start": "1998-04-24",
+   "end": "1999-12-31",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Vasyl Rohovyi",
+   "name_uk": "Роговий Василь Васильович",
+   "start": "2000-08-09",
+   "end": "2001-06-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Mykola Derkach",
+   "name_uk": "Деркач Микола Іванович",
+   "start": "2004-01-11",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Serhiy Teryokhin",
+   "name_uk": "Терьохін Сергій Анатолійович",
+   "start": "2005-02-04",
+   "end": "2005-09-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Volodymyr Makukha",
+   "name_uk": "Макуха Володимир Олексійович",
+   "start": "2006-08-04",
+   "end": "2007-03-21",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Anatoliy Kinakh",
+   "name_uk": "Кінах Анатолій Кирилович",
+   "start": "2007-03-21",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Bohdan Danylyshyn",
+   "name_uk": "Данилишин Богдан Михайлович",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Petro Poroshenko",
+   "name_uk": "Порошенко Петро Олексійович",
+   "start": "2012-03-23",
+   "end": "2012-12-24",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Post vacant 14 Feb – 23 Mar 2012."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Anatoliy Maksyuta",
+   "name_uk": "Максюта Анатолій Аркадійович",
+   "start": "2014-09-03",
+   "end": "2014-10-08",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Valery Pyatnitsky",
+   "name_uk": "Пятницький Валерій Тезійович",
+   "start": "2014-10-08",
+   "end": "2014-12-02",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Stepan Kubiv",
+   "name_uk": "Кубів Степан Іванович",
+   "start": "2016-04-14",
+   "end": "2019-08-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Oleksii Sobolev",
+   "name_uk": "Соболев Олексій Дмитрович",
+   "start": "2025-07-17",
+   "end": "2026-07-16",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "First Minister of Economy, Environment & Agriculture."
+  },
+  {
+   "action": "add",
+   "lineage": "economy",
+   "person": null,
+   "name_en": "Oleksandr Kravchenko",
+   "name_uk": "Кравченко Олександр Сергійович",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України; https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine",
+   "note": "Minister of Economy and Environment (Koretskyi government). Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Viktor Hladush",
+   "name_uk": "Гладуш Віктор Дмитрович",
+   "start": "1992-02-29",
+   "end": "1992-09-28",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "State Minister for Industry from Jun 1991; Minister of Industry table entry from 29 Feb 1992."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Mykhailo Pavlovskyi",
+   "name_uk": "Павловський Михайло Антонович",
+   "start": "1992-09-28",
+   "end": "1992-10-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Anatoliy Holubchenko",
+   "name_uk": "Голубченко Анатолій Костянтинович",
+   "start": "1992-10-27",
+   "end": "1995-07-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Valeriy Mazur",
+   "name_uk": "Мазур Валерій Леонідович",
+   "start": "1995-07-03",
+   "end": "1997-07-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "Ministry became Industrial Policy 25 Jul 1997."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Vasyl Hureyev",
+   "name_uk": "Гуреєв Василь Миколайович",
+   "start": "1997-07-25",
+   "end": "2000-02-01",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "Then downgraded to state committee (no minister until 2001)."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Vasyl Hureyev",
+   "name_uk": "Гуреєв Василь Миколайович",
+   "start": "2001-06-05",
+   "end": "2002-04-24",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "Second term after re-establishment."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Anatoliy Myalytsia",
+   "name_uk": "М'ялиця Анатолій Костянтинович",
+   "start": "2002-06-10",
+   "end": "2004-01-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "Post vacant 24 Apr – 10 Jun 2002."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Oleksandr Neustroyev",
+   "name_uk": "Неустроєв Олександр Леонідович",
+   "start": "2004-01-11",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Volodymyr Shandra",
+   "name_uk": "Шандра Володимир Миколайович",
+   "start": "2005-02-04",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Anatoliy Holovko",
+   "name_uk": "Головко Анатолій Іванович",
+   "start": "2006-08-04",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Volodymyr Novytskyi",
+   "name_uk": "Новицький Володимир Станіславович",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Dmytro Kolyesnikov",
+   "name_uk": "Колєсніков Дмитро Валерійович",
+   "start": "2010-03-11",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "Then reorganized into a state agency."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Mykhailo Korolenko",
+   "name_uk": "Короленко Михайло Костянтинович",
+   "start": "2013-02-05",
+   "end": "2014-02-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "Ministry re-created 24 Dec 2012; minister appointed 5 Feb 2013."
+  },
+  {
+   "action": "add",
+   "lineage": "industry",
+   "person": null,
+   "name_en": "Natalia Boytsun",
+   "name_uk": "Бойцун Наталія Євгенівна",
+   "start": "2014-02-27",
+   "end": "2014-10-06",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України; https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України",
+   "note": "Acting; ministry liquidated 2014."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Ivan Zyazyun",
+   "name_uk": "Зязюн Іван Андрійович",
+   "start": "1990-08-03",
+   "end": "1991-12-12",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "Term began before independence (appointed 3 August 1990, Ukrainian SSR)."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Petro Talanchuk",
+   "name_uk": "Таланчук Петро Михайлович",
+   "start": "1991-12-12",
+   "end": "1994-07-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "First minister of the unified Ministry of Education of Ukraine."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Mykhailo Zghurovskyi",
+   "name_uk": "Згуровський Михайло Захарович",
+   "start": "1994-11-18",
+   "end": "1999-01-14",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "No officeholder listed between 4 July 1994 and 18 November 1994."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Valentyn Zaichuk",
+   "name_uk": "Зайчук Валентин Олександрович",
+   "start": "1999-01-14",
+   "end": "1999-12-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "Printed end 31 Dec 1999 overlaps successor start 30 Dec 1999; using 30 Dec."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Vasyl Kremen",
+   "name_uk": "Кремень Василь Григорович",
+   "start": "1999-12-30",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "First minister of renamed Ministry of Education and Science."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Stanislav Nikolayenko",
+   "name_uk": "Ніколаєнко Станіслав Миколайович",
+   "start": "2005-02-04",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "uk list says end 27 Sep 2007, en wiki 18 Dec 2007; using cabinet end 18 Dec 2007 (Nikolayenko served in Yanukovych II cabinet until its end)."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Ivan Vakarchuk",
+   "name_uk": "Вакарчук Іван Олександрович",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Andrii Butenko",
+   "name_uk": "Бутенко Андрій",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "Current minister per en wiki and uk navbox."
+  },
+  {
+   "action": "add",
+   "lineage": "education",
+   "person": null,
+   "name_en": "Serhiy Shkarlet",
+   "name_uk": "Шкарлет Сергій Миколайович",
+   "start": "2020-12-17",
+   "end": "2023-03-20",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine",
+   "note": "Confirmed 17 Dec 2020."
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Yuriy Spizhenko",
+   "name_uk": "Спіженко Юрій Прокопович",
+   "start": "1991-06-01",
+   "end": "1994-07-01",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": "Start known only as June 1991; held across independence."
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Volodymyr Maltsev",
+   "name_uk": "Мальцев Володимир Іванович",
+   "start": "1994-07-01",
+   "end": "1994-08-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Volodymyr Bobrov",
+   "name_uk": "Бобров Володимир Олексійович",
+   "start": "1994-08-22",
+   "end": "1995-02-14",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Yevhen Korolenko",
+   "name_uk": "Короленко Євген Сергійович",
+   "start": "1995-07-03",
+   "end": "1996-07-13",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": "Vacancy 14 Feb – 3 Jul 1995 (navbox lists Serdyuk 1995 with no dates)."
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Andriy Serdyuk",
+   "name_uk": "Сердюк Андрій Михайлович",
+   "start": "1996-09-05",
+   "end": "1999-01-21",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": "Printed end 27 Jan 1999 overlaps successor start 21 Jan; using 21 Jan."
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Vitaliy Moskalenko",
+   "name_uk": "Москаленко Віталій Федорович",
+   "start": "2000-01-12",
+   "end": "2002-11-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Andriy Pidayev",
+   "name_uk": "Підаєв Андрій Володимирович",
+   "start": "2002-11-30",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Mykola Polishchuk",
+   "name_uk": "Поліщук Микола Єфремович",
+   "start": "2005-02-04",
+   "end": "2005-09-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Yuriy Polyachenko",
+   "name_uk": "Поляченко Юрій Володимирович",
+   "start": "2005-10-12",
+   "end": "2007-03-23",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Yuriy Haidayev",
+   "name_uk": "Гайдаєв Юрій Олександрович",
+   "start": "2007-03-23",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Vasyl Knyazevych",
+   "name_uk": "Князевич Василь Михайлович",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Zinoviy Mytnyk",
+   "name_uk": "Митник Зіновій Миколайович",
+   "start": "2010-03-11",
+   "end": "2010-12-21",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Oleksandr Anishchenko",
+   "name_uk": "Аніщенко Олександр Володимирович",
+   "start": "2011-05-24",
+   "end": "2012-02-14",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Vasyl Lazoryshynets",
+   "name_uk": "Лазоришинець Василь Васильович",
+   "start": "2014-10-01",
+   "end": "2014-12-02",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Oleksandra Pavlenko",
+   "name_uk": "Павленко Олександра Сергіївна",
+   "start": "2016-04-14",
+   "end": "2016-04-27",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "health",
+   "person": null,
+   "name_en": "Viktor Shafranskyi",
+   "name_uk": "Шафранський Віктор Вікторович",
+   "start": "2016-04-27",
+   "end": "2016-07-27",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Vitaliy Skliarov",
+   "name_uk": "Скляров Віталій Федорович",
+   "start": "1991-08-24",
+   "end": "1993-01-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Minister of Energy and Electrification since 1982 (UkrSSR); truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Anatoliy Hrytsenko (energy)",
+   "name_uk": "Гриценко Анатолій Васильович",
+   "start": "1993-01-03",
+   "end": "1993-08-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "NOT the later Defence Minister (different patronymic)."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Vilen Semeniuk",
+   "name_uk": "Семенюк Вілен Миронович",
+   "start": "1993-08-17",
+   "end": "1995-07-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Treated as one tenure."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Oleksiy Sheberstov",
+   "name_uk": "Шеберстов Олексій Миколайович",
+   "start": "1995-07-03",
+   "end": "1996-06-13",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Yuriy Bochkaryov",
+   "name_uk": "Бочкарьов Юрій Георгійович",
+   "start": "1996-07-01",
+   "end": "1997-07-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Ministry renamed Ministry of Energy 6 May 1997."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Oleksiy Sheberstov",
+   "name_uk": "Шеберстов Олексій Миколайович",
+   "start": "1997-07-25",
+   "end": "1999-02-10",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Ivan Plachkov",
+   "name_uk": "Плачков Іван Васильович",
+   "start": "1999-02-23",
+   "end": "1999-12-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "First term; merged into Fuel & Energy Dec 1999. Printed end 31 Dec overlaps Tulub start 30 Dec; using 30 Dec."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Serhiy Yermilov",
+   "name_uk": "Єрмілов Сергій Федорович",
+   "start": "2000-07-13",
+   "end": "2001-03-06",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Stanislav Stashevskyi",
+   "name_uk": "Сташевський Станіслав Телісфорович",
+   "start": "2001-03-06",
+   "end": "2001-11-19",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Vitaliy Haiduk",
+   "name_uk": "Гайдук Віталій Анатолійович",
+   "start": "2001-11-22",
+   "end": "2002-11-26",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Serhiy Yermilov",
+   "name_uk": "Єрмілов Сергій Федорович",
+   "start": "2002-11-30",
+   "end": "2004-03-05",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Serhiy Tulub",
+   "name_uk": "Тулуб Сергій Борисович",
+   "start": "2004-04-13",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Second term as Fuel & Energy."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Ivan Plachkov",
+   "name_uk": "Плачков Іван Васильович",
+   "start": "2005-02-04",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "uk list ends him 19 Jan 2006 (no-confidence vote) but he performed duties until Boyko appointed 4 Aug 2006; using continuous end 2006-08-04."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Herman Halushchenko",
+   "name_uk": "Галущенко Герман Валерійович",
+   "start": "2021-04-29",
+   "end": "2025-07-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Left to become Justice Minister Jul 2025."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Svitlana Hrynchuk",
+   "name_uk": "Гринчук Світлана Василівна",
+   "start": "2025-07-17",
+   "end": "2025-11-19",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Resigned amid NABU 'Midas' Energoatom scandal; dismissed by Rada 19 Nov 2025."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Artem Nekrasov",
+   "name_uk": "Некрасов Артем Леонідович",
+   "start": "2025-11-19",
+   "end": "2026-01-14",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Acting after Hrynchuk's dismissal."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Yurii Boiko (deputy)",
+   "name_uk": "Бойко Юрій Миколайович",
+   "start": "2021-04-28",
+   "end": "2021-04-29",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України; https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "One-day second acting stint."
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Viktor Poltavets",
+   "name_uk": "Полтавець Віктор Іванович",
+   "start": "1994-11-10",
+   "end": "1995-12-01",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": "First Coal Industry minister; ministry created 9 Nov 1994 (before that: state committee Derzhvuhleprom, not a ministry)."
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Serhiy Polyakov",
+   "name_uk": "Поляков Сергій Васильович",
+   "start": "1995-12-01",
+   "end": "1996-07-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Yurii Rusantsov",
+   "name_uk": "Русанцов Юрій Олександрович",
+   "start": "1996-09-05",
+   "end": "1997-07-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": "Vacancy 18 Jul – 5 Sep 1996."
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Stanislav Yanko",
+   "name_uk": "Янко Станіслав Васильович",
+   "start": "1997-07-25",
+   "end": "1998-05-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Serhiy Tulub",
+   "name_uk": "Тулуб Сергій Борисович",
+   "start": "1998-06-03",
+   "end": "1999-12-15",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": "Merged into Fuel & Energy 15 Dec 1999."
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Viktor Topolov",
+   "name_uk": "Тополов Віктор Семенович",
+   "start": "2005-08-18",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": "Ministry re-established 25 Jul 2005."
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Serhiy Tulub",
+   "name_uk": "Тулуб Сергій Борисович",
+   "start": "2006-08-04",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": "Second Coal term."
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Viktor Poltavets",
+   "name_uk": "Полтавець Віктор Іванович",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "coal",
+   "person": null,
+   "name_en": "Yurii Yashchenko",
+   "name_uk": "Ященко Юрій Петрович",
+   "start": "2010-03-11",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України; https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України",
+   "note": "Merged into Energy & Coal 9 Dec 2010."
+  },
+  {
+   "action": "add",
+   "lineage": "interior",
+   "person": null,
+   "name_en": "Andriy Vasylyshyn",
+   "name_uk": "Андрій Василишин",
+   "start": "1991-08-24",
+   "end": "1994-07-21",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)",
+   "note": "Headed ministry before independence; truncated at 1991-08-24."
+  },
+  {
+   "action": "add",
+   "lineage": "interior",
+   "person": null,
+   "name_en": "Volodymyr Radchenko",
+   "name_uk": "Володимир Радченко",
+   "start": "1994-07-21",
+   "end": "1994-07-28",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)",
+   "note": "Acting for one week."
+  },
+  {
+   "action": "add",
+   "lineage": "interior",
+   "person": null,
+   "name_en": "Volodymyr Radchenko",
+   "name_uk": "Володимир Радченко",
+   "start": "1994-07-28",
+   "end": "1995-07-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "interior",
+   "person": null,
+   "name_en": "Arsen Avakov",
+   "name_uk": "Арсен Аваков",
+   "start": "2014-02-22",
+   "end": "2014-02-27",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "interior",
+   "person": null,
+   "name_en": "Ivan Vyhivskyi",
+   "name_uk": "Іван Вигівський",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)",
+   "note": "Appointed with cabinet approved 16 Jul 2026. Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "interior",
+   "person": null,
+   "name_en": "Yuriy Lutsenko",
+   "name_uk": "Юрій Луценко",
+   "start": "2010-01-28",
+   "end": "2010-01-29",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)",
+   "note": "One-day acting spell."
+  },
+  {
+   "action": "add",
+   "lineage": "interior",
+   "person": null,
+   "name_en": "Ihor Klymenko",
+   "name_uk": "Ігор Клименко",
+   "start": "2023-01-18",
+   "end": "2023-02-07",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)",
+   "note": "Acting after Monastyrsky's death."
+  },
+  {
+   "action": "add",
+   "lineage": "finance",
+   "person": null,
+   "name_en": "Oleksandr Kovalenko",
+   "name_uk": "Олександр Коваленко",
+   "start": "1991-08-24",
+   "end": "1991-10-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)",
+   "note": "In office since 1990; truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "finance",
+   "person": null,
+   "name_en": "Petro Hermanchuk",
+   "name_uk": "Петро Германчук",
+   "start": "1994-07-06",
+   "end": "1996-06-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "finance",
+   "person": null,
+   "name_en": "Valentyn Koronevskyi",
+   "name_uk": "Валентин Короневський",
+   "start": "1996-06-18",
+   "end": "1997-02-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "finance",
+   "person": null,
+   "name_en": "Ihor Mitiukov",
+   "name_uk": "Ігор Мітюков",
+   "start": "1997-02-26",
+   "end": "2001-12-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "finance",
+   "person": null,
+   "name_en": "Ihor Yushko",
+   "name_uk": "Ігор Юшко",
+   "start": "2001-12-27",
+   "end": "2002-11-26",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "finance",
+   "person": null,
+   "name_en": "Viktor Pynzenyk",
+   "name_uk": "Віктор Пинзеник",
+   "start": "2005-02-04",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "finance",
+   "person": null,
+   "name_en": "Fedir Yaroshenko",
+   "name_uk": "Федір Ярошенко",
+   "start": "2010-03-11",
+   "end": "2012-01-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України; https://en.wikipedia.org/wiki/Ministry_of_Finance_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "justice",
+   "person": null,
+   "name_en": "Vitaliy Boiko",
+   "name_uk": "Віталій Бойко",
+   "start": "1991-08-24",
+   "end": "1992-03-20",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)",
+   "note": "In office since Aug 1990; truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "justice",
+   "person": null,
+   "name_en": "Volodymyr Kampo",
+   "name_uk": "Володимир Кампо",
+   "start": "1992-03-20",
+   "end": "1992-04-21",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)",
+   "note": "Post vacant 21 Apr – 27 Oct 1992."
+  },
+  {
+   "action": "add",
+   "lineage": "justice",
+   "person": null,
+   "name_en": "Olha Stefanishyna",
+   "name_uk": "Ольга Стефанішина",
+   "start": "2024-09-05",
+   "end": "2025-07-16",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "justice",
+   "person": null,
+   "name_en": "German Galushchenko",
+   "name_uk": "Герман Галущенко",
+   "start": "2025-07-17",
+   "end": "2025-11-19",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)",
+   "note": "Suspended 12 Nov 2025, dismissed by Rada 19 Nov 2025 (NABU energy corruption probe)."
+  },
+  {
+   "action": "add",
+   "lineage": "justice",
+   "person": null,
+   "name_en": "Liudmyla Suhak",
+   "name_uk": "Людмила Сугак",
+   "start": "2025-11-19",
+   "end": "2026-07-16",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "justice",
+   "person": null,
+   "name_en": "Denys Maslov",
+   "name_uk": "Денис Маслов",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_юстиції_України; https://en.wikipedia.org/wiki/Ministry_of_Justice_(Ukraine)",
+   "note": "Appointed 16 Jul 2026. Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "pm",
+   "person": null,
+   "name_en": "Viktor Yanukovych",
+   "name_uk": "Віктор Янукович",
+   "start": "2004-12-28",
+   "end": "2005-01-05",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine",
+   "note": "Returned from leave; dismissed 5 Jan 2005."
+  },
+  {
+   "action": "add",
+   "lineage": "pm",
+   "person": null,
+   "name_en": "Yevhen Marchuk",
+   "name_uk": "Євген Марчук",
+   "start": "1995-06-08",
+   "end": "1996-05-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "pm",
+   "person": null,
+   "name_en": "Mykola Azarov",
+   "name_uk": "Микола Азаров",
+   "start": "2005-01-05",
+   "end": "2005-01-24",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine",
+   "note": "Acting PM."
+  },
+  {
+   "action": "add",
+   "lineage": "pm",
+   "person": null,
+   "name_en": "Yulia Tymoshenko",
+   "name_uk": "Юлія Тимошенко",
+   "start": "2005-02-04",
+   "end": "2005-09-08",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "pm",
+   "person": null,
+   "name_en": "Yuriy Yekhanurov",
+   "name_uk": "Юрій Єхануров",
+   "start": "2005-09-22",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "defense",
+   "person": null,
+   "name_en": "Yevhenii Khmara",
+   "name_uk": "Євгеній Хмара",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)",
+   "note": "Temporary acting defense minister; post vacant in Koretskyi cabinet."
+  },
+  {
+   "action": "add",
+   "lineage": "defense",
+   "person": null,
+   "name_en": "Valeriy Shmarov",
+   "name_uk": "Валерій Шмаров",
+   "start": "1994-10-10",
+   "end": "1996-07-08",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_оборони_України; https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "veterans",
+   "person": null,
+   "name_en": "Oksana Koliada",
+   "name_uk": "Оксана Коляда",
+   "start": "2019-08-29",
+   "end": "2020-03-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_у_справах_ветеранів_України",
+   "note": "Ministry merged with reintegration portfolio Sep 2019 – Mar 2020."
+  },
+  {
+   "action": "add",
+   "lineage": "veterans",
+   "person": null,
+   "name_en": "Yuliia Laputina",
+   "name_uk": "Юлія Лапутіна",
+   "start": "2020-12-18",
+   "end": "2024-02-07",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_у_справах_ветеранів_України",
+   "note": "Dismissed by Rada 7 Feb 2024."
+  },
+  {
+   "action": "add",
+   "lineage": "veterans",
+   "person": null,
+   "name_en": "Oleksandr Porkhun",
+   "name_uk": "Олександр Порхун",
+   "start": "2024-02-09",
+   "end": "2024-09-05",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_у_справах_ветеранів_України",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "veterans",
+   "person": null,
+   "name_en": "Vitalii Kim",
+   "name_uk": "Віталій Кім",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_у_справах_ветеранів_України",
+   "note": "Ex-Mykolaiv governor. Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "stratindustry",
+   "person": null,
+   "name_en": "Herman Smetanin",
+   "name_uk": "Герман Сметанін",
+   "start": "2024-09-05",
+   "end": "2025-07-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_стратегічних_галузей_промисловості_України",
+   "note": "Ministry liquidated 21 Jul 2025, merged into Defense."
+  },
+  {
+   "action": "add",
+   "lineage": "digital",
+   "person": null,
+   "name_en": "Oleksandr Bornyakov",
+   "name_uk": "Олександр Борняков",
+   "start": "2026-01-14",
+   "end": "2026-07-16",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_цифрової_трансформації_України",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "digital",
+   "person": null,
+   "name_en": "Oksana Ferchuk",
+   "name_uk": "Оксана Ферчук",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_цифрової_трансформації_України",
+   "note": "Appointed with Koretskyi cabinet. Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "reintegration",
+   "person": null,
+   "name_en": "Iryna Vereshchuk",
+   "name_uk": "Ірина Верещук",
+   "start": "2021-11-04",
+   "end": "2024-09-05",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_реінтеграції_тимчасово_окупованих_територій_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "reintegration",
+   "person": null,
+   "name_en": "Anatolii Stelmakh",
+   "name_uk": "Анатолій Стельмах",
+   "start": "2024-09-06",
+   "end": "2024-12-03",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_реінтеграції_тимчасово_окупованих_територій_України",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "reintegration",
+   "person": null,
+   "name_en": "Oleksii Chernyshov",
+   "name_uk": "Олексій Чернишов",
+   "start": "2024-12-03",
+   "end": "2025-07-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_реінтеграції_тимчасово_окупованих_територій_України",
+   "note": "Vice PM for National Unity (ministry renamed 3 Dec 2024); liquidated 21 Jul 2025, merged into Social Policy."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Vitalii Vasylchenko",
+   "name_uk": "Віталій Васильченко",
+   "start": "1991-08-24",
+   "end": "1991-10-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "Minister of Labour from Aug 1990; truncated at independence."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Mykhailo Kaskevych",
+   "name_uk": "Михайло Каскевич",
+   "start": "1991-10-29",
+   "end": "1996-08-08",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Mykola Biloblotskyi",
+   "name_uk": "Микола Білоблоцький",
+   "start": "1996-08-08",
+   "end": "1998-06-25",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "Continuous across 1997-07-25 merger of Labour + Social Protection into Labour & Social Policy."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Ivan Sakhan",
+   "name_uk": "Іван Сахань",
+   "start": "1998-06-25",
+   "end": "2002-11-30",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Mykhailo Papiyev",
+   "name_uk": "Михайло Папієв",
+   "start": "2002-11-30",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Ivan Sakhan",
+   "name_uk": "Іван Сахань",
+   "start": "2005-09-27",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Mykhailo Papiyev",
+   "name_uk": "Михайло Папієв",
+   "start": "2006-08-04",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Denys Uliutin",
+   "name_uk": "Денис Улютін",
+   "start": "2025-07-17",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України; https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "Minister of Social Policy, Family & Unity (absorbed National Unity ministry). Incumbent as of Jul 2026."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Valeriy Borzov",
+   "name_uk": "Валерій Борзов",
+   "start": "1991-08-24",
+   "end": "1996-08-20",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Appointed 6 Jun 1991; truncated at independence. Ministry downgraded to state committee 20 Aug 1996."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Suzanna Stanik",
+   "name_uk": "Сюзанна Станік",
+   "start": "1996-09-01",
+   "end": "1997-08-01",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Minister for Family and Youth; month precision only."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Valentyna Dovzhenko",
+   "name_uk": "Валентина Довженко",
+   "start": "1997-08-21",
+   "end": "1999-03-22",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Ministry downgraded to committee 22 Mar 1999 — no ministerial office 1999–2004."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Valentyna Dovzhenko",
+   "name_uk": "Валентина Довженко",
+   "start": "2004-02-06",
+   "end": "2005-02-03",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Ministry restored 2004 (Family, Children and Youth)."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Yuriy Pavlenko",
+   "name_uk": "Юрій Павленко",
+   "start": "2005-02-07",
+   "end": "2006-11-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "First term; renamed Family, Youth and Sports Aug 2005."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Viktor Korzh",
+   "name_uk": "Віктор Корж",
+   "start": "2006-12-01",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Yuriy Pavlenko",
+   "name_uk": "Юрій Павленко",
+   "start": "2007-12-20",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Ravil Safiullin",
+   "name_uk": "Равіль Сафіуллін",
+   "start": "2010-03-11",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Merged into Education 9 Dec 2010 — gap until 28 Feb 2013."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Ravil Safiullin",
+   "name_uk": "Равіль Сафіуллін",
+   "start": "2013-02-28",
+   "end": "2014-02-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Ministry of Youth and Sports re-established 28 Feb 2013."
+  },
+  {
+   "action": "add",
+   "lineage": "youth",
+   "person": null,
+   "name_en": "Matviy Bidnyi",
+   "name_uk": "Матвій Бідний",
+   "start": "2024-09-05",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України; https://en.wikipedia.org/wiki/Ministry_of_Youth_and_Sports_(Ukraine)",
+   "note": "Confirmed 5 Sep 2024; reappointed Jul 2025; NOT merged in 2025 reorganization. Incumbent as of Jul 2026."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Orest Klympush",
+   "name_uk": "Орест Климпуш",
+   "start": "1992-03-20",
+   "end": "1994-07-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "First transport minister; vacancy after until 3 Jul 1995."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Ivan Dankevych",
+   "name_uk": "Іван Данькевич",
+   "start": "1995-07-03",
+   "end": "1997-05-07",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "First term."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Mykola Kruhlov",
+   "name_uk": "Микола Круглов",
+   "start": "1997-05-23",
+   "end": "1997-07-17",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Valerii Cherep",
+   "name_uk": "Валерій Череп",
+   "start": "1997-08-11",
+   "end": "1998-04-24",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Vacancy 24 Apr – 7 Aug 1998."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Ivan Dankevych",
+   "name_uk": "Іван Данькевич",
+   "start": "1998-08-07",
+   "end": "1999-10-05",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Second term."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Leonid Kostyuchenko",
+   "name_uk": "Леонід Костюченко",
+   "start": "1999-10-05",
+   "end": "2001-05-29",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Heorhiy Kirpa",
+   "name_uk": "Георгій Кірпа",
+   "start": "2002-05-07",
+   "end": "2004-12-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Continuous across Jul 2004 reorganization into Transport & Communications; died in office 27 Dec 2004; vacancy until 4 Feb 2005."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Yevhen Chervonenko",
+   "name_uk": "Євген Червоненко",
+   "start": "2005-02-04",
+   "end": "2005-09-28",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Viktor Bondar",
+   "name_uk": "Віктор Бондар",
+   "start": "2005-09-28",
+   "end": "2006-08-04",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Mykola Rudkovsky",
+   "name_uk": "Микола Рудьковський",
+   "start": "2006-08-04",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Yosyp Vinsky",
+   "name_uk": "Йосип Вінський",
+   "start": "2007-12-18",
+   "end": "2009-06-23",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Resigned."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Vasyl Shevchenko (transport)",
+   "name_uk": "Василь Шевченко",
+   "start": "2009-06-24",
+   "end": "2010-03-11",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Acting."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Kostiantyn Yefymenko",
+   "name_uk": "Костянтин Єфименко",
+   "start": "2010-03-11",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Reorganized into Infrastructure 9 Dec 2010."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Borys Kolesnikov",
+   "name_uk": "Борис Колесніков",
+   "start": "2010-12-09",
+   "end": "2012-12-24",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Vice PM – Minister of Infrastructure; uk list ends 3 Dec 2012, caretaker until successor 24 Dec 2012."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Volodymyr Kozak",
+   "name_uk": "Володимир Козак",
+   "start": "2012-12-24",
+   "end": "2014-02-27",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Vasyl Shkurakov",
+   "name_uk": "Василь Шкураков",
+   "start": "2024-05-09",
+   "end": "2024-09-05",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Acting head of Мінвідновлення; 2024-09-06 ministry renamed to Communities & Territories Development (transport functions continue there under Kuleba — shown on regional row 2024–2026)."
+  },
+  {
+   "action": "add",
+   "lineage": "transport",
+   "person": null,
+   "name_en": "Mykola Kalashnyk",
+   "name_uk": "Микола Калашник",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України; https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+   "note": "Minister of Restoration, Infrastructure and Transport (portfolio split out again 16 Jul 2026, Koretskyi government). Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "regional",
+   "person": null,
+   "name_en": "Volodymyr Yatsuba",
+   "name_uk": "Володимир Яцуба",
+   "start": "2007-03-21",
+   "end": "2007-12-18",
+   "acting": false,
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development; https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+   "note": "First Regional Development & Construction minister."
+  },
+  {
+   "action": "add",
+   "lineage": "regional",
+   "person": null,
+   "name_en": "Vasyl Kuybida",
+   "name_uk": "Василь Куйбіда",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development; https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "regional",
+   "person": null,
+   "name_en": "Volodymyr Yatsuba",
+   "name_uk": "Володимир Яцуба",
+   "start": "2010-03-11",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development; https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+   "note": "Second term; merged with Housing 9 Dec 2010."
+  },
+  {
+   "action": "add",
+   "lineage": "regional",
+   "person": null,
+   "name_en": "Viktor Tykhonov",
+   "name_uk": "Віктор Тихонов",
+   "start": "2010-12-09",
+   "end": "2011-06-01",
+   "acting": false,
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development; https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+   "note": "Vacancy 1 Jun – 12 Jul 2011."
+  },
+  {
+   "action": "add",
+   "lineage": "regional",
+   "person": null,
+   "name_en": "Anatoliy Blyznyuk",
+   "name_uk": "Анатолій Близнюк",
+   "start": "2011-07-12",
+   "end": "2012-12-24",
+   "acting": false,
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development; https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "regional",
+   "person": null,
+   "name_en": "Oleksiy Kuleba",
+   "name_uk": "Олексій Кулеба",
+   "start": "2024-09-05",
+   "end": "2026-07-16",
+   "acting": false,
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development; https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+   "note": "Vice PM – Minister of Communities & Territories Development (renamed Мінвідновлення, kept transport functions). Reappointed Jul 2025; ended 16 Jul 2026."
+  },
+  {
+   "action": "add",
+   "lineage": "regional",
+   "person": null,
+   "name_en": "Vitalii Bezghin",
+   "name_uk": "Віталій Безгін",
+   "start": "2026-07-16",
+   "end": null,
+   "acting": false,
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development; https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+   "note": "Minister for Development of Communities, Territories and IDPs (new ministry, Koretskyi government). Incumbent."
+  },
+  {
+   "action": "add",
+   "lineage": "housing",
+   "person": null,
+   "name_en": "Oleksiy Kucherenko",
+   "name_uk": "Олексій Кучеренко",
+   "start": "2007-12-18",
+   "end": "2010-03-11",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_житлово-комунального_господарства_України",
+   "note": null
+  },
+  {
+   "action": "add",
+   "lineage": "housing",
+   "person": null,
+   "name_en": "Yuriy Khivrych",
+   "name_uk": "Юрій Хиврич",
+   "start": "2010-06-17",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_житлово-комунального_господарства_України",
+   "note": "Ministry merged into Regional Development 9 Dec 2010."
+  },
+  {
+   "action": "remove",
+   "match": {
+    "person": "Q48283",
+    "position": "Q25827669"
+   },
+   "reason": "Yulia Tymoshenko was Vice PM for the fuel-energy complex (Dec 1999 - Jan 2001), not Minister of Fuel & Energy; ministers list (uk wiki 'Список міністрів палива та енергетики України') has Tulub/Yermilov in that period."
+  },
+  {
+   "action": "remove",
+   "match": {
+    "person": "Q18601637",
+    "position": "Q53678203"
+   },
+   "reason": "Valeriy Voshchevsky was Vice Prime Minister for infrastructure (2014-2015), not Minister of Infrastructure; the minister was Andriy Pyvovarsky."
+  },
+  {
+   "action": "remove",
+   "match": {
+    "person": "Q113366385",
+    "position": "Q107694043"
+   },
+   "reason": "One-day 'Iryna Novikova' economy-minister statement not supported by the uk-wiki ministers list (Petrashko until 18 May 2021, Liubchenko from 20 May 2021)."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q97176848",
+    "lineage": "economy"
+   },
+   "set": {
+    "start": "2021-05-20T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України",
+   "note": "Liubchenko was minister 20 May - 3 Nov 2021; Wikidata start 2020-03-04 is wrong."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q87446768",
+    "lineage": "economy"
+   },
+   "set": {
+    "start": "2020-03-10T00:00:00Z",
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України",
+   "note": "Kukhta was acting minister 10-17 Mar 2020."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q704389",
+    "lineage": "interior"
+   },
+   "start_was": "2016-04-14",
+   "set": {
+    "start": "2014-02-27T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України",
+   "note": "Avakov was full minister from 27 Feb 2014, not 2016."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q16699147",
+    "lineage": "youth"
+   },
+   "start_was": "2016-04-14",
+   "set": {
+    "start": "2014-12-02T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_молоді_та_спорту_України",
+   "note": "Zhdanov served from 2 Dec 2014 continuously."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4352142",
+    "lineage": "regional"
+   },
+   "start_was": "2016-04-14",
+   "set": {
+    "start": "2014-12-02T00:00:00Z"
+   },
+   "source": "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development",
+   "note": "Zubko served from 2 Dec 2014 continuously."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q379720",
+    "lineage": "social"
+   },
+   "start_was": "2010-03-11",
+   "set": {
+    "start": "2010-12-09T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_соціальної_політики_України",
+   "note": "Tihipko became Social Policy minister on 9 Dec 2010; before that Nadraha headed Labour & Social Policy."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q85994782",
+    "lineage": "regional"
+   },
+   "set": {
+    "acting": true
+   },
+   "source": "https://uk.wikipedia.org/wiki/Лозинський_Василь_Миронович",
+   "note": "Lozynskyi was acting minister (First Deputy) Nov-Dec 2022."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q982749",
+    "lineage": "economy"
+   },
+   "start_was": "2002-12-01",
+   "set": {
+    "start": "2002-11-30T00:00:00Z",
+    "end": "2004-01-11T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України",
+   "note": "Fix month-precision dates for Khoroshkovskyi."
+  },
+  {
+   "action": "add",
+   "lineage": "social",
+   "person": null,
+   "name_en": "Vasyl Nadraha",
+   "name_uk": "Надрага Василь Іванович",
+   "start": "2010-03-11",
+   "end": "2010-12-09",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_праці_і_соціальної_політики_України",
+   "note": "Last Labour & Social Policy minister."
+  },
+  {
+   "action": "add",
+   "lineage": "energy",
+   "person": null,
+   "name_en": "Serhiy Tulub",
+   "name_uk": "Тулуб Сергій Борисович",
+   "start": "1999-12-30",
+   "end": "2000-06-26",
+   "acting": false,
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України",
+   "note": "First Minister of Fuel and Energy."
+  },
+  {
+   "action": "remove",
+   "match": {
+    "person": "Q15850",
+    "position": "Q1145714"
+   },
+   "reason": "Turchynov never held the PM post (he was acting President from 23 Feb 2014); neither the uk nor en list of prime ministers includes a 22-27 Feb 2014 Turchynov premiership — Arbuzov was acting PM until Yatsenyuk's appointment."
+  },
+  {
+   "action": "remove",
+   "match": {
+    "person": "Q4150130",
+    "position": "Q1145714"
+   },
+   "start_was": "2014-07-25",
+   "reason": "Groysman was never acting PM in July 2014: Yatsenyuk's resignation was rejected by the Rada on 31 Jul 2014 and both uk/en PM lists treat his tenure as continuous."
+  },
+  {
+   "action": "remove",
+   "match": {
+    "lineage": "reintegration"
+   },
+   "start_was": "2019-08-29",
+   "reason": "Sep 2019 - Mar 2020 the occupied-territories portfolio sat inside the Ministry of Veterans (minister Koliada, shown on the veterans row); no separate reintegration ministry existed."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q12105702",
+    "lineage": "defense"
+   },
+   "set": {
+    "acting": true
+   },
+   "source": "https://zakon.rada.gov.ua/laws/show/764-VII",
+   "note": "Zamana was charged with performing the defense minister's duties by Rada resolution 764-VII (22-27 Feb 2014)."
+  },
+  {
+   "action": "set",
+   "match": {
+    "lineage": "defense"
+   },
+   "start_was": "2016-04-14",
+   "set": {
+    "start": "2014-10-14T00:00:00Z"
+   },
+   "source": "https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)",
+   "note": "Poltorak was minister continuously from 14 Oct 2014; Wikidata only had his Groysman-cabinet reappointment."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q12136710",
+    "lineage": "culture"
+   },
+   "set": {
+    "start": "1995-09-25T00:00:00Z",
+    "end": "1999-08-04T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Остапенко_Дмитро_Іванович",
+   "note": "Ostapenko was Minister of Culture and Arts 25 Sep 1995 - 4 Aug 1999."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q111256064",
+    "lineage": "stratindustry"
+   },
+   "set": {
+    "start": "2023-03-21T00:00:00Z",
+    "end": "2024-09-04T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_стратегічних_галузей_промисловості_України",
+   "note": "Kamyshin's dates were missing in Wikidata."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q97178740",
+    "lineage": "culture"
+   },
+   "set": {
+    "acting": true
+   },
+   "source": "wikidata",
+   "note": "Maximchuk briefly performed the culture minister's duties 4-10 Mar 2020."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q12173193",
+    "lineage": "finance"
+   },
+   "set": {
+    "start": "2001-12-27T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_фінансів_України",
+   "note": "Yushko's start date was missing in Wikidata (27 Dec 2001 - 26 Nov 2002)."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q88653809",
+    "lineage": "veterans"
+   },
+   "set": {
+    "end": "2024-02-07T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_у_справах_ветеранів_України",
+   "note": "Laputina dismissed by the Rada on 7 Feb 2024."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q106675676",
+    "lineage": "energy"
+   },
+   "set": {
+    "start": "2021-04-29T00:00:00Z",
+    "end": "2025-07-17T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+   "note": "Halushchenko was energy minister 29 Apr 2021 - 17 Jul 2025 (Wikidata start 2020-03-04 wrong, end missing)."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q66809451",
+    "lineage": "transport"
+   },
+   "start_was": "2022-12-01",
+   "set": {
+    "end": "2024-05-09T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_відновлення,_інфраструктури_та_транспорту_України",
+   "note": "Kubrakov's Restoration-Ministry statement lacked an end date (dismissed 9 May 2024)."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q20066227",
+    "lineage": "reintegration"
+   },
+   "set": {
+    "end": "2024-09-05T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_з_питань_реінтеграції_тимчасово_окупованих_територій_України",
+   "note": "Vereshchuk left the reintegration post in the Sep 2024 reshuffle."
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q130246236",
+    "lineage": "environment"
+   },
+   "set": {
+    "end": "2025-07-17T00:00:00Z"
+   },
+   "source": "https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України",
+   "note": "Hrynchuk moved to the Energy ministry when the environment ministry was merged into Economy (17 Jul 2025)."
+  },
+  {
+   "action": "set",
+   "match": {
+    "lineage": "foreign"
+   },
+   "start_was": "2024-09-05",
+   "set": {
+    "end": "2026-07-16T00:00:00Z"
+   },
+   "source": "https://www.pravda.com.ua/eng/news/2026/07/17/8044595/",
+   "note": "Sybiha automatically lost the FM post when the Koretskyi cabinet was approved on 16 Jul 2026."
+  },
+  {
+   "action": "add",
+   "lineage": "foreign",
+   "person": null,
+   "name_en": "Andrii Sybiha",
+   "name_uk": "Андрій Сибіга",
+   "start": "2026-07-17",
+   "end": null,
+   "acting": true,
+   "source": "https://www.pravda.com.ua/eng/news/2026/07/17/8044595/",
+   "note": "Appointed acting foreign minister by the Cabinet on 17 Jul 2026 (no full FM in the Koretskyi cabinet)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:justice:1992-04-21",
+   "reason": "Documented vacancy between Kampo and Onopenko (uk-wiki justice ministers list)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:economy:1992-07-11",
+   "reason": "Documented vacancy between Lanovyi and Pynzenyk (uk-wiki economy ministers list)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:education:1994-07-04",
+   "reason": "No officeholder listed in sources between Talanchuk and Zghurovskyi (Jul-Nov 1994)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:health:1995-02-14",
+   "reason": "Documented vacancy Feb-Jul 1995; navbox lists an undated 1995 Serdyuk interim stint."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:culture:1994-08-19",
+   "reason": "Documented vacancy between Dziuba and Ostapenko (Aug 1994 - Sep 1995)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:agrarian:2019-08-29",
+   "reason": "Ministry merged into the Economy super-ministry Aug 2019 - Dec 2020 (ministers shown on the Economy row)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:agrarian:2025-07-17",
+   "reason": "Ministry merged into Economy Jul 2025 - Jul 2026; restored 16 Jul 2026 (Vysotskyi)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:environment:1998-05-08",
+   "reason": "Documented vacancy between Kostenko and Shevchuk (May-Aug 1998)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:environment:2019-08-29",
+   "reason": "Merged with Energy Aug 2019 - May 2020 (heads on the Energy row); re-created ministry vacant until Abramovsky (19 Jun 2020)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:coal:1999-12-15",
+   "reason": "Ministry did not exist Dec 1999 - Jul 2005 (merged into Fuel & Energy)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:transport:1994-07-11",
+   "reason": "Documented vacancy between Klympush and Dankevych (uk-wiki)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:transport:1998-04-24",
+   "reason": "Documented vacancy between Cherep and Dankevych's second term."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:transport:2024-09-05",
+   "reason": "Transport functions sat inside the Communities & Territories Development ministry 2024-2026 (Kuleba, shown on the Regional row); separate ministry restored 16 Jul 2026."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:regional:2022-12-01",
+   "reason": "Merged into the Restoration Ministry Dec 2022 - Sep 2024 (Kubrakov/Shkurakov, shown on the Transport row)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:industry:1991-08-24",
+   "reason": "Ministry of Industry formed 29 Feb 1992; before that a state minister covered the portfolio."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:industry:2000-02-01",
+   "reason": "Downgraded to the State Committee for Industrial Policy Feb 2000 - Jun 2001."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:industry:2010-12-09",
+   "reason": "Reorganized into a state agency Dec 2010; ministry re-created Dec 2012 (minister from Feb 2013)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:youth:1999-03-22",
+   "reason": "Downgraded to a state committee 1999-2004 (no ministerial rank)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:youth:2010-12-09",
+   "reason": "Merged into the Education ministry Dec 2010 - Feb 2013."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:youth:2019-08-29",
+   "reason": "Merged into the Culture, Youth & Sports ministry Aug 2019 - Mar 2020."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:reintegration:2019-08-29",
+   "reason": "Portfolio sat inside the Veterans ministry Sep 2019 - Mar 2020 (Koliada, shown on the Veterans row)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:cabmin:1999-12-20",
+   "reason": "Post abolished Dec 1999 - Jun 2003 (Cabinet apparatus headed by civil-service secretaries)."
+  },
+  {
+   "action": "ack",
+   "flag": "gap:cabmin:2010-12-09",
+   "reason": "Post abolished Dec 2010 - Dec 2012."
+  },
+  {
+   "action": "ack",
+   "flag": "short:defense:Q4086479:1993-10-04",
+   "reason": "Real 4-day acting stint (Bizhan) between Morozov and Radetskyi."
+  },
+  {
+   "action": "ack",
+   "flag": "short:defense:Q12105702:2014-02-22",
+   "reason": "Real 5-day duty assignment (Zamana) by Rada resolution 764-VII."
+  },
+  {
+   "action": "ack",
+   "flag": "short:culture:Q97178740:2020-03-04",
+   "reason": "Real 6-day acting stint (Maximchuk) before Fomenko."
+  },
+  {
+   "action": "ack",
+   "flag": "short:energy:Q106780124:2021-04-28",
+   "reason": "Real 1-day acting stint (deputy Boiko) between Vitrenko and Halushchenko."
+  },
+  {
+   "action": "ack",
+   "flag": "precision:cabmin:Q553216:1993-04-01",
+   "reason": "Sources give month precision only for Pustovoitenko's 1990s CabMin terms."
+  },
+  {
+   "action": "ack",
+   "flag": "precision:cabmin:Q553216:1994-07-01",
+   "reason": "Sources give month precision only for Pustovoitenko's 1990s CabMin terms."
+  }
+ ]
+}

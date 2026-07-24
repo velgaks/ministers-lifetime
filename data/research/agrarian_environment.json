@@ -1,0 +1,70 @@
+{
+  "lineages": {
+    "agrarian": {
+      "ministers": [
+        {"name_uk": "Олександр Ткаченко", "name_en": "Oleksandr Tkachenko (agrarian)", "start": "1991-08-24", "end": "1992-02-29", "acting": false, "notes": "Minister of Agriculture; headed ministry from May 1991, truncated at independence."},
+        {"name_uk": "Василь Ткачук", "name_en": "Vasyl Tkachuk", "start": "1992-02-29", "end": "1992-12-08", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Карасик", "name_en": "Yuriy Karasyk", "start": "1992-12-15", "end": "1995-08-03", "acting": false, "notes": "Start known only as December 1992 (predecessor dismissed 8 Dec); mid-December used."},
+        {"name_uk": "Павло Гайдуцький", "name_en": "Pavlo Haidutskyi", "start": "1995-08-03", "end": "1996-06-11", "acting": false, "notes": ""},
+        {"name_uk": "Анатолій Хорішко", "name_en": "Anatoliy Khorishko", "start": "1996-07-12", "end": "1997-02-14", "acting": false, "notes": "Vacancies 11 Jun – 12 Jul 1996 and 14 Feb – 7 Apr 1997."},
+        {"name_uk": "Михайло Зубець", "name_en": "Mykhailo Zubets", "start": "1997-04-07", "end": "1997-07-25", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Карасик", "name_en": "Yuriy Karasyk", "start": "1997-07-25", "end": "1998-04-23", "acting": false, "notes": "Second term (Agro-Industrial Complex)."},
+        {"name_uk": "Борис Супіханов", "name_en": "Borys Supikhanov", "start": "1998-04-23", "end": "1999-07-15", "acting": false, "notes": ""},
+        {"name_uk": "Михайло Гладій", "name_en": "Mykhailo Hladiy", "start": "1999-07-19", "end": "2000-01-10", "acting": false, "notes": ""},
+        {"name_uk": "Іван Кириленко", "name_en": "Ivan Kyrylenko", "start": "2000-01-10", "end": "2002-04-19", "acting": false, "notes": "First Minister of Agrarian Policy."},
+        {"name_uk": "Сергій Рижук", "name_en": "Serhiy Ryzhuk", "start": "2002-04-19", "end": "2004-01-11", "acting": false, "notes": ""},
+        {"name_uk": "Віктор Слаута", "name_en": "Viktor Slauta", "start": "2004-01-11", "end": "2004-12-17", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Баранівський", "name_en": "Oleksandr Baranivskyi", "start": "2005-02-04", "end": "2006-08-04", "acting": false, "notes": "Vacancy 17 Dec 2004 – 4 Feb 2005."},
+        {"name_uk": "Юрій Мельник", "name_en": "Yuriy Melnyk", "start": "2006-08-04", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Микола Присяжнюк", "name_en": "Mykola Prysyazhnyuk", "start": "2010-03-11", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Ігор Швайка", "name_en": "Ihor Shvaika", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": ""},
+        {"name_uk": "Олексій Павленко", "name_en": "Oleksiy Pavlenko", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Тарас Кутовий", "name_en": "Taras Kutovyi", "start": "2016-04-14", "end": "2018-11-22", "acting": false, "notes": ""},
+        {"name_uk": "Максим Мартинюк", "name_en": "Maksym Martynyuk", "start": "2018-12-06", "end": "2019-02-06", "acting": true, "notes": "Acting."},
+        {"name_uk": "Ольга Трофімцева", "name_en": "Olha Trofimtseva", "start": "2019-02-06", "end": "2019-08-29", "acting": true, "notes": "Acting until merger into Economy 29 Aug 2019."},
+        {"name_uk": "Роман Лещенко", "name_en": "Roman Leshchenko", "start": "2020-12-17", "end": "2022-03-24", "acting": false, "notes": "Ministry restored (merged period 2019-08-29..2020-12-17 covered by Economy row)."},
+        {"name_uk": "Микола Сольський", "name_en": "Mykola Solskyi", "start": "2022-03-24", "end": "2024-05-09", "acting": false, "notes": "Dismissed 9 May 2024."},
+        {"name_uk": "Тарас Висоцький", "name_en": "Taras Vysotskyi", "start": "2024-05-14", "end": "2024-09-05", "acting": true, "notes": "Acting."},
+        {"name_uk": "Віталій Коваль", "name_en": "Vitalii Koval", "start": "2024-09-05", "end": "2025-07-17", "acting": false, "notes": "Merged into Economy, Environment & Agriculture 17 Jul 2025."},
+        {"name_uk": "Тарас Висоцький", "name_en": "Taras Vysotskyi", "start": "2026-07-16", "end": null, "acting": false, "notes": "Ministry restored 16 Jul 2026 (Koretskyi government); incumbent."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_аграрної_політики_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Agrarian_Policy_and_Food_(Ukraine)"
+      ],
+      "caveats": "Merged into Economy 2019-08-29..2020-12-17 and 2025-07-17..2026-07-16 (both legitimate gaps; merged-period ministers on economy row). Restored 16 Jul 2026 under Vysotskyi."
+    },
+    "environment": {
+      "ministers": [
+        {"name_uk": "Юрій Щербак", "name_en": "Yuriy Shcherbak", "start": "1991-08-24", "end": "1992-10-16", "acting": false, "notes": "Appointed 19 Jun 1991; truncated at independence."},
+        {"name_uk": "Юрій Костенко", "name_en": "Yuriy Kostenko", "start": "1992-10-27", "end": "1998-05-08", "acting": false, "notes": "Continuous tenure across 1995 rename."},
+        {"name_uk": "Василь Шевчук", "name_en": "Vasyl Shevchuk", "start": "1998-08-23", "end": "2000-01-31", "acting": false, "notes": "Vacancy 8 May – 23 Aug 1998."},
+        {"name_uk": "Іван Заєць", "name_en": "Ivan Zayets", "start": "2000-01-31", "end": "2001-05-29", "acting": false, "notes": ""},
+        {"name_uk": "Сергій Курикін", "name_en": "Serhiy Kurykin", "start": "2001-06-09", "end": "2002-11-30", "acting": false, "notes": "First term."},
+        {"name_uk": "Василь Шевчук", "name_en": "Vasyl Shevchuk", "start": "2002-11-30", "end": "2003-06-06", "acting": false, "notes": "Second term."},
+        {"name_uk": "Сергій Поляков", "name_en": "Serhiy Polyakov (ecology)", "start": "2003-07-15", "end": "2005-02-03", "acting": false, "notes": "Different person from coal minister Serhiy Polyakov? Verify during integration — coal's Polyakov is Сергій Васильович; ecology 2003 minister is Поляков Сергій Іванович."},
+        {"name_uk": "Павло Ігнатенко", "name_en": "Pavlo Ihnatenko", "start": "2005-02-04", "end": "2006-08-04", "acting": false, "notes": ""},
+        {"name_uk": "Василь Джарти", "name_en": "Vasyl Dzharty", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Георгій Філіпчук", "name_en": "Heorhiy Filipchuk", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Віктор Бойко", "name_en": "Viktor Boiko (ecology)", "start": "2010-03-11", "end": "2010-07-02", "acting": false, "notes": ""},
+        {"name_uk": "Микола Злочевський", "name_en": "Mykola Zlochevsky", "start": "2010-07-02", "end": "2012-04-20", "acting": false, "notes": ""},
+        {"name_uk": "Едуард Ставицький", "name_en": "Eduard Stavytsky", "start": "2012-04-20", "end": "2012-12-24", "acting": false, "notes": "Then moved to Energy & Coal."},
+        {"name_uk": "Олег Проскуряков", "name_en": "Oleh Proskuryakov", "start": "2012-12-24", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Андрій Мохник", "name_en": "Andriy Mokhnyk", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": ""},
+        {"name_uk": "Ігор Шевченко", "name_en": "Ihor Shevchenko", "start": "2014-12-02", "end": "2015-07-02", "acting": false, "notes": "Dismissed."},
+        {"name_uk": "Сергій Курикін", "name_en": "Serhiy Kurykin", "start": "2015-08-12", "end": "2016-01-27", "acting": true, "notes": "Acting; vacancy 2 Jul – 12 Aug 2015."},
+        {"name_uk": "Ганна Вронська", "name_en": "Hanna Vronska", "start": "2016-02-03", "end": "2016-04-14", "acting": true, "notes": "Acting."},
+        {"name_uk": "Остап Семерак", "name_en": "Ostap Semerak", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": "Merged with Energy 2019-08-29 (merged-period heads on energy row)."},
+        {"name_uk": "Роман Абрамовський", "name_en": "Roman Abramovsky", "start": "2020-06-19", "end": "2021-11-03", "acting": false, "notes": "Ministry re-created 27 May 2020, vacant until 19 Jun 2020."},
+        {"name_uk": "Руслан Стрілець", "name_en": "Ruslan Strilets", "start": "2021-11-04", "end": "2022-04-14", "acting": true, "notes": "Acting."},
+        {"name_uk": "Руслан Стрілець", "name_en": "Ruslan Strilets", "start": "2022-04-14", "end": "2024-09-04", "acting": false, "notes": "Full minister from 14 Apr 2022."},
+        {"name_uk": "Світлана Гринчук", "name_en": "Svitlana Hrynchuk", "start": "2024-09-05", "end": "2025-07-17", "acting": false, "notes": "Merged into Economy, Environment & Agriculture 17 Jul 2025; she moved to Energy."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_екології_та_природних_ресурсів_України",
+        "https://uk.wikipedia.org/wiki/Міністерство_захисту_довкілля_та_природних_ресурсів_України"
+      ],
+      "caveats": "Merged with Energy 2019-08-29..2020-06-19 (gap; heads on energy row) and into Economy from 2025-07-17 (defunct). 2003 Polyakov is a different person from the coal minister Polyakov."
+    }
+  }
+}

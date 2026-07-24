@@ -1,0 +1,71 @@
+{
+  "lineages": {
+    "economy": {
+      "ministers": [
+        {"name_uk": "Мінченко Анатолій Каленикович", "name_en": "Anatoliy Minchenko", "start": "1991-08-24", "end": "1992-02-29", "acting": false, "notes": "Appointed 21 May 1991 (UkrSSR); truncated at independence."},
+        {"name_uk": "Лановий Володимир Тимофійович", "name_en": "Volodymyr Lanovyi", "start": "1992-03-06", "end": "1992-07-11", "acting": false, "notes": "Also Vice PM for economic reform."},
+        {"name_uk": "Пинзеник Віктор Михайлович", "name_en": "Viktor Pynzenyk", "start": "1992-10-27", "end": "1993-04-13", "acting": false, "notes": "Post vacant 11 Jul – 27 Oct 1992."},
+        {"name_uk": "Банніков Юрій Олександрович", "name_en": "Yuriy Bannikov", "start": "1993-04-13", "end": "1993-08-30", "acting": false, "notes": ""},
+        {"name_uk": "Шпек Роман Васильович", "name_en": "Roman Shpek", "start": "1993-08-30", "end": "1995-07-03", "acting": false, "notes": ""},
+        {"name_uk": "Гуреєв Василь Миколайович", "name_en": "Vasyl Hureyev", "start": "1995-07-03", "end": "1997-02-25", "acting": false, "notes": ""},
+        {"name_uk": "Єхануров Юрій Іванович", "name_en": "Yuriy Yekhanurov", "start": "1997-02-26", "end": "1997-07-25", "acting": false, "notes": ""},
+        {"name_uk": "Суслов Віктор Іванович", "name_en": "Viktor Suslov", "start": "1997-07-25", "end": "1998-04-21", "acting": false, "notes": ""},
+        {"name_uk": "Роговий Василь Васильович", "name_en": "Vasyl Rohovyi", "start": "1998-04-24", "end": "1999-12-31", "acting": false, "notes": "First term."},
+        {"name_uk": "Тігіпко Сергій Леонідович", "name_en": "Serhiy Tihipko", "start": "1999-12-31", "end": "2000-07-05", "acting": false, "notes": ""},
+        {"name_uk": "Роговий Василь Васильович", "name_en": "Vasyl Rohovyi", "start": "2000-08-09", "end": "2001-06-25", "acting": false, "notes": "Second term."},
+        {"name_uk": "Шлапак Олександр Віталійович", "name_en": "Oleksandr Shlapak", "start": "2001-07-10", "end": "2002-11-30", "acting": false, "notes": "Continuous across 2001 rename to Economy & European Integration."},
+        {"name_uk": "Хорошковський Валерій Іванович", "name_en": "Valeriy Khoroshkovskyi", "start": "2002-11-30", "end": "2004-01-11", "acting": false, "notes": ""},
+        {"name_uk": "Деркач Микола Іванович", "name_en": "Mykola Derkach", "start": "2004-01-11", "end": "2005-02-03", "acting": false, "notes": ""},
+        {"name_uk": "Терьохін Сергій Анатолійович", "name_en": "Serhiy Teryokhin", "start": "2005-02-04", "end": "2005-09-27", "acting": false, "notes": ""},
+        {"name_uk": "Яценюк Арсеній Петрович", "name_en": "Arseniy Yatsenyuk", "start": "2005-09-27", "end": "2006-08-04", "acting": false, "notes": ""},
+        {"name_uk": "Макуха Володимир Олексійович", "name_en": "Volodymyr Makukha", "start": "2006-08-04", "end": "2007-03-21", "acting": false, "notes": ""},
+        {"name_uk": "Кінах Анатолій Кирилович", "name_en": "Anatoliy Kinakh", "start": "2007-03-21", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Данилишин Богдан Михайлович", "name_en": "Bohdan Danylyshyn", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Цушко Василь Петрович", "name_en": "Vasyl Tsushko", "start": "2010-03-11", "end": "2010-12-10", "acting": false, "notes": ""},
+        {"name_uk": "Клюєв Андрій Петрович", "name_en": "Andriy Klyuyev", "start": "2010-12-10", "end": "2012-02-14", "acting": false, "notes": "First Economic Development & Trade minister."},
+        {"name_uk": "Порошенко Петро Олексійович", "name_en": "Petro Poroshenko", "start": "2012-03-23", "end": "2012-12-24", "acting": false, "notes": "Post vacant 14 Feb – 23 Mar 2012."},
+        {"name_uk": "Прасолов Ігор Миколайович", "name_en": "Ihor Prasolov", "start": "2012-12-24", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Шеремета Павло Михайлович", "name_en": "Pavlo Sheremeta", "start": "2014-02-27", "end": "2014-09-02", "acting": false, "notes": ""},
+        {"name_uk": "Максюта Анатолій Аркадійович", "name_en": "Anatoliy Maksyuta", "start": "2014-09-03", "end": "2014-10-08", "acting": true, "notes": "Acting."},
+        {"name_uk": "Пятницький Валерій Тезійович", "name_en": "Valery Pyatnitsky", "start": "2014-10-08", "end": "2014-12-02", "acting": true, "notes": "Acting."},
+        {"name_uk": "Айварас Абромавичус", "name_en": "Aivaras Abromavičius", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Кубів Степан Іванович", "name_en": "Stepan Kubiv", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Милованов Тимофій Сергійович", "name_en": "Tymofiy Mylovanov", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": "Development of Economy, Trade & Agriculture (absorbed agrarian portfolio)."},
+        {"name_uk": "Кухта Павло Андрійович", "name_en": "Pavlo Kukhta", "start": "2020-03-10", "end": "2020-03-17", "acting": true, "notes": "Acting."},
+        {"name_uk": "Петрашко Ігор Ростиславович", "name_en": "Ihor Petrashko", "start": "2020-03-17", "end": "2021-05-18", "acting": false, "notes": ""},
+        {"name_uk": "Любченко Олексій Миколайович", "name_en": "Oleksiy Liubchenko", "start": "2021-05-20", "end": "2021-11-03", "acting": false, "notes": "Also First Vice PM."},
+        {"name_uk": "Свириденко Юлія Анатоліївна", "name_en": "Yulia Svyrydenko", "start": "2021-11-04", "end": "2025-07-16", "acting": false, "notes": "Left on becoming PM 17 Jul 2025."},
+        {"name_uk": "Соболев Олексій Дмитрович", "name_en": "Oleksii Sobolev", "start": "2025-07-17", "end": "2026-07-16", "acting": false, "notes": "First Minister of Economy, Environment & Agriculture."},
+        {"name_uk": "Кравченко Олександр Сергійович", "name_en": "Oleksandr Kravchenko", "start": "2026-07-16", "end": null, "acting": false, "notes": "Minister of Economy and Environment (Koretskyi government). Incumbent."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_економіки_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Economy_of_Ukraine"
+      ],
+      "caveats": "Genuine vacancies: Jul–Oct 1992, Jul–Aug 2000, Jun–Jul 2001, Feb–Mar 2012, days around 2014/2020/2021 cabinet changes."
+    },
+    "industry": {
+      "ministers": [
+        {"name_uk": "Гладуш Віктор Дмитрович", "name_en": "Viktor Hladush", "start": "1992-02-29", "end": "1992-09-28", "acting": false, "notes": "State Minister for Industry from Jun 1991; Minister of Industry table entry from 29 Feb 1992."},
+        {"name_uk": "Павловський Михайло Антонович", "name_en": "Mykhailo Pavlovskyi", "start": "1992-09-28", "end": "1992-10-27", "acting": false, "notes": ""},
+        {"name_uk": "Голубченко Анатолій Костянтинович", "name_en": "Anatoliy Holubchenko", "start": "1992-10-27", "end": "1995-07-03", "acting": false, "notes": ""},
+        {"name_uk": "Мазур Валерій Леонідович", "name_en": "Valeriy Mazur", "start": "1995-07-03", "end": "1997-07-25", "acting": false, "notes": "Ministry became Industrial Policy 25 Jul 1997."},
+        {"name_uk": "Гуреєв Василь Миколайович", "name_en": "Vasyl Hureyev", "start": "1997-07-25", "end": "2000-02-01", "acting": false, "notes": "Then downgraded to state committee (no minister until 2001)."},
+        {"name_uk": "Гуреєв Василь Миколайович", "name_en": "Vasyl Hureyev", "start": "2001-06-05", "end": "2002-04-24", "acting": false, "notes": "Second term after re-establishment."},
+        {"name_uk": "М'ялиця Анатолій Костянтинович", "name_en": "Anatoliy Myalytsia", "start": "2002-06-10", "end": "2004-01-11", "acting": false, "notes": "Post vacant 24 Apr – 10 Jun 2002."},
+        {"name_uk": "Неустроєв Олександр Леонідович", "name_en": "Oleksandr Neustroyev", "start": "2004-01-11", "end": "2005-02-03", "acting": false, "notes": ""},
+        {"name_uk": "Шандра Володимир Миколайович", "name_en": "Volodymyr Shandra", "start": "2005-02-04", "end": "2006-08-04", "acting": false, "notes": ""},
+        {"name_uk": "Головко Анатолій Іванович", "name_en": "Anatoliy Holovko", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Новицький Володимир Станіславович", "name_en": "Volodymyr Novytskyi", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Колєсніков Дмитро Валерійович", "name_en": "Dmytro Kolyesnikov", "start": "2010-03-11", "end": "2010-12-09", "acting": false, "notes": "Then reorganized into a state agency."},
+        {"name_uk": "Короленко Михайло Костянтинович", "name_en": "Mykhailo Korolenko", "start": "2013-02-05", "end": "2014-02-27", "acting": false, "notes": "Ministry re-created 24 Dec 2012; minister appointed 5 Feb 2013."},
+        {"name_uk": "Бойцун Наталія Євгенівна", "name_en": "Natalia Boytsun", "start": "2014-02-27", "end": "2014-10-06", "acting": true, "notes": "Acting; ministry liquidated 2014."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_промислової_політики_України",
+        "https://uk.wikipedia.org/wiki/Міністерство_промислової_політики_України"
+      ],
+      "caveats": "Institutional interruptions (not data gaps): Feb 2000 – Jun 2001 (state committee) and Dec 2010 – Feb 2013 (state agency). Dubyna (2001, Vice PM for industrial policy) excluded — not a minister."
+    }
+  }
+}

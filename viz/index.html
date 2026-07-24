@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Життєвий цикл українського міністра</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="topbar">
+      <button id="lang-btn" class="ctl" type="button">EN</button>
+      <button id="theme-btn" class="ctl" type="button">Темна</button>
+    </div>
+    <h1 id="title"></h1>
+    <p id="subtitle" class="subtitle"></p>
+  </header>
+
+  <div class="controls">
+    <span id="color-label" class="ctl-label"></span>
+    <span class="seg" role="group">
+      <button id="color-era" type="button" aria-pressed="true"></button>
+      <button id="color-dur" type="button" aria-pressed="false"></button>
+    </span>
+    <label class="chk"><input type="checkbox" id="acting-chk"> <span id="acting-label-txt"></span></label>
+  </div>
+
+  <section id="hero" class="hero"></section>
+
+  <section class="card">
+    <h2 id="timeline-title"></h2>
+    <p id="timeline-cap" class="cap"></p>
+    <div class="scrollx"><div id="timeline-host"></div></div>
+    <div id="tl-legend" class="legend"></div>
+  </section>
+
+  <section class="card">
+    <div class="twocol">
+      <div>
+        <h2 id="trend-title"></h2>
+        <p id="trend-cap" class="cap"></p>
+        <div id="scatter-host"></div>
+        <div id="trend-legend" class="legend"></div>
+      </div>
+      <div>
+        <h2 id="era-title"></h2>
+        <p id="era-cap" class="cap"></p>
+        <div id="erabars-host"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="records" class="tiles"></section>
+
+  <details class="tablewrap">
+    <summary id="table-summary"></summary>
+    <div class="scrollx"><div id="table-host"></div></div>
+  </details>
+
+  <footer><span id="footer-text"></span></footer>
+</div>
+<div id="tooltip" role="tooltip"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

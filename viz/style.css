@@ -1,0 +1,253 @@
+/* Ukraine ministers tenure — theme tokens & layout */
+
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  /* categorical era slots (validated order) */
+  --era-kravchuk: #2a78d6;
+  --era-kuchma: #eb6834;
+  --era-yushchenko: #1baf7a;
+  --era-yanukovych: #eda100;
+  --era-poroshenko: #e87ba4;
+  --era-zelensky: #008300;
+  /* sequential (tenure length, light: light→dark = short→long) */
+  --dur-0: #86b6ef;
+  --dur-1: #5598e7;
+  --dur-2: #2a78d6;
+  --dur-3: #1c5cab;
+  --dur-4: #0d366b;
+  --accent: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --era-kravchuk: #3987e5;
+    --era-kuchma: #d95926;
+    --era-yushchenko: #199e70;
+    --era-yanukovych: #c98500;
+    --era-poroshenko: #d55181;
+    --era-zelensky: #008300;
+    --dur-0: #184f95;
+    --dur-1: #256abf;
+    --dur-2: #3987e5;
+    --dur-3: #6da7ec;
+    --dur-4: #9ec5f4;
+    --accent: #3987e5;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --baseline: #383835;
+  --border: rgba(255, 255, 255, 0.10);
+  --era-kravchuk: #3987e5;
+  --era-kuchma: #d95926;
+  --era-yushchenko: #199e70;
+  --era-yanukovych: #c98500;
+  --era-poroshenko: #d55181;
+  --era-zelensky: #008300;
+  --dur-0: #184f95;
+  --dur-1: #256abf;
+  --dur-2: #3987e5;
+  --dur-3: #6da7ec;
+  --dur-4: #9ec5f4;
+  --accent: #3987e5;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 20px 24px 60px; }
+
+/* header */
+.topbar { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px; }
+h1 { font-size: 30px; margin: 4px 0 6px; letter-spacing: -0.01em; }
+.subtitle { color: var(--ink-2); margin: 0 0 18px; max-width: 72ch; }
+
+button.ctl {
+  font: inherit; font-size: 13px;
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+button.ctl:hover { color: var(--ink); }
+button.ctl[aria-pressed="true"] { color: var(--ink); font-weight: 600; border-color: var(--baseline); }
+
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.seg button {
+  font: inherit; font-size: 13px; border: 0; background: transparent;
+  color: var(--ink-2); padding: 6px 12px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--grid); color: var(--ink); font-weight: 600; }
+
+.controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+  margin: 14px 0 18px;
+}
+.controls label.chk { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.controls .ctl-label { font-size: 12px; color: var(--muted); margin-right: -6px; }
+
+/* hero */
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+}
+.hero .answer { font-size: 21px; font-weight: 650; margin: 0 0 10px; }
+.hero .figures { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+.hero .fig { font-size: 52px; font-weight: 650; letter-spacing: -0.02em; line-height: 1; }
+.hero .arrow { font-size: 34px; color: var(--muted); }
+.hero .figcap { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; font-weight: 400; }
+.hero .delta { font-size: 20px; font-weight: 650; }
+.hero .note { color: var(--ink-2); font-size: 13px; margin: 12px 0 0; max-width: 90ch; }
+
+/* cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px 14px;
+  margin-bottom: 18px;
+}
+.card h2 { font-size: 17px; margin: 0 0 2px; }
+.card .cap { color: var(--muted); font-size: 12.5px; margin: 0 0 12px; }
+.scrollx { overflow-x: auto; }
+
+svg text { font-family: inherit; }
+svg .rowlabel { font-size: 12px; fill: var(--ink-2); }
+svg .rowlabel.defunct { fill: var(--muted); }
+svg .axis { font-size: 11px; fill: var(--muted); }
+svg .eralabel { font-size: 11px; font-weight: 600; fill: var(--ink-2); }
+svg .eventlabel { font-size: 10.5px; fill: var(--muted); }
+svg .gridline { stroke: var(--grid); stroke-width: 1; }
+svg .erabound { stroke: var(--baseline); stroke-width: 1; }
+svg .eventline { stroke: var(--muted); stroke-width: 1; }
+svg .todayline { stroke: var(--accent); stroke-width: 1; }
+svg .trend { stroke: var(--ink); stroke-width: 2; fill: none; }
+svg .trend.provisional { opacity: 0.45; }
+
+/* era + duration fills */
+.f-kravchuk { fill: var(--era-kravchuk); }
+.f-kuchma { fill: var(--era-kuchma); }
+.f-yushchenko { fill: var(--era-yushchenko); }
+.f-yanukovych { fill: var(--era-yanukovych); }
+.f-poroshenko { fill: var(--era-poroshenko); }
+.f-zelensky { fill: var(--era-zelensky); }
+.f-dur-0 { fill: var(--dur-0); }
+.f-dur-1 { fill: var(--dur-1); }
+.f-dur-2 { fill: var(--dur-2); }
+.f-dur-3 { fill: var(--dur-3); }
+.f-dur-4 { fill: var(--dur-4); }
+
+rect.seg-mark { rx: 3; }
+.seg-mark.acting { fill-opacity: 0.38; }
+.seg-mark { cursor: pointer; }
+.seg-mark:hover, .seg-mark.hl, .seg-mark:focus-visible {
+  stroke: var(--ink); stroke-width: 1.5; outline: none;
+}
+circle.dot { stroke: var(--surface); stroke-width: 2; cursor: pointer; }
+circle.dot.censored { fill: var(--surface); stroke-width: 2.5; }
+circle.dot.censored.c-kravchuk { stroke: var(--era-kravchuk); }
+circle.dot.censored.c-kuchma { stroke: var(--era-kuchma); }
+circle.dot.censored.c-yushchenko { stroke: var(--era-yushchenko); }
+circle.dot.censored.c-yanukovych { stroke: var(--era-yanukovych); }
+circle.dot.censored.c-poroshenko { stroke: var(--era-poroshenko); }
+circle.dot.censored.c-zelensky { stroke: var(--era-zelensky); }
+circle.dot:hover, circle.dot.hl { stroke: var(--ink); }
+
+/* legend */
+.legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; align-items: center; }
+.legend .item { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); }
+.legend .sw { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+.legend .sw.acting { opacity: 0.38; }
+.legend .sw.ring { background: transparent; border: 2px solid var(--ink-2); border-radius: 50%; width: 9px; height: 9px; }
+.sw.b-kravchuk { background: var(--era-kravchuk); }
+.sw.b-kuchma { background: var(--era-kuchma); }
+.sw.b-yushchenko { background: var(--era-yushchenko); }
+.sw.b-yanukovych { background: var(--era-yanukovych); }
+.sw.b-poroshenko { background: var(--era-poroshenko); }
+.sw.b-zelensky { background: var(--era-zelensky); }
+.sw.b-dur-0 { background: var(--dur-0); }
+.sw.b-dur-1 { background: var(--dur-1); }
+.sw.b-dur-2 { background: var(--dur-2); }
+.sw.b-dur-3 { background: var(--dur-3); }
+.sw.b-dur-4 { background: var(--dur-4); }
+
+/* two-column analysis block */
+.twocol { display: grid; grid-template-columns: 1.7fr 1fr; gap: 18px; }
+@media (max-width: 900px) { .twocol { grid-template-columns: 1fr; } }
+
+/* records tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 18px; }
+.tile {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 16px 18px;
+}
+.tile .lbl { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+.tile .val { font-size: 30px; font-weight: 650; letter-spacing: -0.01em; }
+.tile .who { font-size: 13.5px; margin-top: 5px; }
+.tile .ctx { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* tooltip */
+#tooltip {
+  position: fixed; z-index: 10; pointer-events: none;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  padding: 10px 12px; max-width: 300px; font-size: 12.5px;
+  display: none;
+}
+#tooltip .tt-head { display: flex; gap: 10px; align-items: center; }
+#tooltip img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: var(--grid); }
+#tooltip .tt-name { font-weight: 650; font-size: 14px; }
+#tooltip .tt-role { color: var(--ink-2); }
+#tooltip .tt-line { margin-top: 6px; color: var(--ink-2); }
+#tooltip .tt-line strong { color: var(--ink); }
+#tooltip .badge {
+  display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px;
+  border: 1px solid var(--baseline); color: var(--ink-2); margin-right: 5px; margin-top: 6px;
+}
+#tooltip .tt-hint { margin-top: 7px; font-size: 11px; color: var(--muted); }
+
+/* table view */
+details.tablewrap { margin-bottom: 18px; }
+details.tablewrap summary { cursor: pointer; color: var(--ink-2); font-size: 14px; padding: 6px 2px; }
+.tablewrap .scrollx { max-height: 480px; overflow: auto; border: 1px solid var(--border); border-radius: 10px; }
+table.dataview { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+.dataview th, .dataview td { text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+.dataview th { position: sticky; top: 0; background: var(--surface); color: var(--muted); font-weight: 600; }
+.dataview td.num { font-variant-numeric: tabular-nums; }
+
+footer { color: var(--muted); font-size: 12.5px; max-width: 100ch; }
+footer a { color: var(--ink-2); }

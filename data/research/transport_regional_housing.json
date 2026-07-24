@@ -1,0 +1,72 @@
+{
+  "lineages": {
+    "transport": {
+      "ministers": [
+        {"name_uk": "Орест Климпуш", "name_en": "Orest Klympush", "start": "1992-03-20", "end": "1994-07-11", "acting": false, "notes": "First transport minister; vacancy after until 3 Jul 1995."},
+        {"name_uk": "Іван Данькевич", "name_en": "Ivan Dankevych", "start": "1995-07-03", "end": "1997-05-07", "acting": false, "notes": "First term."},
+        {"name_uk": "Микола Круглов", "name_en": "Mykola Kruhlov", "start": "1997-05-23", "end": "1997-07-17", "acting": false, "notes": ""},
+        {"name_uk": "Валерій Череп", "name_en": "Valerii Cherep", "start": "1997-08-11", "end": "1998-04-24", "acting": false, "notes": "Vacancy 24 Apr – 7 Aug 1998."},
+        {"name_uk": "Іван Данькевич", "name_en": "Ivan Dankevych", "start": "1998-08-07", "end": "1999-10-05", "acting": false, "notes": "Second term."},
+        {"name_uk": "Леонід Костюченко", "name_en": "Leonid Kostyuchenko", "start": "1999-10-05", "end": "2001-05-29", "acting": false, "notes": ""},
+        {"name_uk": "Валерій Пустовойтенко", "name_en": "Valeriy Pustovoitenko", "start": "2001-06-09", "end": "2002-04-30", "acting": false, "notes": "Ex-PM."},
+        {"name_uk": "Георгій Кірпа", "name_en": "Heorhiy Kirpa", "start": "2002-05-07", "end": "2004-12-27", "acting": false, "notes": "Continuous across Jul 2004 reorganization into Transport & Communications; died in office 27 Dec 2004; vacancy until 4 Feb 2005."},
+        {"name_uk": "Євген Червоненко", "name_en": "Yevhen Chervonenko", "start": "2005-02-04", "end": "2005-09-28", "acting": false, "notes": ""},
+        {"name_uk": "Віктор Бондар", "name_en": "Viktor Bondar", "start": "2005-09-28", "end": "2006-08-04", "acting": false, "notes": ""},
+        {"name_uk": "Микола Рудьковський", "name_en": "Mykola Rudkovsky", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Йосип Вінський", "name_en": "Yosyp Vinsky", "start": "2007-12-18", "end": "2009-06-23", "acting": false, "notes": "Resigned."},
+        {"name_uk": "Василь Шевченко", "name_en": "Vasyl Shevchenko (transport)", "start": "2009-06-24", "end": "2010-03-11", "acting": true, "notes": "Acting."},
+        {"name_uk": "Костянтин Єфименко", "name_en": "Kostiantyn Yefymenko", "start": "2010-03-11", "end": "2010-12-09", "acting": false, "notes": "Reorganized into Infrastructure 9 Dec 2010."},
+        {"name_uk": "Борис Колесніков", "name_en": "Borys Kolesnikov", "start": "2010-12-09", "end": "2012-12-24", "acting": false, "notes": "Vice PM – Minister of Infrastructure; uk list ends 3 Dec 2012, caretaker until successor 24 Dec 2012."},
+        {"name_uk": "Володимир Козак", "name_en": "Volodymyr Kozak", "start": "2012-12-24", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Максим Бурбак", "name_en": "Maksym Burbak", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": ""},
+        {"name_uk": "Андрій Пивоварський", "name_en": "Andriy Pyvovarsky", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Володимир Омелян", "name_en": "Volodymyr Omelyan", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Владислав Криклій", "name_en": "Vladyslav Kryklii", "start": "2019-08-29", "end": "2021-05-18", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Кубраков", "name_en": "Oleksandr Kubrakov", "start": "2021-05-20", "end": "2024-05-09", "acting": false, "notes": "Infrastructure minister; from 1 Dec 2022 Vice PM for Restoration heading merged Мінвідновлення (absorbed Regional Development). Dismissed 9 May 2024."},
+        {"name_uk": "Василь Шкураков", "name_en": "Vasyl Shkurakov", "start": "2024-05-09", "end": "2024-09-05", "acting": true, "notes": "Acting head of Мінвідновлення; 2024-09-06 ministry renamed to Communities & Territories Development (transport functions continue there under Kuleba — shown on regional row 2024–2026)."},
+        {"name_uk": "Микола Калашник", "name_en": "Mykola Kalashnyk", "start": "2026-07-16", "end": null, "acting": false, "notes": "Minister of Restoration, Infrastructure and Transport (portfolio split out again 16 Jul 2026, Koretskyi government). Incumbent."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_інфраструктури_України",
+        "https://uk.wikipedia.org/wiki/Міністерство_транспорту_України",
+        "https://uk.wikipedia.org/wiki/Міністерство_з_відновлення,_інфраструктури_та_транспорту_України"
+      ],
+      "caveats": "Row covers Transport → Transport & Communications (2004) → Infrastructure (2010) → Мінвідновлення (2022-12, absorbed Regional Development) → [2024-09..2026-07 functions inside Communities & Territories Development under Kuleba — regional row] → Restoration, Infrastructure & Transport (2026-07-16, Kalashnyk). Vacancies: 1994-07-11..1995-07-03, 1997-05-07..1997-05-23, 1998-04-24..1998-08-07, 2004-12-27..2005-02-04. uk table starts 1992-03-20 — who ran transport 1991-08..1992-03 unclear in sources."
+    },
+    "regional": {
+      "ministers": [
+        {"name_uk": "Володимир Яцуба", "name_en": "Volodymyr Yatsuba", "start": "2007-03-21", "end": "2007-12-18", "acting": false, "notes": "First Regional Development & Construction minister."},
+        {"name_uk": "Василь Куйбіда", "name_en": "Vasyl Kuybida", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Володимир Яцуба", "name_en": "Volodymyr Yatsuba", "start": "2010-03-11", "end": "2010-12-09", "acting": false, "notes": "Second term; merged with Housing 9 Dec 2010."},
+        {"name_uk": "Віктор Тихонов", "name_en": "Viktor Tykhonov", "start": "2010-12-09", "end": "2011-06-01", "acting": false, "notes": "Vacancy 1 Jun – 12 Jul 2011."},
+        {"name_uk": "Анатолій Близнюк", "name_en": "Anatoliy Blyznyuk", "start": "2011-07-12", "end": "2012-12-24", "acting": false, "notes": ""},
+        {"name_uk": "Геннадій Темник", "name_en": "Hennadiy Temnyk", "start": "2012-12-24", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Володимир Гройсман", "name_en": "Volodymyr Groysman", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": "Vice PM – Minister."},
+        {"name_uk": "Геннадій Зубко", "name_en": "Hennadiy Zubko", "start": "2014-12-02", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Альона Бабак", "name_en": "Aliona Babak", "start": "2019-08-29", "end": "2020-02-04", "acting": false, "notes": "Renamed Communities & Territories Development Sep 2019; resigned."},
+        {"name_uk": "Денис Шмигаль", "name_en": "Denys Shmyhal", "start": "2020-02-04", "end": "2020-03-04", "acting": false, "notes": "Became PM 4 Mar 2020."},
+        {"name_uk": "Олексій Чернишов", "name_en": "Oleksiy Chernyshov", "start": "2020-03-04", "end": "2022-11-03", "acting": false, "notes": "Left to head Naftogaz; vacancy until 2022-12-02 merger into Мінвідновлення (transport row)."},
+        {"name_uk": "Олексій Кулеба", "name_en": "Oleksiy Kuleba", "start": "2024-09-05", "end": "2026-07-16", "acting": false, "notes": "Vice PM – Minister of Communities & Territories Development (renamed Мінвідновлення, kept transport functions). Reappointed Jul 2025; ended 16 Jul 2026."},
+        {"name_uk": "Віталій Безгін", "name_en": "Vitalii Bezghin", "start": "2026-07-16", "end": null, "acting": false, "notes": "Minister for Development of Communities, Territories and IDPs (new ministry, Koretskyi government). Incumbent."}
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ministry_of_Communities_and_Territories_Development",
+        "https://uk.wikipedia.org/wiki/Міністерство_регіонального_розвитку_та_будівництва_України",
+        "https://lb.ua/news/2026/07/18/752824_uryad_ofitsiyno_utvoriv.html"
+      ],
+      "caveats": "Created Mar 2007. Legitimate gap 2022-11-03..2024-09-05 (merged into Мінвідновлення — transport row). 2026-07-16 split: Bezghin (communities/territories/IDPs) continues this row; Kalashnyk (transport) on transport row."
+    },
+    "housing": {
+      "ministers": [
+        {"name_uk": "Олександр Попов", "name_en": "Oleksandr Popov", "start": "2007-03-21", "end": "2007-12-18", "acting": false, "notes": "First Housing & Communal Services minister."},
+        {"name_uk": "Олексій Кучеренко", "name_en": "Oleksiy Kucherenko", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Попов", "name_en": "Oleksandr Popov", "start": "2010-03-11", "end": "2010-06-17", "acting": false, "notes": "Second term; left to head Kyiv administration."},
+        {"name_uk": "Юрій Хиврич", "name_en": "Yuriy Khivrych", "start": "2010-06-17", "end": "2010-12-09", "acting": false, "notes": "Ministry merged into Regional Development 9 Dec 2010."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Міністерство_з_питань_житлово-комунального_господарства_України"
+      ],
+      "caveats": "Existed Mar 2007 – Dec 2010 in parallel with Regional Development."
+    }
+  }
+}

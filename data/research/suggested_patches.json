@@ -1,0 +1,126 @@
+{
+ "add": [
+  {
+   "action": "add",
+   "lineage": "pm",
+   "person": null,
+   "name_en": "Yulia Tymoshenko",
+   "name_uk": "Юлія Тимошенко",
+   "start": "2010-03-03",
+   "end": "2010-03-11",
+   "acting": true,
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine",
+   "note": "Caretaker until Azarov appointed."
+  }
+ ],
+ "set": [
+  {
+   "action": "set",
+   "match": {
+    "person": "Q4195021",
+    "lineage": "education"
+   },
+   "start_was": "1991-08-24",
+   "set": {
+    "start": "1990-08-03T00:00:00Z"
+   },
+   "_ours": "Ivan Zyazyun 1991-08-24–1991-12-12",
+   "_research": "1990-08-03–1991-12-12 acting=False",
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_освіти_і_науки_України; https://en.wikipedia.org/wiki/Ministry_of_Education_and_Science_of_Ukraine"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q12156999",
+    "lineage": "health"
+   },
+   "start_was": "1991-08-24",
+   "set": {
+    "start": "1991-06-01T00:00:00Z"
+   },
+   "_ours": "Yuriy Spizhenko 1991-08-24–1994-07-01",
+   "_research": "1991-06-01–1994-07-01 acting=False",
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_охорони_здоров%27я_України; https://en.wikipedia.org/wiki/Ministry_of_Healthcare_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q704389",
+    "lineage": "interior"
+   },
+   "start_was": "2014-02-27",
+   "set": {
+    "end": "2021-07-15T00:00:00Z"
+   },
+   "_ours": "Arsen Avakov 2014-02-27–2019-08-29",
+   "_research": "2014-02-27–2021-07-15 acting=False",
+   "source": "https://uk.wikipedia.org/wiki/Список_міністрів_внутрішніх_справ_України; https://en.wikipedia.org/wiki/Ministry_of_Internal_Affairs_(Ukraine)"
+  },
+  {
+   "action": "set",
+   "match": {
+    "person": "Q471730",
+    "lineage": "pm"
+   },
+   "start_was": "2014-02-27",
+   "set": {
+    "end": "2016-04-14T00:00:00Z"
+   },
+   "_ours": "Arsenii Yatseniuk 2014-02-27–2014-07-25",
+   "_research": "2014-02-27–2016-04-14 acting=False",
+   "source": "https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України; https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"
+  }
+ ],
+ "review_ours": [
+  {
+   "lineage": "culture",
+   "who": "Anatoly Maximchuk / Максимчук Анатолій Олександрович",
+   "person": "Q97178740",
+   "span": "2020-03-04–2020-03-10",
+   "why": "in our data but not matched to any research entry"
+  },
+  {
+   "lineage": "interior",
+   "who": "Arsen Avakov / Арсен Аваков",
+   "person": "Q704389",
+   "span": "2019-08-29–2021-07-15",
+   "why": "in our data but not matched to any research entry"
+  },
+  {
+   "lineage": "pm",
+   "who": "Arsenii Yatseniuk / Арсеній Яценюк",
+   "person": "Q471730",
+   "span": "2014-07-31–2016-04-14",
+   "why": "in our data but not matched to any research entry"
+  },
+  {
+   "lineage": "defense",
+   "who": "Volodymyr Zamana / Замана Володимир Михайлович",
+   "person": "Q12105702",
+   "span": "2014-02-22–2014-02-27",
+   "why": "in our data but not matched to any research entry"
+  },
+  {
+   "lineage": "digital",
+   "who": "Mykhailo Fedorov / Михайло Федоров",
+   "person": "Q64495543",
+   "span": "2020-03-04–2026-01-13",
+   "why": "in our data but not matched to any research entry"
+  },
+  {
+   "lineage": "transport",
+   "who": "Oleksandr Kubrakov / Кубраков Олександр Миколайович",
+   "person": "Q66809451",
+   "span": "2022-12-01–2024-05-09",
+   "why": "in our data but not matched to any research entry"
+  },
+  {
+   "lineage": "regional",
+   "who": "Vasyl Lozynskyi / Лозинський Василь Миронович",
+   "person": "Q85994782",
+   "span": "2022-11-04–2022-12-01",
+   "why": "in our data but not matched to any research entry"
+  }
+ ],
+ "review_research": []
+}

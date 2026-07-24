@@ -1,0 +1,86 @@
+{
+  "lineages": {
+    "culture": {
+      "ministers": [
+        {"name_uk": "Лариса Хоролець", "name_en": "Larysa Khorolets", "start": "1991-08-24", "end": "1992-11-17", "acting": false, "notes": "Appointed 7 Jul 1991 (UkrSSR); truncated at independence."},
+        {"name_uk": "Іван Дзюба", "name_en": "Ivan Dziuba", "start": "1992-11-17", "end": "1994-08-19", "acting": false, "notes": ""},
+        {"name_uk": "Дмитро Остапенко", "name_en": "Dmytro Ostapenko", "start": "1995-09-25", "end": "1999-08-04", "acting": false, "notes": "Minister of Culture and Arts; post vacant 19 Aug 1994 – 25 Sep 1995."},
+        {"name_uk": "Юрій Богуцький", "name_en": "Yuriy Bohutsky", "start": "1999-08-04", "end": "1999-12-07", "acting": false, "notes": "First of three terms."},
+        {"name_uk": "Богдан Ступка", "name_en": "Bohdan Stupka", "start": "1999-12-30", "end": "2001-05-30", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Богуцький", "name_en": "Yuriy Bohutsky", "start": "2001-05-30", "end": "2005-02-03", "acting": false, "notes": "Second term."},
+        {"name_uk": "Оксана Білозір", "name_en": "Oksana Bilozir", "start": "2005-02-04", "end": "2005-10-05", "acting": false, "notes": ""},
+        {"name_uk": "Ігор Ліховий", "name_en": "Ihor Likhovyi", "start": "2005-10-05", "end": "2006-11-01", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Богуцький", "name_en": "Yuriy Bohutsky", "start": "2006-11-01", "end": "2007-12-18", "acting": false, "notes": "Third term."},
+        {"name_uk": "Василь Вовкун", "name_en": "Vasyl Vovkun", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Михайло Кулиняк", "name_en": "Mykhailo Kulyniak", "start": "2010-03-11", "end": "2012-12-24", "acting": false, "notes": ""},
+        {"name_uk": "Леонід Новохатько", "name_en": "Leonid Novokhatko", "start": "2013-02-05", "end": "2014-02-24", "acting": false, "notes": "Post vacant 24 Dec 2012 – 5 Feb 2013."},
+        {"name_uk": "Євген Нищук", "name_en": "Yevhen Nyshchuk", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": "First term."},
+        {"name_uk": "В'ячеслав Кириленко", "name_en": "Vyacheslav Kyrylenko", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": "Also Vice PM."},
+        {"name_uk": "Євген Нищук", "name_en": "Yevhen Nyshchuk", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": "Second term."},
+        {"name_uk": "Володимир Бородянський", "name_en": "Volodymyr Borodiansky", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": "Merged Ministry of Culture, Youth & Sports."},
+        {"name_uk": "Світлана Фоменко", "name_en": "Svitlana Fomenko", "start": "2020-03-10", "end": "2020-06-04", "acting": true, "notes": "Acting."},
+        {"name_uk": "Олександр Ткаченко", "name_en": "Oleksandr Tkachenko", "start": "2020-06-04", "end": "2023-07-27", "acting": false, "notes": ""},
+        {"name_uk": "Ростислав Карандєєв", "name_en": "Rostyslav Karandieiev", "start": "2023-07-28", "end": "2024-09-04", "acting": true, "notes": "Acting for over a year."},
+        {"name_uk": "Микола Точицький", "name_en": "Mykola Tochytskyi", "start": "2024-09-05", "end": "2025-07-17", "acting": false, "notes": "Culture & Strategic Communications."},
+        {"name_uk": "Галина Григоренко", "name_en": "Halyna Hryhorenko", "start": "2025-07-17", "end": "2025-07-28", "acting": true, "notes": "Performed duties ex officio; no minister in Svyrydenko cabinet."},
+        {"name_uk": "Тетяна Бережна", "name_en": "Tetiana Berezhna", "start": "2025-07-28", "end": "2025-10-21", "acting": true, "notes": "Acting."},
+        {"name_uk": "Тетяна Бережна", "name_en": "Tetiana Berezhna", "start": "2025-10-21", "end": null, "acting": false, "notes": "Full minister from 21 Oct 2025; reappointed 16 Jul 2026 as Vice PM for Humanitarian Policy — Minister of Culture. Incumbent."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Міністерство_культури_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Ukraine)"
+      ],
+      "caveats": "Vacancies: 1994-08-19..1995-09-25 and 2012-12-24..2013-02-05."
+    },
+    "emergencies": {
+      "ministers": [
+        {"name_uk": "Георгій Готовчиць", "name_en": "Heorhiy Hotovchyts", "start": "1991-08-24", "end": "1994-12-31", "acting": false, "notes": "Headed Мінчорнобиль from Aug 1990; truncated at independence; died in office."},
+        {"name_uk": "Володимир Холоша", "name_en": "Volodymyr Kholosha", "start": "1995-01-01", "end": "1996-01-05", "acting": true, "notes": "Acting (month precision on start)."},
+        {"name_uk": "Володимир Холоша", "name_en": "Volodymyr Kholosha", "start": "1996-01-05", "end": "1996-08-31", "acting": false, "notes": "Full minister from 5 Jan 1996."},
+        {"name_uk": "Валерій Кальченко", "name_en": "Valeriy Kalchenko", "start": "1996-08-31", "end": "1999-02-08", "acting": false, "notes": "MNS created Oct 1996 (merged Мінчорнобиль + Civil Defence)."},
+        {"name_uk": "Василь Дурдинець", "name_en": "Vasyl Durdynets", "start": "1999-03-22", "end": "2002-11-30", "acting": false, "notes": "Post vacant 8 Feb – 22 Mar 1999."},
+        {"name_uk": "Григорій Рева", "name_en": "Hryhoriy Reva", "start": "2002-11-30", "end": "2005-02-03", "acting": false, "notes": ""},
+        {"name_uk": "Давид Жванія", "name_en": "David Zhvania", "start": "2005-02-04", "end": "2005-09-27", "acting": false, "notes": ""},
+        {"name_uk": "Віктор Балога", "name_en": "Viktor Baloha", "start": "2005-09-27", "end": "2006-10-05", "acting": false, "notes": "First term."},
+        {"name_uk": "Нестор Шуфрич", "name_en": "Nestor Shufrych", "start": "2006-12-12", "end": "2007-12-18", "acting": false, "notes": "Post vacant Oct–Dec 2006."},
+        {"name_uk": "Володимир Шандра", "name_en": "Volodymyr Shandra", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": ""},
+        {"name_uk": "Нестор Шуфрич", "name_en": "Nestor Shufrych", "start": "2010-03-11", "end": "2010-07-09", "acting": false, "notes": "Second term."},
+        {"name_uk": "Михайло Болотських", "name_en": "Mykhailo Bolotskykh", "start": "2010-07-10", "end": "2010-11-12", "acting": true, "notes": "Acting."},
+        {"name_uk": "Віктор Балога", "name_en": "Viktor Baloha", "start": "2010-11-12", "end": "2012-12-03", "acting": false, "notes": "Second term; post abolished 24 Dec 2012 (downgraded to State Emergency Service)."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Міністерство_надзвичайних_ситуацій_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Emergencies_(Ukraine)"
+      ],
+      "caveats": "Vacancies: 1999-02-08..1999-03-22, 2006-10-05..2006-12-12, 2012-12-03..2012-12-24 (pre-abolition)."
+    },
+    "cabmin": {
+      "ministers": [
+        {"name_uk": "Володимир Пєхота", "name_en": "Volodymyr Pekhota", "start": "1992-02-26", "end": "1992-10-16", "acting": false, "notes": "Post created 26 Feb 1992."},
+        {"name_uk": "Анатолій Лобов", "name_en": "Anatoliy Lobov", "start": "1992-10-16", "end": "1993-04-02", "acting": false, "notes": ""},
+        {"name_uk": "Валерій Пустовойтенко", "name_en": "Valeriy Pustovoitenko", "start": "1993-04-01", "end": "1993-09-01", "acting": false, "notes": "Month precision."},
+        {"name_uk": "Іван Доценко", "name_en": "Ivan Dotsenko", "start": "1993-09-01", "end": "1994-07-01", "acting": false, "notes": "Month precision."},
+        {"name_uk": "Валерій Пустовойтенко", "name_en": "Valeriy Pustovoitenko", "start": "1994-07-01", "end": "1997-07-01", "acting": false, "notes": "Month precision; became PM 16 Jul 1997."},
+        {"name_uk": "Анатолій Толстоухов", "name_en": "Anatoliy Tolstoukhov", "start": "1997-07-25", "end": "1999-12-20", "acting": false, "notes": "Post abolished Dec 1999."},
+        {"name_uk": "Володимир Яцуба", "name_en": "Volodymyr Yatsuba", "start": "2003-06-03", "end": "2003-07-09", "acting": false, "notes": "Post re-created 3 Jun 2003."},
+        {"name_uk": "Анатолій Толстоухов", "name_en": "Anatoliy Tolstoukhov", "start": "2003-07-31", "end": "2005-01-29", "acting": false, "notes": "Second term."},
+        {"name_uk": "Петро Крупко", "name_en": "Petro Krupko", "start": "2005-03-23", "end": "2005-09-27", "acting": false, "notes": "Post vacant 29 Jan – 23 Mar 2005."},
+        {"name_uk": "Богдан Буца", "name_en": "Bohdan Butsa", "start": "2005-09-27", "end": "2006-08-04", "acting": false, "notes": ""},
+        {"name_uk": "Анатолій Толстоухов", "name_en": "Anatoliy Tolstoukhov", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": "Third term."},
+        {"name_uk": "Петро Крупко", "name_en": "Petro Krupko", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": "Second term."},
+        {"name_uk": "Анатолій Толстоухов", "name_en": "Anatoliy Tolstoukhov", "start": "2010-03-11", "end": "2010-12-09", "acting": false, "notes": "Fourth term; post abolished 9 Dec 2010."},
+        {"name_uk": "Олена Лукаш", "name_en": "Olena Lukash", "start": "2012-12-24", "end": "2013-07-04", "acting": false, "notes": "Post re-created 24 Dec 2012."},
+        {"name_uk": "Владислав Забарський", "name_en": "Vladyslav Zabarskyi", "start": "2013-07-04", "end": "2014-02-27", "acting": true, "notes": "Acting."},
+        {"name_uk": "Остап Семерак", "name_en": "Ostap Semerak", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": ""},
+        {"name_uk": "Ганна Онищенко", "name_en": "Hanna Onyshchenko", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Саєнко", "name_en": "Oleksandr Saienko", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Дмитро Дубілет", "name_en": "Dmytro Dubilet", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": ""},
+        {"name_uk": "Олег Немчінов", "name_en": "Oleh Nemchinov", "start": "2020-03-04", "end": "2025-07-17", "acting": false, "notes": "Last holder; post liquidated 17 Jul 2025."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Міністр_Кабінету_Міністрів_України"
+      ],
+      "caveats": "Post did NOT exist: before 1992-02-26, 1999-12-20..2003-06-03, 2010-12-09..2012-12-24, and since 2025-07-17 (liquidated; not restored in Koretskyi government)."
+    }
+  }
+}

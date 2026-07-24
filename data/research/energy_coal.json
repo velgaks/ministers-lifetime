@@ -1,0 +1,64 @@
+{
+  "lineages": {
+    "energy": {
+      "ministers": [
+        {"name_uk": "Скляров Віталій Федорович", "name_en": "Vitaliy Skliarov", "start": "1991-08-24", "end": "1993-01-03", "acting": false, "notes": "Minister of Energy and Electrification since 1982 (UkrSSR); truncated at independence."},
+        {"name_uk": "Гриценко Анатолій Васильович", "name_en": "Anatoliy Hrytsenko (energy)", "start": "1993-01-03", "end": "1993-08-17", "acting": false, "notes": "NOT the later Defence Minister (different patronymic)."},
+        {"name_uk": "Семенюк Вілен Миронович", "name_en": "Vilen Semeniuk", "start": "1993-08-17", "end": "1995-07-03", "acting": false, "notes": "Treated as one tenure."},
+        {"name_uk": "Шеберстов Олексій Миколайович", "name_en": "Oleksiy Sheberstov", "start": "1995-07-03", "end": "1996-06-13", "acting": false, "notes": "First term."},
+        {"name_uk": "Бочкарьов Юрій Георгійович", "name_en": "Yuriy Bochkaryov", "start": "1996-07-01", "end": "1997-07-25", "acting": false, "notes": "Ministry renamed Ministry of Energy 6 May 1997."},
+        {"name_uk": "Шеберстов Олексій Миколайович", "name_en": "Oleksiy Sheberstov", "start": "1997-07-25", "end": "1999-02-10", "acting": false, "notes": "Second term."},
+        {"name_uk": "Плачков Іван Васильович", "name_en": "Ivan Plachkov", "start": "1999-02-23", "end": "1999-12-30", "acting": false, "notes": "First term; merged into Fuel & Energy Dec 1999. Printed end 31 Dec overlaps Tulub start 30 Dec; using 30 Dec."},
+        {"name_uk": "Тулуб Сергій Борисович", "name_en": "Serhiy Tulub", "start": "1999-12-30", "end": "2000-06-26", "acting": false, "notes": "First Minister of Fuel and Energy."},
+        {"name_uk": "Єрмілов Сергій Федорович", "name_en": "Serhiy Yermilov", "start": "2000-07-13", "end": "2001-03-06", "acting": false, "notes": "First term."},
+        {"name_uk": "Сташевський Станіслав Телісфорович", "name_en": "Stanislav Stashevskyi", "start": "2001-03-06", "end": "2001-11-19", "acting": false, "notes": ""},
+        {"name_uk": "Гайдук Віталій Анатолійович", "name_en": "Vitaliy Haiduk", "start": "2001-11-22", "end": "2002-11-26", "acting": false, "notes": ""},
+        {"name_uk": "Єрмілов Сергій Федорович", "name_en": "Serhiy Yermilov", "start": "2002-11-30", "end": "2004-03-05", "acting": false, "notes": "Second term."},
+        {"name_uk": "Тулуб Сергій Борисович", "name_en": "Serhiy Tulub", "start": "2004-04-13", "end": "2005-02-03", "acting": false, "notes": "Second term as Fuel & Energy."},
+        {"name_uk": "Плачков Іван Васильович", "name_en": "Ivan Plachkov", "start": "2005-02-04", "end": "2006-08-04", "acting": false, "notes": "uk list ends him 19 Jan 2006 (no-confidence vote) but he performed duties until Boyko appointed 4 Aug 2006; using continuous end 2006-08-04."},
+        {"name_uk": "Бойко Юрій Анатолійович", "name_en": "Yuriy Boyko", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": "First term."},
+        {"name_uk": "Продан Юрій Васильович", "name_en": "Yuriy Prodan", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": "First term."},
+        {"name_uk": "Бойко Юрій Анатолійович", "name_en": "Yuriy Boyko", "start": "2010-03-11", "end": "2012-12-24", "acting": false, "notes": "Second term; ministry absorbed Coal Industry 9 Dec 2010."},
+        {"name_uk": "Ставицький Едуард Анатолійович", "name_en": "Eduard Stavytsky", "start": "2012-12-24", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Продан Юрій Васильович", "name_en": "Yuriy Prodan", "start": "2014-02-27", "end": "2014-12-02", "acting": false, "notes": "Second term."},
+        {"name_uk": "Демчишин Володимир Васильович", "name_en": "Volodymyr Demchyshyn", "start": "2014-12-02", "end": "2016-04-14", "acting": false, "notes": ""},
+        {"name_uk": "Насалик Ігор Степанович", "name_en": "Ihor Nasalyk", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Оржель Олексій Анатолійович", "name_en": "Oleksiy Orzhel", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": "Energy and Environmental Protection (merged with environment)."},
+        {"name_uk": "Шубін Віталій Миколайович", "name_en": "Vitaliy Shubin", "start": "2020-03-10", "end": "2020-04-16", "acting": true, "notes": "Acting."},
+        {"name_uk": "Буславець Ольга Анатоліївна", "name_en": "Olha Buslavets", "start": "2020-04-16", "end": "2020-11-20", "acting": true, "notes": "Acting; ministry renamed back to Energy 27 May 2020."},
+        {"name_uk": "Бойко Юрій Миколайович", "name_en": "Yurii Boiko (deputy)", "start": "2020-11-20", "end": "2020-12-21", "acting": true, "notes": "Acting; namesake of politician Yuriy A. Boyko, different person."},
+        {"name_uk": "Вітренко Юрій Юрійович", "name_en": "Yuriy Vitrenko", "start": "2020-12-21", "end": "2021-04-28", "acting": true, "notes": "Acting; never confirmed by Rada."},
+        {"name_uk": "Бойко Юрій Миколайович", "name_en": "Yurii Boiko (deputy)", "start": "2021-04-28", "end": "2021-04-29", "acting": true, "notes": "One-day second acting stint."},
+        {"name_uk": "Галущенко Герман Валерійович", "name_en": "Herman Halushchenko", "start": "2021-04-29", "end": "2025-07-17", "acting": false, "notes": "Left to become Justice Minister Jul 2025."},
+        {"name_uk": "Гринчук Світлана Василівна", "name_en": "Svitlana Hrynchuk", "start": "2025-07-17", "end": "2025-11-19", "acting": false, "notes": "Resigned amid NABU 'Midas' Energoatom scandal; dismissed by Rada 19 Nov 2025."},
+        {"name_uk": "Некрасов Артем Леонідович", "name_en": "Artem Nekrasov", "start": "2025-11-19", "end": "2026-01-14", "acting": true, "notes": "Acting after Hrynchuk's dismissal."},
+        {"name_uk": "Шмигаль Денис Анатолійович", "name_en": "Denys Shmyhal", "start": "2026-01-14", "end": null, "acting": false, "notes": "Ex-PM and ex-Defense Minister; appointed First Deputy PM — Minister of Energy 14 Jan 2026. Incumbent as of Jul 2026."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Список_міністрів_палива_та_енергетики_України",
+        "https://uk.wikipedia.org/wiki/Міністерство_енергетики_України",
+        "https://en.wikipedia.org/wiki/Ministry_of_Energy_(Ukraine)",
+        "https://www.pravda.com.ua/eng/news/2026/01/14/8016095/"
+      ],
+      "caveats": "Renames: Energy & Electrification → Energy (May 1997) → Fuel & Energy (Dec 1999, absorbed Coal) → Energy & Coal (Dec 2010) → Energy & Environmental Protection (Aug 2019) → Energy (May 2020). Vacancy 1996-06-13..1996-07-01 and 2020-03-04..2020-03-10."
+    },
+    "coal": {
+      "ministers": [
+        {"name_uk": "Полтавець Віктор Іванович", "name_en": "Viktor Poltavets", "start": "1994-11-10", "end": "1995-12-01", "acting": false, "notes": "First Coal Industry minister; ministry created 9 Nov 1994 (before that: state committee Derzhvuhleprom, not a ministry)."},
+        {"name_uk": "Поляков Сергій Васильович", "name_en": "Serhiy Polyakov", "start": "1995-12-01", "end": "1996-07-18", "acting": false, "notes": ""},
+        {"name_uk": "Русанцов Юрій Олександрович", "name_en": "Yurii Rusantsov", "start": "1996-09-05", "end": "1997-07-25", "acting": false, "notes": "Vacancy 18 Jul – 5 Sep 1996."},
+        {"name_uk": "Янко Станіслав Васильович", "name_en": "Stanislav Yanko", "start": "1997-07-25", "end": "1998-05-27", "acting": false, "notes": ""},
+        {"name_uk": "Тулуб Сергій Борисович", "name_en": "Serhiy Tulub", "start": "1998-06-03", "end": "1999-12-15", "acting": false, "notes": "Merged into Fuel & Energy 15 Dec 1999."},
+        {"name_uk": "Тополов Віктор Семенович", "name_en": "Viktor Topolov", "start": "2005-08-18", "end": "2006-08-04", "acting": false, "notes": "Ministry re-established 25 Jul 2005."},
+        {"name_uk": "Тулуб Сергій Борисович", "name_en": "Serhiy Tulub", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": "Second Coal term."},
+        {"name_uk": "Полтавець Віктор Іванович", "name_en": "Viktor Poltavets", "start": "2007-12-18", "end": "2010-03-11", "acting": false, "notes": "Second term."},
+        {"name_uk": "Ященко Юрій Петрович", "name_en": "Yurii Yashchenko", "start": "2010-03-11", "end": "2010-12-09", "acting": false, "notes": "Merged into Energy & Coal 9 Dec 2010."}
+      ],
+      "sources": [
+        "https://uk.wikipedia.org/wiki/Міністерство_вугільної_промисловості_України",
+        "https://uk.wikipedia.org/wiki/Шаблон:Міністри_вугільної_промисловості_України"
+      ],
+      "caveats": "Ministry existed 9 Nov 1994 – 15 Dec 1999 and 25 Jul 2005 – 9 Dec 2010 (NOT from 1991: coal was under a state committee 1991–1994). Expected_from should be 1994-11-10."
+    }
+  }
+}

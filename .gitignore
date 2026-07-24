@@ -1,0 +1,6 @@
+# local machine config, not shared
+.claude/settings.local.json
+
+# python
+__pycache__/
+*.py[cod]

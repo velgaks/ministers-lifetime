@@ -1,0 +1,41 @@
+{
+  "_comment": "Presidential eras and cabinets of Ukraine since independence. Dates ISO. 'end': null = ongoing. Aug-Dec 1991 (no president yet) is folded into the Kravchuk era. Acting heads of state (Turchynov 2014) folded into the following era with a marker line in the viz.",
+  "presidents": [
+    { "id": "kravchuk", "name_en": "Kravchuk", "name_uk": "Кравчук", "start": "1991-08-24", "end": "1994-07-19" },
+    { "id": "kuchma", "name_en": "Kuchma", "name_uk": "Кучма", "start": "1994-07-19", "end": "2005-01-23" },
+    { "id": "yushchenko", "name_en": "Yushchenko", "name_uk": "Ющенко", "start": "2005-01-23", "end": "2010-02-25" },
+    { "id": "yanukovych", "name_en": "Yanukovych", "name_uk": "Янукович", "start": "2010-02-25", "end": "2014-02-22" },
+    { "id": "poroshenko", "name_en": "Poroshenko", "name_uk": "Порошенко", "start": "2014-02-22", "end": "2019-05-20" },
+    { "id": "zelensky", "name_en": "Zelensky", "name_uk": "Зеленський", "start": "2019-05-20", "end": null }
+  ],
+  "cabinets": [
+    { "id": "fokin", "name_en": "Fokin", "name_uk": "Фокін", "start": "1991-08-24", "end": "1992-10-02" },
+    { "id": "kuchma-gov", "name_en": "Kuchma (PM)", "name_uk": "Кучма (прем'єр)", "start": "1992-10-13", "end": "1993-09-22" },
+    { "id": "zvyahilsky", "name_en": "Zvyahilsky (acting)", "name_uk": "Звягільський (в.о.)", "start": "1993-09-22", "end": "1994-06-16" },
+    { "id": "masol", "name_en": "Masol", "name_uk": "Масол", "start": "1994-06-16", "end": "1995-03-06" },
+    { "id": "marchuk", "name_en": "Marchuk", "name_uk": "Марчук", "start": "1995-03-06", "end": "1996-05-28" },
+    { "id": "lazarenko", "name_en": "Lazarenko", "name_uk": "Лазаренко", "start": "1996-05-28", "end": "1997-07-02" },
+    { "id": "pustovoitenko", "name_en": "Pustovoitenko", "name_uk": "Пустовойтенко", "start": "1997-07-16", "end": "1999-12-22" },
+    { "id": "yushchenko-gov", "name_en": "Yushchenko (PM)", "name_uk": "Ющенко (прем'єр)", "start": "1999-12-22", "end": "2001-05-29" },
+    { "id": "kinakh", "name_en": "Kinakh", "name_uk": "Кінах", "start": "2001-05-29", "end": "2002-11-21" },
+    { "id": "yanukovych-1", "name_en": "Yanukovych I", "name_uk": "Янукович I", "start": "2002-11-21", "end": "2005-01-05" },
+    { "id": "tymoshenko-1", "name_en": "Tymoshenko I", "name_uk": "Тимошенко I", "start": "2005-02-04", "end": "2005-09-08" },
+    { "id": "yekhanurov", "name_en": "Yekhanurov", "name_uk": "Єхануров", "start": "2005-09-22", "end": "2006-08-04" },
+    { "id": "yanukovych-2", "name_en": "Yanukovych II", "name_uk": "Янукович II", "start": "2006-08-04", "end": "2007-12-18" },
+    { "id": "tymoshenko-2", "name_en": "Tymoshenko II", "name_uk": "Тимошенко II", "start": "2007-12-18", "end": "2010-03-11" },
+    { "id": "azarov-1", "name_en": "Azarov I", "name_uk": "Азаров I", "start": "2010-03-11", "end": "2012-12-24" },
+    { "id": "azarov-2", "name_en": "Azarov II", "name_uk": "Азаров II", "start": "2012-12-24", "end": "2014-01-28" },
+    { "id": "yatsenyuk-1", "name_en": "Yatsenyuk I", "name_uk": "Яценюк I", "start": "2014-02-27", "end": "2014-12-02" },
+    { "id": "yatsenyuk-2", "name_en": "Yatsenyuk II", "name_uk": "Яценюк II", "start": "2014-12-02", "end": "2016-04-14" },
+    { "id": "groysman", "name_en": "Groysman", "name_uk": "Гройсман", "start": "2016-04-14", "end": "2019-08-29" },
+    { "id": "honcharuk", "name_en": "Honcharuk", "name_uk": "Гончарук", "start": "2019-08-29", "end": "2020-03-04" },
+    { "id": "shmyhal", "name_en": "Shmyhal", "name_uk": "Шмигаль", "start": "2020-03-04", "end": "2025-07-17" },
+    { "id": "svyrydenko", "name_en": "Svyrydenko", "name_uk": "Свириденко", "start": "2025-07-17", "end": "2026-07-16" },
+    { "id": "koretskyi", "name_en": "Koretskyi", "name_uk": "Корецький", "start": "2026-07-16", "end": null }
+  ],
+  "events": [
+    { "id": "orange", "name_en": "Orange Revolution", "name_uk": "Помаранчева революція", "date": "2004-11-22" },
+    { "id": "maidan", "name_en": "Euromaidan victory", "name_uk": "Перемога Євромайдану", "date": "2014-02-22" },
+    { "id": "invasion", "name_en": "Full-scale invasion", "name_uk": "Повномасштабне вторгнення", "date": "2022-02-24" }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "lineages": {
+    "pm": {
+      "ministers": [
+        {"name_uk": "Вітольд Фокін", "name_en": "Vitold Fokin", "start": "1991-08-24", "end": "1992-10-01", "acting": false, "notes": "Head of government from 1990-11-14; truncated at independence."},
+        {"name_uk": "Валентин Симоненко", "name_en": "Valentyn Symonenko", "start": "1992-10-02", "end": "1992-10-13", "acting": true, "notes": "Acting PM."},
+        {"name_uk": "Леонід Кучма", "name_en": "Leonid Kuchma", "start": "1992-10-13", "end": "1993-09-21", "acting": false, "notes": ""},
+        {"name_uk": "Юхим Звягільський", "name_en": "Yukhym Zvyahilsky", "start": "1993-09-22", "end": "1994-06-16", "acting": true, "notes": "Acting PM."},
+        {"name_uk": "Віталій Масол", "name_en": "Vitaliy Masol", "start": "1994-06-16", "end": "1995-03-06", "acting": false, "notes": ""},
+        {"name_uk": "Євген Марчук", "name_en": "Yevhen Marchuk", "start": "1995-03-06", "end": "1995-06-08", "acting": true, "notes": "Acting."},
+        {"name_uk": "Євген Марчук", "name_en": "Yevhen Marchuk", "start": "1995-06-08", "end": "1996-05-27", "acting": false, "notes": ""},
+        {"name_uk": "Павло Лазаренко", "name_en": "Pavlo Lazarenko", "start": "1996-05-28", "end": "1997-06-19", "acting": false, "notes": "Suspended 19 Jun 1997; formally dismissed 2 Jul 1997."},
+        {"name_uk": "Василь Дурдинець", "name_en": "Vasyl Durdynets", "start": "1997-06-19", "end": "1997-07-16", "acting": true, "notes": "Acting PM."},
+        {"name_uk": "Валерій Пустовойтенко", "name_en": "Valeriy Pustovoitenko", "start": "1997-07-16", "end": "1999-12-22", "acting": false, "notes": ""},
+        {"name_uk": "Віктор Ющенко", "name_en": "Viktor Yushchenko", "start": "1999-12-22", "end": "2001-05-29", "acting": false, "notes": ""},
+        {"name_uk": "Анатолій Кінах", "name_en": "Anatoliy Kinakh", "start": "2001-05-29", "end": "2002-11-21", "acting": false, "notes": ""},
+        {"name_uk": "Віктор Янукович", "name_en": "Viktor Yanukovych", "start": "2002-11-21", "end": "2004-12-07", "acting": false, "notes": "First term, first spell; on leave from 7 Dec 2004."},
+        {"name_uk": "Микола Азаров", "name_en": "Mykola Azarov", "start": "2004-12-07", "end": "2004-12-28", "acting": true, "notes": "Acting PM while Yanukovych on leave."},
+        {"name_uk": "Віктор Янукович", "name_en": "Viktor Yanukovych", "start": "2004-12-28", "end": "2005-01-05", "acting": false, "notes": "Returned from leave; dismissed 5 Jan 2005."},
+        {"name_uk": "Микола Азаров", "name_en": "Mykola Azarov", "start": "2005-01-05", "end": "2005-01-24", "acting": true, "notes": "Acting PM."},
+        {"name_uk": "Юлія Тимошенко", "name_en": "Yulia Tymoshenko", "start": "2005-01-24", "end": "2005-02-04", "acting": true, "notes": "Acting PM pending confirmation."},
+        {"name_uk": "Юлія Тимошенко", "name_en": "Yulia Tymoshenko", "start": "2005-02-04", "end": "2005-09-08", "acting": false, "notes": "First term."},
+        {"name_uk": "Юрій Єхануров", "name_en": "Yuriy Yekhanurov", "start": "2005-09-08", "end": "2005-09-22", "acting": true, "notes": "Acting."},
+        {"name_uk": "Юрій Єхануров", "name_en": "Yuriy Yekhanurov", "start": "2005-09-22", "end": "2006-08-04", "acting": false, "notes": ""},
+        {"name_uk": "Віктор Янукович", "name_en": "Viktor Yanukovych", "start": "2006-08-04", "end": "2007-12-18", "acting": false, "notes": "Second term."},
+        {"name_uk": "Юлія Тимошенко", "name_en": "Yulia Tymoshenko", "start": "2007-12-18", "end": "2010-03-03", "acting": false, "notes": "Second term; dismissed 3 Mar 2010."},
+        {"name_uk": "Юлія Тимошенко", "name_en": "Yulia Tymoshenko", "start": "2010-03-03", "end": "2010-03-11", "acting": true, "notes": "Caretaker until Azarov appointed."},
+        {"name_uk": "Микола Азаров", "name_en": "Mykola Azarov", "start": "2010-03-11", "end": "2014-01-28", "acting": false, "notes": "Resigned 28 Jan 2014."},
+        {"name_uk": "Сергій Арбузов", "name_en": "Serhiy Arbuzov", "start": "2014-01-28", "end": "2014-02-27", "acting": true, "notes": "Acting PM."},
+        {"name_uk": "Арсеній Яценюк", "name_en": "Arseniy Yatsenyuk", "start": "2014-02-27", "end": "2016-04-14", "acting": false, "notes": "Continuous (Jul 2014 resignation rejected by Rada; Groysman never acting PM)."},
+        {"name_uk": "Володимир Гройсман", "name_en": "Volodymyr Groysman", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Олексій Гончарук", "name_en": "Oleksiy Honcharuk", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": ""},
+        {"name_uk": "Денис Шмигаль", "name_en": "Denys Shmyhal", "start": "2020-03-04", "end": "2025-07-17", "acting": false, "notes": "Longest-serving PM."},
+        {"name_uk": "Юлія Свириденко", "name_en": "Yulia Svyrydenko", "start": "2025-07-17", "end": "2026-07-16", "acting": false, "notes": "Government dismissed 14 Jul 2026; caretaker until Koretskyi appointed 16 Jul 2026."},
+        {"name_uk": "Сергій Корецький", "name_en": "Serhii Koretskyi", "start": "2026-07-16", "end": null, "acting": false, "notes": "Ex-Naftogaz CEO; appointed 16 Jul 2026. Incumbent."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Список_прем'єр-міністрів_України", "https://en.wikipedia.org/wiki/List_of_prime_ministers_of_Ukraine"],
+      "caveats": "Wikidata's Turchynov PM record (22–27 Feb 2014) and Groysman July-2014 acting record are NOT in the uk/en PM lists — remove."
+    },
+    "defense": {
+      "ministers": [
+        {"name_uk": "Костянтин Морозов", "name_en": "Kostiantyn Morozov", "start": "1991-09-03", "end": "1993-10-04", "acting": false, "notes": "First defense minister."},
+        {"name_uk": "Іван Біжан", "name_en": "Ivan Bizhan", "start": "1993-10-04", "end": "1993-10-08", "acting": true, "notes": "Acting for 4 days."},
+        {"name_uk": "Віталій Радецький", "name_en": "Vitaliy Radetskyi", "start": "1993-10-08", "end": "1994-08-25", "acting": false, "notes": ""},
+        {"name_uk": "Валерій Шмаров", "name_en": "Valeriy Shmarov", "start": "1994-08-25", "end": "1994-10-10", "acting": true, "notes": "Acting; first civilian."},
+        {"name_uk": "Валерій Шмаров", "name_en": "Valeriy Shmarov", "start": "1994-10-10", "end": "1996-07-08", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Кузьмук", "name_en": "Oleksandr Kuzmuk", "start": "1996-07-11", "end": "2001-10-24", "acting": false, "notes": "First term; resigned after Flight 1812 shoot-down."},
+        {"name_uk": "Володимир Шкідченко", "name_en": "Volodymyr Shkidchenko", "start": "2001-11-12", "end": "2003-06-25", "acting": false, "notes": ""},
+        {"name_uk": "Євген Марчук", "name_en": "Yevhen Marchuk", "start": "2003-06-25", "end": "2004-09-23", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Кузьмук", "name_en": "Oleksandr Kuzmuk", "start": "2004-09-24", "end": "2005-02-03", "acting": false, "notes": "Second term."},
+        {"name_uk": "Анатолій Гриценко", "name_en": "Anatoliy Hrytsenko", "start": "2005-02-04", "end": "2007-12-18", "acting": false, "notes": ""},
+        {"name_uk": "Юрій Єхануров", "name_en": "Yuriy Yekhanurov", "start": "2007-12-18", "end": "2009-06-05", "acting": false, "notes": ""},
+        {"name_uk": "Валерій Іващенко", "name_en": "Valeriy Ivashchenko", "start": "2009-06-05", "end": "2010-03-11", "acting": true, "notes": "Acting for 279 days."},
+        {"name_uk": "Михайло Єжель", "name_en": "Mykhailo Yezhel", "start": "2010-03-11", "end": "2012-02-08", "acting": false, "notes": ""},
+        {"name_uk": "Дмитро Саламатін", "name_en": "Dmytro Salamatin", "start": "2012-02-08", "end": "2012-12-24", "acting": false, "notes": ""},
+        {"name_uk": "Павло Лебедєв", "name_en": "Pavlo Lebedyev", "start": "2012-12-24", "end": "2014-02-27", "acting": false, "notes": ""},
+        {"name_uk": "Ігор Тенюх", "name_en": "Ihor Tenyukh", "start": "2014-02-27", "end": "2014-03-25", "acting": true, "notes": "Acting; resigned during Crimea annexation."},
+        {"name_uk": "Михайло Коваль", "name_en": "Mykhailo Koval", "start": "2014-03-25", "end": "2014-07-03", "acting": true, "notes": "Acting."},
+        {"name_uk": "Валерій Гелетей", "name_en": "Valeriy Heletey", "start": "2014-07-03", "end": "2014-10-14", "acting": false, "notes": ""},
+        {"name_uk": "Степан Полторак", "name_en": "Stepan Poltorak", "start": "2014-10-14", "end": "2019-08-29", "acting": false, "notes": ""},
+        {"name_uk": "Андрій Загороднюк", "name_en": "Andriy Zagorodnyuk", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": ""},
+        {"name_uk": "Андрій Таран", "name_en": "Andrii Taran", "start": "2020-03-04", "end": "2021-11-03", "acting": false, "notes": ""},
+        {"name_uk": "Олексій Резніков", "name_en": "Oleksii Reznikov", "start": "2021-11-04", "end": "2023-09-05", "acting": false, "notes": ""},
+        {"name_uk": "Рустем Умєров", "name_en": "Rustem Umerov", "start": "2023-09-06", "end": "2025-07-17", "acting": false, "notes": "Became NSDC Secretary Jul 2025."},
+        {"name_uk": "Денис Шмигаль", "name_en": "Denys Shmyhal", "start": "2025-07-17", "end": "2026-01-13", "acting": false, "notes": "Moved to First Vice PM – Energy Minister Jan 2026."},
+        {"name_uk": "Михайло Федоров", "name_en": "Mykhailo Fedorov", "start": "2026-01-14", "end": "2026-07-15", "acting": false, "notes": "Moved from Digital Transformation; dismissed with Svyrydenko government."},
+        {"name_uk": "Євгеній Хмара", "name_en": "Yevhenii Khmara", "start": "2026-07-16", "end": null, "acting": true, "notes": "Temporary acting defense minister; post vacant in Koretskyi cabinet."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Міністерство_оборони_України", "https://en.wikipedia.org/wiki/List_of_ministers_of_defense_(Ukraine)"],
+      "caveats": "Short vacancies 1996-07-08/11, 2001-10-24..11-12, 2005-02-03/04."
+    },
+    "veterans": {
+      "ministers": [
+        {"name_uk": "Ірина Фріз", "name_en": "Iryna Friz", "start": "2018-11-22", "end": "2019-08-29", "acting": false, "notes": "First minister."},
+        {"name_uk": "Оксана Коляда", "name_en": "Oksana Koliada", "start": "2019-08-29", "end": "2020-03-04", "acting": false, "notes": "Ministry merged with reintegration portfolio Sep 2019 – Mar 2020."},
+        {"name_uk": "Сергій Бессараб", "name_en": "Serhii Bessarab", "start": "2020-03-04", "end": "2020-12-15", "acting": false, "notes": ""},
+        {"name_uk": "Юлія Лапутіна", "name_en": "Yuliia Laputina", "start": "2020-12-18", "end": "2024-02-07", "acting": false, "notes": "Dismissed by Rada 7 Feb 2024."},
+        {"name_uk": "Олександр Порхун", "name_en": "Oleksandr Porkhun", "start": "2024-02-09", "end": "2024-09-05", "acting": true, "notes": "Acting."},
+        {"name_uk": "Наталія Кальмикова", "name_en": "Nataliia Kalmykova", "start": "2024-09-05", "end": "2026-07-16", "acting": false, "notes": ""},
+        {"name_uk": "Віталій Кім", "name_en": "Vitalii Kim", "start": "2026-07-16", "end": null, "acting": false, "notes": "Ex-Mykolaiv governor. Incumbent."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Міністерство_у_справах_ветеранів_України"],
+      "caveats": "Vacancies 2020-12-15/18 and 2024-02-07/09."
+    },
+    "stratindustry": {
+      "ministers": [
+        {"name_uk": "Олег Уруський", "name_en": "Oleh Uruskyi", "start": "2020-07-16", "end": "2021-11-03", "acting": false, "notes": "Vice PM – Minister."},
+        {"name_uk": "Павло Рябікін", "name_en": "Pavlo Riabikin", "start": "2021-11-04", "end": "2023-03-20", "acting": false, "notes": ""},
+        {"name_uk": "Олександр Камишін", "name_en": "Oleksandr Kamyshin", "start": "2023-03-21", "end": "2024-09-04", "acting": false, "notes": "Ex-Ukrzaliznytsia CEO."},
+        {"name_uk": "Герман Сметанін", "name_en": "Herman Smetanin", "start": "2024-09-05", "end": "2025-07-17", "acting": false, "notes": "Ministry liquidated 21 Jul 2025, merged into Defense."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Міністерство_з_питань_стратегічних_галузей_промисловості_України"],
+      "caveats": "Existed 22 Jul 2020 – 21 Jul 2025."
+    },
+    "digital": {
+      "ministers": [
+        {"name_uk": "Михайло Федоров", "name_en": "Mykhailo Fedorov", "start": "2019-08-29", "end": "2026-01-13", "acting": false, "notes": "Vice PM (First Vice PM from Jul 2025); left to become Defense Minister."},
+        {"name_uk": "Олександр Борняков", "name_en": "Oleksandr Bornyakov", "start": "2026-01-14", "end": "2026-07-16", "acting": true, "notes": "Acting."},
+        {"name_uk": "Оксана Ферчук", "name_en": "Oksana Ferchuk", "start": "2026-07-16", "end": null, "acting": false, "notes": "Appointed with Koretskyi cabinet. Incumbent."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Міністерство_цифрової_трансформації_України"],
+      "caveats": ""
+    },
+    "reintegration": {
+      "ministers": [
+        {"name_uk": "Вадим Черниш", "name_en": "Vadym Chernysh", "start": "2016-04-14", "end": "2019-08-29", "acting": false, "notes": "МінТОТ minister; ministry created 20 Apr 2016."},
+        {"name_uk": "Олексій Резніков", "name_en": "Oleksii Reznikov", "start": "2020-03-04", "end": "2021-11-03", "acting": false, "notes": "Vice PM – Reintegration Minister; ministry re-established 11 Mar 2020. (2019-09..2020-03 the portfolio sat in the Veterans ministry — see veterans row.)"},
+        {"name_uk": "Ірина Верещук", "name_en": "Iryna Vereshchuk", "start": "2021-11-04", "end": "2024-09-05", "acting": false, "notes": ""},
+        {"name_uk": "Анатолій Стельмах", "name_en": "Anatolii Stelmakh", "start": "2024-09-06", "end": "2024-12-03", "acting": true, "notes": "Acting."},
+        {"name_uk": "Олексій Чернишов", "name_en": "Oleksii Chernyshov", "start": "2024-12-03", "end": "2025-07-17", "acting": false, "notes": "Vice PM for National Unity (ministry renamed 3 Dec 2024); liquidated 21 Jul 2025, merged into Social Policy."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Міністерство_з_питань_реінтеграції_тимчасово_окупованих_територій_України"],
+      "caveats": "Gap 2019-08-29..2020-03-04: portfolio inside Veterans ministry (Koliada) — shown on veterans row. Lineage ends 2025-07-17 (National Unity liquidated into Social Policy)."
+    },
+    "infopolicy": {
+      "ministers": [
+        {"name_uk": "Юрій Стець", "name_en": "Yuriy Stets", "start": "2014-12-02", "end": "2019-08-29", "acting": false, "notes": "Only minister of this ministry (resignation submitted Dec 2015 was withdrawn Feb 2016; never voted)."}
+      ],
+      "sources": ["https://uk.wikipedia.org/wiki/Міністерство_інформаційної_політики_України"],
+      "caveats": "No acting ministers."
+    }
+  }
+}
