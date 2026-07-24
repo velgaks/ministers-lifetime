@@ -384,6 +384,14 @@ q3 %>% arrange(desc(years)) %>% head(8) %>%
   transmute(name_en, ministry, years = round(years, 1),
             note = if_else(still_in, "still in office", "")) %>%
   as.data.frame() %>% print(row.names = FALSE, right = FALSE)
+
+# Which eras produced none of the twenty? An absence worth stating rather than
+# leaving as an empty legend key.
+absent <- setdiff(presidents$name_en, as.character(unique(q3$pres_lab)))
+if (length(absent)) {
+  cat(sprintf("\nNo minister appointed under %s reaches the top twenty.\n",
+              paste(absent, collapse = " or ")))
+}
 write.csv(q3 %>% arrange(desc(years)) %>% mutate(years = round(years, 2)),
           file.path(out_dir, "q3_longest.csv"), row.names = FALSE)
 
@@ -393,14 +401,20 @@ p3 <- ggplot(q3, aes(years, name_en, fill = pres_lab)) +
                                if_else(still_in, "  (still in office)", ""))),
             hjust = -0.08, size = 3, colour = INK) +
   geom_text(aes(x = 0.12, label = ministry), hjust = 0, size = 2.8, colour = "white") +
-  scale_fill_manual(values = ERA_COLS_LAB, drop = FALSE, name = NULL) +
+  # drop = TRUE: an era with no bar here gets no key. Keeping absent levels left
+  # empty boxes in the legend, which reads as a rendering fault rather than as
+  # the fact that those presidents produced no long-serving minister.
+  scale_fill_manual(values = ERA_COLS_LAB, drop = TRUE, name = NULL) +
   scale_x_continuous(labels = label_number(suffix = "y"),
                      expand = expansion(mult = c(0, 0.22))) +
   guides(fill = guide_legend(nrow = 1)) +
   labs(title = "The twenty longest-serving ministers since independence",
        subtitle = "Coloured by the president who appointed them; ministry named inside the bar",
        x = NULL, y = NULL,
-       caption = cap("Continuous service in one ministry, with an acting spell and its confirmation counted as one tenure.")) +
+       caption = cap(if (length(absent))
+                       sprintf("No minister appointed under %s appears here at all.",
+                               paste(absent, collapse = " or ")) else "",
+                     "Continuous service in one ministry, with an acting spell and its confirmation counted as one tenure.")) +
   theme_min("x") +
   theme(legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
         legend.key.size = unit(10, "pt"), legend.margin = margin(b = 4))
