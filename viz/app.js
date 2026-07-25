@@ -50,7 +50,7 @@
       acting: "в.о.",
       actingLegend: "в.о. (виконувач обов'язків)",
       censoredLegend: "чинний міністр (каденція триває)",
-      durLegend: ["до 1 року", "1–2 роки", "2–4 роки", "4–7 років", "7+ років"],
+      durLegend: ["до 6 міс.", "6–12 міс.", "1–2 роки", "2–4 роки", "4+ роки"],
       tooltipCabinet: "Уряд",
       tooltipEra: "Президент",
       tooltipSpells: "перепризначення",
@@ -64,10 +64,9 @@
         `Не дуже: медіанна каденція майже не змінилася (${a} → ${b}).`,
       noLonger: (a, b, pct) =>
         `Ні, навпаки: медіанна каденція зросла з ${a} до ${b} (+${pct}%).`,
-      heroCapA: "призначені у 1991–1999",
-      heroCapB: "призначені у 2016–2026",
+      heroCapPrefix: "призначені у",
       heroNote:
-        "Медіана враховує і в.о., і чинних міністрів (для чинних тривалість рахується до сьогодні — це нижня межа). Прем'єр-міністри в статистику не входять. Перемикач вище дозволяє прибрати в.о.",
+        "Порівнюються міністри, призначені до Помаранчевої революції, з призначеними після Євромайдану. Медіана враховує і в.о.; для тих, хто був на посаді на момент зміни уряду, тривалість рахується до 16 липня 2026 року — це нижня межа. Прем'єр-міністри в статистику не входять. Перемикач вище дозволяє прибрати в.о.",
       credit: "Графіка: Валентин Гацко, TG: @gorbach_squad.",
       repo: "Дані, код і метод: github.com/velgaks/ministers-lifetime",
       footer:
@@ -111,7 +110,7 @@
       acting: "acting",
       actingLegend: "acting minister",
       censoredLegend: "current minister (tenure ongoing)",
-      durLegend: ["under 1 year", "1–2 years", "2–4 years", "4–7 years", "7+ years"],
+      durLegend: ["under 6 months", "6–12 months", "1–2 years", "2–4 years", "4+ years"],
       tooltipCabinet: "Cabinet",
       tooltipEra: "President",
       tooltipSpells: "reappointment(s)",
@@ -125,10 +124,9 @@
         `Not really: the median tenure barely changed (${a} → ${b}).`,
       noLonger: (a, b, pct) =>
         `No — the opposite: the median tenure grew from ${a} to ${b} (+${pct}%).`,
-      heroCapA: "appointed 1991–1999",
-      heroCapB: "appointed 2016–2026",
+      heroCapPrefix: "appointed",
       heroNote:
-        "The median includes acting and current ministers (current tenures are counted up to today — a lower bound). Prime ministers are excluded from the stats. Use the toggle above to drop acting ministers.",
+        "Compares ministers appointed before the Orange Revolution with those appointed after Euromaidan. The median includes acting ministers; anyone still in office at the government change is counted to 16 July 2026, a lower bound. Prime ministers are excluded. Use the toggle above to drop acting ministers.",
       credit: "Chart: Valentyn Hatsko, TG: @gorbach_squad.",
       repo: "Data, code and method: github.com/velgaks/ministers-lifetime",
       footer:
@@ -195,9 +193,11 @@
   const eraOf = (dateStr) =>
     latestBefore(DATA.eras.presidents, dateStr) || DATA.eras.presidents[0];
   const cabinetOf = (dateStr) => latestBefore(DATA.eras.cabinets, dateStr);
+  // Same boundaries as the distribution charts in analysis/tenure_trends.R, so
+  // one quantity is binned one way across the whole project.
   function durBucket(days) {
     const y = days / YEAR_DAYS;
-    return y < 1 ? 0 : y < 2 ? 1 : y < 4 ? 2 : y < 7 ? 3 : 4;
+    return y < 0.5 ? 0 : y < 1 ? 1 : y < 2 ? 2 : y < 4 ? 3 : 4;
   }
   function fillClass(ten) {
     return state.colorBy === "era"
@@ -215,12 +215,20 @@
   const WINDOW_END = D(
     DATA.meta.analysis_window_end || DATA.eras.analysis_window_end || DATA.meta.built
   );
+  // Tenures whose length is not yet knowable are dropped: still running at the
+  // cutoff AND begun within the final year, so they could not have reached a year
+  // even in principle. Same rule as `resolved` in analysis/tenure_trends.R and
+  // the stats block in pipeline/build.py, so all three report the same n.
+  const UNKNOWABLE_BEFORE = new Date(WINDOW_END.getTime() - 365 * MS_DAY);
   const ministersOnly = () =>
     DATA.tenures
       .map((x, i) => ({ x, i }))
       .filter(({ x }) => x.lineage !== "pm" && D(x.start) < WINDOW_END)
       .map(({ x, i }) => {
-        const ended = x.end && D(x.end) < WINDOW_END;
+        // <= not <: a tenure ending exactly on the cutoff has ended. Many did -
+        // the cutoff IS a government change - and treating them as ongoing
+        // wrongly dropped them as "unknowable" below.
+        const ended = x.end && D(x.end) <= WINDOW_END;
         const endEff = ended ? D(x.end) : WINDOW_END;
         return {
           ...x,
@@ -228,7 +236,8 @@
           days: Math.max(1, Math.round((endEff - D(x.start)) / MS_DAY)),
           ongoing: !ended,
         };
-      });
+      })
+      .filter((x) => !(x.ongoing && D(x.start) > UNKNOWABLE_BEFORE));
   const statsPool = () =>
     ministersOnly().filter((x) => !(state.exclActing && x.acting));
   function median(xs) {
@@ -484,14 +493,24 @@
   }
 
   // ------------------------------------------------------------- hero
+  // Compares everything before the Orange Revolution against everything after
+  // Euromaidan, read from eras.periods so the page, pipeline/build.py and
+  // analysis/tenure_trends.R all answer this with the same windows. The previous
+  // 1991-99 vs 2016-today slices were arbitrary decade cuts, and ended the late
+  // window at the collection date rather than the analysis cutoff.
+  const periodById = (id) => (DATA.eras.periods || []).find((p) => p.id === id);
   function renderHero() {
     const pool = statsPool();
     const days = (from, to) =>
       pool
         .filter((x) => x.start >= from && x.start <= to)
         .map((x) => x.days);
-    const a = median(days("1991-08-24", "1999-12-31"));
-    const b = median(days("2016-01-01", DATA.meta.built));
+    const early = periodById("post-soviet");
+    const late = periodById("donbas");
+    if (!early || !late) return;
+    const windowEndStr = DATA.meta.analysis_window_end || DATA.meta.built;
+    const a = median(days(early.start, early.end));
+    const b = median(days(late.start, windowEndStr));
     const host = $("#hero");
     host.textContent = "";
     if (a == null || b == null) return;
@@ -504,10 +523,15 @@
     host.appendChild(el("p", { class: "answer" }, sentence));
     const figs = el("div", { class: "figures" });
     const f1 = el("div", { class: "fig" }, fmtYears1(a));
-    f1.appendChild(el("span", { class: "figcap" }, t("heroCapA")));
+    // Captions state the actual windows used, derived from the data, so they
+    // cannot go stale if the periodisation changes.
+    const yr = (s) => s.slice(0, 4);
+    f1.appendChild(el("span", { class: "figcap" },
+      `${t("heroCapPrefix")} ${yr(early.start)}–${yr(early.end)}`));
     const arrow = el("div", { class: "arrow" }, "→");
     const f2 = el("div", { class: "fig" }, fmtYears1(b));
-    f2.appendChild(el("span", { class: "figcap" }, t("heroCapB")));
+    f2.appendChild(el("span", { class: "figcap" },
+      `${t("heroCapPrefix")} ${yr(late.start)}–${yr(windowEndStr)}`));
     const delta = el("div", { class: "delta" }, (pct > 0 ? "−" : "+") + Math.abs(pct) + "%");
     figs.append(f1, arrow, f2, delta);
     host.appendChild(figs);
