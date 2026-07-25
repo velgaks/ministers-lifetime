@@ -554,7 +554,7 @@
     for (let d = new Date(1993, 0, 1); d <= WINDOW_END; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) {
       const tt = d.getTime();
       const sel = pts.filter((p) => Math.abs(p.t - tt) <= win).map((p) => p.days);
-      pathPts.push(sel.length >= 8 ? { t: tt, v: median(sel) } : null);
+      pathPts.push(sel.length ? { t: tt, v: median(sel) } : null);
     }
     // The last stretch is drawn faint: with an 18-month half-window the newest
     // appointments have not had time to reveal how long they will last.

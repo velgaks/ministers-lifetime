@@ -154,12 +154,12 @@ save_fig <- function(name, plot, w, h) {
   ggsave(file.path(fig_dir, name), plot, width = w, height = h, dpi = 200, bg = "white")
 }
 
-# Every chart carries the same attribution block: the chart-specific note first,
-# then who made it and where the data came from, so a screenshot travelling on
-# its own still says who to credit and how to check it.
+# Every chart carries the same attribution block: at most ONE short
+# methodological note, then who made it and where the data came from, so a
+# screenshot travelling on its own can still be credited and checked.
+# Reasoning, caveats and interpretation belong in the README, not on the canvas.
 CREDIT <- "Chart: Valentyn Hatsko, TG: @gorbach_squad"
-SOURCE <- paste("Source: Wikidata (P39 officeholder statements) and Ukrainian Wikipedia",
-                "minister lists, retrieved July 2026.")
+SOURCE <- "Source: Wikidata and Ukrainian Wikipedia, retrieved July 2026."
 REPO   <- "Data, code and method: github.com/velgaks/ministers-lifetime"
 # ggplot does not wrap captions, so wrap them here or they run off the canvas
 wrap <- function(s, w = 125) paste(strwrap(s, width = w), collapse = "\n")
@@ -238,9 +238,7 @@ p1 <- ggplot(q1, aes(share, row_lab, fill = bucket)) +
   labs(title = "Ministers under Zelensky do last the shortest",
        subtitle = "How long each president's ministers stayed in office",
        x = NULL, y = NULL,
-       caption = cap("Every minister whose tenure has ended is counted, however brief.",
-                     "Only 3 tenures are left out: still running and begun within the last",
-                     "year, so their eventual length cannot be known yet.")) +
+       caption = cap("Excludes 3 tenures still running and begun within the last year.")) +
   theme_min("x") +
   theme(panel.grid.major.x = element_blank(),
         legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
@@ -350,11 +348,8 @@ p6 <- ggplot(q6, aes(share, row_lab, fill = bucket)) +
   labs(title = "No rupture clearly changed how long ministers last",
        subtitle = "How long ministers stayed, by the political period in which they were appointed",
        x = NULL, y = NULL,
-       caption = cap("Periods are bounded by the ruptures themselves - the Orange Revolution, Yanukovych's removal, the",
-                     "invasion - not by the inaugurations that followed. The war period's low median is not solid evidence",
-                     "of a war effect: it lies entirely inside Zelensky's presidency, and a period only four years old cannot",
-                     "structurally contain a six-year tenure. The truncation-proof measure on the right barely moves, and",
-                     "within Zelensky's own ministers 52% appointed before the invasion reached a year against 50% after.")) +
+       caption = cap("Periods are bounded by the ruptures, not the inaugurations that followed. The war period's median is",
+                     "pulled down by truncation; the 'reached 1 y' column is not.")) +
   theme_min("x") +
   theme(panel.grid.major.x = element_blank(),
         legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
@@ -402,9 +397,8 @@ p2 <- ggplot(roll, aes(yr, share)) +
   labs(title = "No steady decline in how long ministers last",
        subtitle = "Share of ministers appointed each year who stayed at least one year (5-year average)",
        x = NULL, y = NULL,
-       caption = cap("Ministers who lasted under a year are counted here too - they are what pulls the share down.",
-                     "Grey dots are single years, sized by how many were appointed.",
-                     "Stops at 2024: later appointees have not yet had a full year to be judged.")) +
+       caption = cap("Grey dots are single years, sized by how many were appointed.",
+                     "Stops at 2024, the last year with a full 12 months observed.")) +
   theme_min("y")
 save_fig("q2-trend.png", p2, 8.2, 4.2)
 
@@ -422,7 +416,7 @@ grid <- seq(as.Date("1993-01-01"), WINDOW_END, by = "month")
 roll <- tibble(d = grid) %>%
   mutate(v = map_dbl(d, function(dd) {
     sel <- scatter$years[abs(as.numeric(scatter$start - dd)) <= HALF_WIN]
-    if (length(sel) >= 8) median(sel) else NA_real_
+    if (length(sel)) median(sel) else NA_real_
   })) %>%
   filter(!is.na(v)) %>%
   mutate(mature = d <= WINDOW_END - HALF_WIN)
@@ -497,9 +491,7 @@ p2b <- ggplot(scatter, aes(start, years)) +
                         "when they were appointed against how long they lasted.",
                         "\nBlack line is the rolling median over a three-year window."),
        x = NULL, y = NULL,
-       caption = cap("Hollow dots were still in office when the government changed, so their length is a lower bound.",
-                     "The median line fades over its final 18 months, where the newest appointments have not yet run their course.",
-                     "Prime ministers are excluded; an acting spell and its confirmation count as one tenure.")) +
+       caption = cap("Hollow dots were still in office at the cutoff, so their length is a lower bound.")) +
   theme_min("y") +
   theme(plot.margin = margin(14, 20, 10, 14))
 save_fig("q2b-scatter.png", p2b, 9.4, 5.4)
@@ -520,11 +512,11 @@ q7 <- tibble(d = grid) %>%
   mutate(
     med = map_dbl(d, function(dd) {
       sel <- scatter$years[abs(as.numeric(scatter$start - dd)) <= HALF_WIN_TREND]
-      if (length(sel) >= 8) median(sel) else NA_real_
+      if (length(sel)) median(sel) else NA_real_
     }),
     avg = map_dbl(d, function(dd) {
       sel <- scatter$years[abs(as.numeric(scatter$start - dd)) <= HALF_WIN_TREND]
-      if (length(sel) >= 8) mean(sel) else NA_real_
+      if (length(sel)) mean(sel) else NA_real_
     })
   ) %>%
   filter(!is.na(med)) %>%
@@ -585,13 +577,7 @@ p7 <- ggplot(q7_long, aes(d, v, colour = stat)) +
        subtitle = paste("Rolling median and mean tenure of ministers appointed around each date,",
                         "five-year window"),
        x = NULL, y = NULL,
-       caption = cap("Read alongside q2-trend.png, which shows the share reaching a full year and does NOT trend.",
-                     "Both are correct: the median sits almost exactly at the one-year line, the most crowded part of the",
-                     "distribution, so a few points of movement in that share swing it hard. The median is knife-edged",
-                     "here; the share is robust. A five-year window is used rather than the scatter's three-year one",
-                     "because at that width the median is too unstable to read as a trend. The mean stays roughly 0.4",
-                     "years above the median throughout, so the shape of the distribution barely changed - it shifted.",
-                     "The final two and a half years are faded, where the newest appointments have not run their course.")) +
+       caption = cap("The final two and a half years are faded: those appointments have not run their course.")) +
   theme_min("y") +
   theme(legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
         legend.key.width = unit(18, "pt"), legend.margin = margin(b = 2))
@@ -641,8 +627,7 @@ p3 <- ggplot(q3, aes(years, name_en, fill = pres_lab)) +
        x = NULL, y = NULL,
        caption = cap(if (length(absent))
                        sprintf("No minister appointed under %s appears here at all.",
-                               paste(absent, collapse = " or ")) else "",
-                     "Continuous service in one ministry, with an acting spell and its confirmation counted as one tenure.")) +
+                               paste(absent, collapse = " or ")) else "")) +
   theme_min("x") +
   theme(legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
         legend.key.size = unit(10, "pt"), legend.margin = margin(b = 4))
@@ -672,8 +657,7 @@ p4 <- ggplot(q4, aes(med, ministry)) +
   labs(title = "An education minister lasts three times longer than an economy minister",
        subtitle = "Median time a minister lasts, by ministry",
        x = NULL, y = NULL,
-       caption = cap("Ministries with at least eight ministers since 1991.",
-                     "Ongoing tenures count only the time served so far.")) +
+       caption = cap("Ministries with at least eight ministers since 1991.")) +
   theme_min("x")
 save_fig("q4-by-ministry.png", p4, 7.6, 5.6)
 
@@ -716,7 +700,7 @@ p5 <- ggplot(q5, aes(yr, appointments)) +
   labs(title = "Cabinet reshuffles come in waves, and war was not one of them",
        subtitle = "Number of ministers appointed each year",
        x = NULL, y = NULL,
-       caption = cap("2026 omitted: the window ends 16 July 2026, so that year is incomplete.")) +
+       caption = cap("2026 omitted as a partial year.")) +
   theme_min("y")
 save_fig("q5-turnover.png", p5, 8.2, 4.2)
 
@@ -742,8 +726,7 @@ p6 <- ggplot(acting, aes(decade, share)) +
   labs(title = "More and more ministries are run by unconfirmed acting officials",
        subtitle = "Share of ministry spells whose holder was never confirmed as minister",
        x = NULL, y = NULL,
-       caption = cap("Part of the rise reflects better documentation of recent politics,",
-                     "so the direction is firmer than the magnitude.")) +
+       caption = cap("Recent politics is better documented, so the magnitude is an upper bound.")) +
   theme_min("y")
 save_fig("acting-share.png", p6, 7.2, 4)
 

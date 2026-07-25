@@ -221,6 +221,17 @@ that were temporarily abolished or merged).
   **share who reached one year**, which is immune to both problems. Where a median
   and that share disagree — as they do for the war period — the share is the one
   to trust.
+- **The analytical choices, stated explicitly.** Tenure-length buckets are
+  under 6 months / 6–12 months / 1–2 years / 2–4 years / 4+ years: six months
+  separates caretakers from real ministers, one year is the natural pass mark,
+  four years is roughly a parliamentary term. Two spells of the same person in
+  the same lineage merge if the gap is ≤ 31 days *and* nobody else served in
+  between. The audit flags overlaps beyond 14 days and vacancies beyond 90.
+  Rolling windows are ±1.5 years on the scatter, where the job is to show shocks
+  against the dots, and ±2.5 years on the trend chart, where a narrower window is
+  too unstable to read (it swings between 0.5 and 3.4 years). `q4` covers only
+  ministries with at least 8 officeholders. No minimum-sample rule suppresses any
+  rolling-median point — every window with data is drawn.
 - **The acting-official share is an upper bound.** Recent Ukrainian politics is
   documented far more granularly than the 1990s, so a two-week acting deputy in
   1994 may never have been recorded while every 2025 one was. The rising trend
