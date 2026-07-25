@@ -221,6 +221,19 @@ that were temporarily abolished or merged).
   **share who reached one year**, which is immune to both problems. Where a median
   and that share disagree — as they do for the war period — the share is the one
   to trust.
+- **Two duration fields, and they mean different things.** `days` is the length
+  observed as of the build date — what the timeline draws, and for a sitting
+  minister it answers "how long so far". `days_in_window` measures to the
+  analysis cutoff so every statistic rests on the same footing, and is `null` for
+  the 11 tenures that begin on or after it. **Use `days_in_window` for any
+  analysis**; `days` will read ~9 days longer for the 18 ongoing tenures.
+  A tenure whose dates imply a non-positive length is flagged in `report.md`
+  rather than quietly clamped.
+- **A tenure counts as `acting` only if *every* sub-spell was acting**, i.e. the
+  person was never confirmed — which is exactly what the claim about unconfirmed
+  officials asserts. 49 tenures qualify; 63 contain at least one acting spell,
+  and the 14 in between began acting and were then confirmed. Use
+  `has_acting_part` for the weaker reading.
 - **The analytical choices, stated explicitly.** Tenure-length buckets are
   under 6 months / 6–12 months / 1–2 years / 2–4 years / 4+ years: six months
   separates caretakers from real ministers, one year is the natural pass mark,

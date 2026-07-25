@@ -270,14 +270,42 @@ def main():
             else:
                 by_span[k] = dict(p)
         t["parts"] = sorted(by_span.values(), key=lambda p: (p["start"] or "", p["end"] or ""))
+        # "acting" means never confirmed: every sub-spell was acting. Someone who
+        # began acting and was then confirmed is a confirmed minister, which is
+        # what the published claim about unconfirmed officials requires.
+        # has_acting_part keeps the weaker "any spell was acting" reading.
         t["acting"] = all(p["acting"] for p in t["parts"])
         t["has_acting_part"] = any(p["acting"] for p in t["parts"])
         t["reappointments"] = len(t["parts"]) - 1
-        end_eff = t["end"] or TODAY
-        t["days"] = (end_eff - t["start"]).days
         t["ongoing"] = bool(t.get("ongoing"))
+
+        # Two durations, because they answer different questions and conflating
+        # them is how the page's table came to disagree with its own statistics.
+        #   days           - observed length as of the build date. What the
+        #                    timeline draws and the table shows; for a sitting
+        #                    minister this is "how long so far".
+        #   days_in_window - length measured to the analysis cutoff, so every
+        #                    statistic is computed on the same footing. None for
+        #                    tenures that begin on or after the cutoff, which are
+        #                    displayed but excluded from the statistics.
+        t["days"] = (t["end"] or TODAY) - t["start"]
+        t["days"] = t["days"].days
+        if t["start"] >= WINDOW_END:
+            t["days_in_window"] = None
+        else:
+            t["days_in_window"] = (min(t["end"] or WINDOW_END, WINDOW_END) - t["start"]).days
+
+        # A non-positive duration means the source dates are contradictory. Surface
+        # it rather than silently clamping it to one day, which would hide the
+        # error behind a plausible-looking number.
         if t["days"] <= 0:
-            t["days"] = 1
+            flag(
+                "nonpositive",
+                f"nonpositive:{t['lineage']}:{t['person']}:{iso(t['start'])}",
+                f"{t['lineage']}: {t['name_en']} has a non-positive duration "
+                f"({iso(t['start'])} - {iso(t['end'])}, {t['days']} days) — the "
+                f"source dates contradict each other",
+            )
 
     # ---- 6. auto-checks ------------------------------------------------------
     by_lineage = {}
@@ -397,13 +425,13 @@ def main():
             return None
         return (xs[n // 2] if n % 2 == 1 else (xs[n // 2 - 1] + xs[n // 2]) / 2)
 
-    # Recompute duration against the window end, not TODAY: a tenure still
-    # running at the cutoff is measured to the cutoff.
+    # Statistics run on days_in_window, computed once above, so the dataset and
+    # these figures cannot diverge. "ongoing" here means still serving at the
+    # cutoff, which is not the same as still serving at the build date.
     def windowed(t):
-        end_eff = min(t["end"] or WINDOW_END, WINDOW_END)
         return {
             **t,
-            "days": max(1, (end_eff - t["start"]).days),
+            "days": t["days_in_window"],
             "ongoing": not (t["end"] and t["end"] <= WINDOW_END),
         }
 
@@ -464,6 +492,7 @@ def main():
             "start": iso(t["start"]),
             "end": iso(t["end"]),
             "days": t["days"],
+            "days_in_window": t["days_in_window"],
             "ongoing": t["ongoing"],
             "acting": t["acting"],
             "has_acting_part": t["has_acting_part"],
@@ -529,8 +558,8 @@ def main():
         f"Built {iso(TODAY)}. {len(tenures)} tenures, {len(flags)} open flags.",
         "",
     ]
-    order = ["empty", "undatable", "missing-start", "missing-end", "overlap", "gap",
-             "short", "long", "precision", "stale-patch"]
+    order = ["empty", "undatable", "nonpositive", "missing-start", "missing-end",
+             "overlap", "gap", "short", "long", "precision", "stale-patch"]
     for kind in order:
         sel = [f for f in flags if f[0] == kind]
         if not sel:

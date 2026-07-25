@@ -44,6 +44,8 @@
       recReturns: "Найбільше повернень у те саме крісло",
       recMulti: "Найбільше різних портфелів",
       tableSummary: "Показати всі дані таблицею",
+      tableNote: (cut, built) =>
+        `Стовпець «Днів» — тривалість до ${cut}, як і в усій статистиці. Зірочка* — міністри, призначені після цієї дати: для них показано днів на ${built}.`,
       thName: "Міністр", thMinistry: "Міністерство", thStart: "Початок",
       thEnd: "Кінець", thDays: "Днів", thActing: "в.о.",
       ongoing: "триває",
@@ -65,12 +67,12 @@
       noLonger: (a, b, pct) =>
         `Ні, навпаки: медіанна каденція зросла з ${a} до ${b} (+${pct}%).`,
       heroCapPrefix: "призначені у",
-      heroNote:
-        "Порівнюються міністри, призначені до Помаранчевої революції, з призначеними після Євромайдану. Медіана враховує і в.о.; для тих, хто був на посаді на момент зміни уряду, тривалість рахується до 16 липня 2026 року — це нижня межа. Прем'єр-міністри в статистику не входять. Перемикач вище дозволяє прибрати в.о.",
+      heroNote: (cut) =>
+        `Порівнюються міністри, призначені до Помаранчевої революції, з призначеними після Євромайдану. Медіана враховує і в.о.; для тих, хто був на посаді на момент зміни уряду, тривалість рахується до ${cut} — це нижня межа. Прем'єр-міністри в статистику не входять. Перемикач вище дозволяє прибрати в.о.`,
       credit: "Графіка: Валентин Гацко, TG: @gorbach_squad.",
       repo: "Дані, код і метод: github.com/velgaks/ministers-lifetime",
-      footer:
-        "Джерело: Wikidata (твердження про посади P39) та Українська Вікіпедія (списки міністрів), отримано в липні 2026 року; усі виправлення з посиланнями на джерела — у data/patches.json. Статистика завершується зміною уряду 16 липня 2026 року: міністри, призначені тоді, пробули на посаді близько тижня. Ранні галузеві міністерства 1990-х (машинобудування, зв'язку тощо) не охоплені. Каденції, що почалися до 24.08.1991, обрізані на дату незалежності. Зібрано ",
+      footer: (cut, built) =>
+        `Джерело: Wikidata (твердження про посади P39) та Українська Вікіпедія (списки міністрів); усі виправлення з посиланнями на джерела — у data/patches.json. Статистика завершується зміною уряду ${cut}: міністри, призначені тоді, пробули на посаді близько тижня. Ранні галузеві міністерства 1990-х (машинобудування, зв'язку тощо) не охоплені. Каденції, що почалися до 24.08.1991, обрізані на дату незалежності. Дані зібрано ${built}.`,
       years: (y) => {
         const yi = Math.floor(y);
         const f = yi % 10, ff = yi % 100;
@@ -104,6 +106,8 @@
       recReturns: "Most returns to the same chair",
       recMulti: "Most different portfolios",
       tableSummary: "Show all data as a table",
+      tableNote: (cut, built) =>
+        `The Days column measures to ${cut}, as every statistic here does. An asterisk* marks ministers appointed after that date, showing days as of ${built} instead.`,
       thName: "Minister", thMinistry: "Ministry", thStart: "Start",
       thEnd: "End", thDays: "Days", thActing: "acting",
       ongoing: "ongoing",
@@ -125,12 +129,12 @@
       noLonger: (a, b, pct) =>
         `No — the opposite: the median tenure grew from ${a} to ${b} (+${pct}%).`,
       heroCapPrefix: "appointed",
-      heroNote:
-        "Compares ministers appointed before the Orange Revolution with those appointed after Euromaidan. The median includes acting ministers; anyone still in office at the government change is counted to 16 July 2026, a lower bound. Prime ministers are excluded. Use the toggle above to drop acting ministers.",
+      heroNote: (cut) =>
+        `Compares ministers appointed before the Orange Revolution with those appointed after Euromaidan. The median includes acting ministers; anyone still in office at the government change is counted to ${cut}, a lower bound. Prime ministers are excluded. Use the toggle above to drop acting ministers.`,
       credit: "Chart: Valentyn Hatsko, TG: @gorbach_squad.",
       repo: "Data, code and method: github.com/velgaks/ministers-lifetime",
-      footer:
-        "Source: Wikidata (P39 officeholder statements) and Ukrainian Wikipedia minister lists, retrieved July 2026; every correction is recorded with its source in data/patches.json. Statistics end at the government change of 16 July 2026 — ministers appointed then had been in office about a week. Early-1990s branch ministries (machine-building, communications, etc.) are not covered. Tenures that began before 24 Aug 1991 are clipped at independence. Built ",
+      footer: (cut, built) =>
+        `Source: Wikidata (P39 officeholder statements) and Ukrainian Wikipedia minister lists; every correction is recorded with its source in data/patches.json. Statistics end at the government change of ${cut} — ministers appointed then had been in office about a week. Early-1990s branch ministries (machine-building, communications, etc.) are not covered. Tenures that began before 24 Aug 1991 are clipped at independence. Data collected ${built}.`,
       years: (y) => {
         const yi = Math.floor(y);
         return yi === 1 ? "1 year" : `${yi} years`;
@@ -535,7 +539,8 @@
     const delta = el("div", { class: "delta" }, (pct > 0 ? "−" : "+") + Math.abs(pct) + "%");
     figs.append(f1, arrow, f2, delta);
     host.appendChild(figs);
-    host.appendChild(el("p", { class: "note" }, t("heroNote")));
+    host.appendChild(el("p", { class: "note" },
+      t("heroNote")(fmtDate(windowEndStr).replace(/\.$/, ""))));
   }
 
   // ------------------------------------------------------------- trend
@@ -755,7 +760,11 @@
         tr.appendChild(el("td", null, nameOf(x)));
         tr.appendChild(el("td", { class: "num" }, x.start));
         tr.appendChild(el("td", { class: "num" }, x.end || t("ongoing")));
-        tr.appendChild(el("td", { class: "num" }, String(x.days)));
+        // days_in_window, not days: the table must agree with the statistics
+        // elsewhere on the page. Tenures starting after the cutoff have no
+        // windowed length, so they show their observed length with a marker.
+        tr.appendChild(el("td", { class: "num" },
+          x.days_in_window == null ? `${x.days}*` : String(x.days_in_window)));
         tr.appendChild(el("td", null, x.acting ? "✓" : ""));
         tbody.appendChild(tr);
       });
@@ -764,34 +773,51 @@
   }
 
   // ------------------------------------------------------------ chrome
+  // setText tolerates a missing element. Without it a single stale id blanked the
+  // whole page: renderChrome threw partway through and every later render - hero,
+  // timeline, charts - never ran, with nothing in the console to say why.
+  function setText(sel, value) {
+    const node = $(sel);
+    if (node) node.textContent = value;
+    else console.warn("viz: missing element", sel);
+  }
   function renderChrome() {
+    // Ukrainian dates format as "25 лип. 2026 р." — already ending in a period —
+    // so trim it and let the sentence supply its own punctuation in both languages.
+    const noDot = (s) => s.replace(/\.$/, "");
+    const cut = noDot(fmtDate(DATA.meta.analysis_window_end || DATA.meta.built));
+    const built = noDot(fmtDate(DATA.meta.built));
     document.documentElement.lang = state.lang;
     document.title = t("title");
-    $("#title").textContent = t("title");
-    $("#subtitle").textContent = t("subtitle");
-    $("#lang-btn").textContent = t("langBtn");
-    $("#color-label").textContent = t("colorLabel");
-    $("#color-era").textContent = t("colorEra");
-    $("#color-era").setAttribute("aria-pressed", state.colorBy === "era");
-    $("#color-dur").textContent = t("colorDur");
-    $("#color-dur").setAttribute("aria-pressed", state.colorBy === "duration");
-    $("#acting-label-txt").textContent = t("exclActing");
-    $("#timeline-title").textContent = t("timelineTitle");
-    $("#timeline-cap").textContent = t("timelineCap");
-    $("#trend-title").textContent = t("trendTitle");
-    $("#trend-cap").textContent = t("trendCap");
-    $("#era-title").textContent = t("eraTitle");
-    $("#era-cap").textContent = t("eraCap");
-    $("#table-summary").textContent = t("tableSummary");
-    $("#footer-note").textContent = t("footer") + DATA.meta.built + ".";
-    $("#footer-credit").textContent = t("credit");
+    setText("#title", t("title"));
+    setText("#subtitle", t("subtitle"));
+    setText("#lang-btn", t("langBtn"));
+    setText("#color-label", t("colorLabel"));
+    setText("#color-era", t("colorEra"));
+    setText("#color-dur", t("colorDur"));
+    const eraBtn = $("#color-era"), durBtn = $("#color-dur");
+    if (eraBtn) eraBtn.setAttribute("aria-pressed", state.colorBy === "era");
+    if (durBtn) durBtn.setAttribute("aria-pressed", state.colorBy === "duration");
+    setText("#acting-label-txt", t("exclActing"));
+    setText("#timeline-title", t("timelineTitle"));
+    setText("#timeline-cap", t("timelineCap"));
+    setText("#trend-title", t("trendTitle"));
+    setText("#trend-cap", t("trendCap"));
+    setText("#era-title", t("eraTitle"));
+    setText("#era-cap", t("eraCap"));
+    setText("#table-summary", t("tableSummary"));
+    setText("#table-note", t("tableNote")(cut, built));
+    setText("#footer-note", t("footer")(cut, built));
+    setText("#footer-credit", t("credit"));
     const repoLink = $("#footer-repo");
-    repoLink.textContent = t("repo");
-    repoLink.href = "https://github.com/velgaks/ministers-lifetime";
-    const themeBtn = $("#theme-btn");
+    if (repoLink) {
+      repoLink.textContent = t("repo");
+      repoLink.href = "https://github.com/velgaks/ministers-lifetime";
+    }
     const dark = document.documentElement.getAttribute("data-theme") === "dark" ||
-      (!document.documentElement.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    themeBtn.textContent = dark ? t("themeLight") : t("themeDark");
+      (!document.documentElement.getAttribute("data-theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setText("#theme-btn", dark ? t("themeLight") : t("themeDark"));
   }
 
   function renderAll() {
