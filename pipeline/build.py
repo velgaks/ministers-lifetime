@@ -181,8 +181,12 @@ def main():
         if s["start"] and s["start"] > TODAY:
             continue
         if s["start"] and s["start"] < INDEPENDENCE:
-            if s["end"] is None and s["start"] < date(1990, 1, 1):
-                continue  # ancient record with no end: pre-independence
+            # A record starting before independence is clipped to independence
+            # day. There used to be an extra rule dropping such records outright
+            # when they had no end date and began before 1990; it matched nothing
+            # in the current data, because pre-independence officeholders are now
+            # removed explicitly by patches.json with a stated reason, which is
+            # auditable in a way a silent date cutoff is not.
             s["clipped_start"] = True
             s["start"] = INDEPENDENCE
         kept.append(s)
