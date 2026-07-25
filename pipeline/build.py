@@ -25,6 +25,15 @@ def parse_date(value):
     return date.fromisoformat(value[:10])
 
 
+def https(url):
+    """Wikidata and Commons hand back http:// image URLs. The published page is
+    served over HTTPS, where http subresources are mixed content and some
+    browsers refuse them, so normalise on the way out."""
+    if url and url.startswith("http://"):
+        return "https://" + url[len("http://"):]
+    return url
+
+
 def iso(d):
     return d.isoformat() if d else None
 
@@ -52,6 +61,9 @@ def main():
     raw = load_json("raw.json")
     positions_cfg = load_json("positions.json")
     eras = load_json("eras.json")
+    # Single source of truth for the analysis cutoff, shared with viz/app.js and
+    # analysis/tenure_trends.R so the three cannot drift apart.
+    WINDOW_END = date.fromisoformat(eras["analysis_window_end"])
     patches_path = ROOT / "data" / "patches.json"
     patches = (
         json.loads(patches_path.read_text(encoding="utf-8"))["patches"]
@@ -361,17 +373,22 @@ def main():
             )
 
     # ---- 7. stats ------------------------------------------------------------
+    # These must agree with analysis/tenure_trends.R. Both apply the same three
+    # rules: stop at the analysis window end rather than the collection date,
+    # exclude the intake seated on that date, and attribute an appointment to the
+    # president whose term began most recently before it.
     presidents = eras["presidents"]
 
     def era_of(d):
+        """The president in office on date d. Take the term that began most
+        recently before d - matching start-and-end and returning the first hit
+        credited anyone appointed exactly on a transition day (Avakov, 22 Feb
+        2014) to the OUTGOING president."""
+        hit = None
         for pr in presidents:
-            start = date.fromisoformat(pr["start"])
-            end = date.fromisoformat(pr["end"]) if pr["end"] else TODAY
-            if start <= d <= end:
-                return pr["id"]
-        return presidents[0]["id"]
-
-    minister_tenures = [t for t in tenures if t["lineage"] != "pm"]
+            if date.fromisoformat(pr["start"]) <= d:
+                hit = pr["id"]
+        return hit or presidents[0]["id"]
 
     def median(xs):
         xs = sorted(xs)
@@ -380,25 +397,61 @@ def main():
             return None
         return (xs[n // 2] if n % 2 == 1 else (xs[n // 2 - 1] + xs[n // 2]) / 2)
 
-    stats = {"by_president": [], "overall": {}}
-    for pr in presidents:
-        sel = [t for t in minister_tenures if era_of(t["start"]) == pr["id"]]
-        days = [t["days"] for t in sel]
-        stats["by_president"].append(
-            {
-                "id": pr["id"],
-                "n": len(sel),
-                "n_censored": sum(1 for t in sel if t["ongoing"]),
-                "median_days": median(days),
-                "mean_days": round(sum(days) / len(days), 1) if days else None,
-            }
+    # Recompute duration against the window end, not TODAY: a tenure still
+    # running at the cutoff is measured to the cutoff.
+    def windowed(t):
+        end_eff = min(t["end"] or WINDOW_END, WINDOW_END)
+        return {
+            **t,
+            "days": max(1, (end_eff - t["start"]).days),
+            "ongoing": not (t["end"] and t["end"] <= WINDOW_END),
+        }
+
+    # Drop tenures whose length is not yet knowable: still running at the cutoff
+    # AND begun within the final year, so they could not have reached a year even
+    # in principle. Same rule as analysis/tenure_trends.R's `resolved`, so the two
+    # report identical n.
+    minister_tenures = [
+        w
+        for w in (
+            windowed(t)
+            for t in tenures
+            if t["lineage"] != "pm" and t["start"] < WINDOW_END
         )
-    all_days = [t["days"] for t in minister_tenures]
-    stats["overall"] = {
-        "n": len(minister_tenures),
-        "n_censored": sum(1 for t in minister_tenures if t["ongoing"]),
-        "median_days": median(all_days),
-        "mean_days": round(sum(all_days) / len(all_days), 1) if all_days else None,
+        if not (w["ongoing"] and w["start"] > WINDOW_END - timedelta(days=365))
+    ]
+
+    def block(sel):
+        days = [t["days"] for t in sel]
+        return {
+            "n": len(sel),
+            "n_censored": sum(1 for t in sel if t["ongoing"]),
+            "median_days": median(days),
+            "mean_days": round(sum(days) / len(days), 1) if days else None,
+        }
+
+    stats = {
+        "_comment": (
+            "Ministers only (prime ministers excluded). Window ends "
+            f"{iso(WINDOW_END)}; tenures beginning on or after that date are "
+            "excluded and ones still running at it are measured to it. Matches "
+            "analysis/output/q1_by_president.csv."
+        ),
+        "window_end": iso(WINDOW_END),
+        "by_president": [
+            {"id": pr["id"], **block([t for t in minister_tenures
+                                     if era_of(t["start"]) == pr["id"]])}
+            for pr in presidents
+        ],
+        "by_period": [
+            {"id": p["id"], **block([
+                t for t in minister_tenures
+                if date.fromisoformat(p["start"]) <= t["start"]
+                and (p["end"] is None or t["start"] < date.fromisoformat(p["end"]))
+            ])}
+            for p in eras.get("periods", [])
+        ],
+        "overall": block(minister_tenures),
     }
 
     # ---- 8. outputs ------------------------------------------------------------
@@ -416,7 +469,7 @@ def main():
             "has_acting_part": t["has_acting_part"],
             "reappointments": t["reappointments"],
             "clipped_start": bool(t.get("clipped_start")),
-            "image": t["image"],
+            "image": https(t["image"]),
             "ukwiki": t["ukwiki"],
             "enwiki": t["enwiki"],
             "source": t["source"],
@@ -437,6 +490,9 @@ def main():
         "meta": {
             "built": iso(TODAY),
             "independence": iso(INDEPENDENCE),
+            # Consumers should prefer this over 'built' when computing
+            # statistics; see eras.analysis_window_end for why it exists.
+            "analysis_window_end": iso(WINDOW_END),
             "n_tenures": len(tenures),
             "n_flags": len(flags),
             "source": "Wikidata + manual patches (see data/patches.json)",

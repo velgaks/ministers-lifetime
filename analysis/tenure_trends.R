@@ -37,12 +37,23 @@ dir.create(fig_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 YEAR <- 365.25
-WINDOW_END <- as.Date("2026-07-16")   # Koretskyi cabinet seated; analysis stops here
-FULL_YEAR_BY <- WINDOW_END - 365      # appointed by this date => a full 12 months observed
 
 # ------------------------------------------------------------ load data -----
 raw <- fromJSON(file.path(repo_root, "data", "ministers.json"), simplifyVector = TRUE)
+
+# The cutoff lives in data/eras.json and is echoed into meta, so this script,
+# pipeline/build.py and viz/app.js cannot drift apart.
+WINDOW_END <- as.Date(raw$meta$analysis_window_end)
+FULL_YEAR_BY <- WINDOW_END - 365      # appointed by this date => a full 12 months observed
+
 presidents <- as_tibble(raw$eras$presidents) %>%
+  mutate(start = as.Date(start),
+         end = if_else(is.na(end), WINDOW_END, as.Date(end)))
+
+# Political periodisation by rupture rather than by presidential term. Periods
+# deliberately cut across presidencies, which is the point: they answer "did the
+# revolutions and the wars change anything" rather than "whose ministers lasted".
+periods <- as_tibble(raw$eras$periods) %>%
   mutate(start = as.Date(start),
          end = if_else(is.na(end), WINDOW_END, as.Date(end)))
 # distinct names from the person columns, so the join cannot collide
@@ -72,6 +83,10 @@ tenures <- as_tibble(raw$tenures) %>%
     president = map_chr(start, function(d) {
       idx <- which(presidents$start <= d)
       if (length(idx)) presidents$id[max(idx)] else NA_character_
+    }),
+    period = map_chr(start, function(d) {
+      idx <- which(periods$start <= d)
+      if (length(idx)) periods$id[max(idx)] else NA_character_
     })
   ) %>%
   filter(years > 0) %>%
@@ -233,6 +248,120 @@ p1 <- ggplot(q1, aes(share, row_lab, fill = bucket)) +
         plot.margin = margin(14, 26, 10, 14))
 save_fig("q1-by-president.png", p1, 8.6, 4.6)
 
+# ======================================================================== Q6
+# Did the revolutions and the wars change how long ministers last?
+# Same grammar as Q1 but binned by political period rather than by president.
+# Two measures per period, because they disagree and the disagreement is the
+# point. The median is dragged down in recent periods by right-truncation: a
+# period only 4.4 years old structurally cannot contain a 6-year tenure. The
+# "reached a year" share is immune to that, so it is the fair comparison.
+q6_stats <- resolved %>%
+  filter(!is.na(period)) %>%
+  group_by(period) %>%
+  summarise(n = n(), median_y = median(years), .groups = "drop") %>%
+  left_join(
+    observable %>% filter(!is.na(period)) %>%
+      group_by(period) %>%
+      summarise(reached_1y = mean(lasted_1y), n_obs = n(), .groups = "drop"),
+    by = "period"
+  )
+
+q6 <- resolved %>%
+  filter(!is.na(period)) %>%
+  mutate(bucket = cut(years, c(-Inf, 0.5, 1, 2, 4, Inf), labels = BUCKETS)) %>%
+  count(period, bucket) %>%
+  group_by(period) %>%
+  mutate(share = n / sum(n)) %>%
+  ungroup() %>%
+  left_join(q6_stats %>% select(period, total = n, median_y, reached_1y), by = "period") %>%
+  left_join(periods %>% select(period = id, name_en, start, end), by = "period") %>%
+  mutate(span = paste0(format(start, "%Y"), "-", format(end, "%Y")),
+         row_lab = paste0(name_en, "\n", span, "  (n=", total, ")"),
+         bucket = factor(bucket, levels = BUCKETS))
+
+lab_levels <- q6 %>% distinct(period, row_lab) %>%
+  arrange(match(period, periods$id)) %>% pull(row_lab)
+q6 <- q6 %>% mutate(row_lab = factor(row_lab, levels = rev(lab_levels)))
+
+cat("\n== Q6: how long ministers lasted, by political period ==\n\n")
+q6 %>% select(period, name_en, span, bucket, share) %>%
+  pivot_wider(names_from = bucket, values_from = share, values_fill = 0) %>%
+  mutate(across(where(is.numeric), ~percent(.x, accuracy = 1))) %>%
+  left_join(q6_stats %>% transmute(period, n, median = sprintf("%.2fy", median_y)),
+            by = "period") %>%
+  arrange(match(period, periods$id)) %>%      # chronological, not alphabetical
+  select(-period) %>%
+  as.data.frame() %>% print(row.names = FALSE, right = FALSE)
+
+# Is the full-scale-war drop about the war, or about the president? The whole
+# period sits inside Zelensky's term, so the two are confounded by construction.
+# Splitting HIS ministers at the invasion is the only way to separate them.
+INVASION <- as.Date("2022-02-24")
+zel <- resolved %>% filter(president == "zelensky")
+zel_pre <- zel %>% filter(start < INVASION)
+zel_post <- zel %>% filter(start >= INVASION)
+cat("\n-- war or president? Zelensky's own ministers, split at the invasion --\n")
+cat(sprintf("   before 24 Feb 2022: median %.2fy (n=%d, %d still serving)\n",
+            median(zel_pre$years), nrow(zel_pre), sum(zel_pre$still_in)))
+cat(sprintf("   after  24 Feb 2022: median %.2fy (n=%d, %d still serving)\n",
+            median(zel_post$years), nrow(zel_post), sum(zel_post$still_in)))
+cat(sprintf("   Donbas-war period as a whole, for comparison: %.2fy (n=%d)\n",
+            median(resolved$years[resolved$period == "donbas"]),
+            sum(resolved$period == "donbas")))
+
+# The post-invasion cohort is also the most recent, so any still-running tenure is
+# measured to the cutoff and understates itself. Two robustness checks: drop the
+# censored ones, and use the censoring-proof "reached a year" share.
+zpre_done <- zel_pre %>% filter(!still_in); zpost_done <- zel_post %>% filter(!still_in)
+cat(sprintf("   completed tenures only:  %.2fy (n=%d) vs %.2fy (n=%d)\n",
+            median(zpre_done$years), nrow(zpre_done),
+            median(zpost_done$years), nrow(zpost_done)))
+zpre_obs <- zel_pre %>% filter(start <= FULL_YEAR_BY)
+zpost_obs <- zel_post %>% filter(start <= FULL_YEAR_BY)
+cat(sprintf("   reached one year:        %s (n=%d) vs %s (n=%d)\n",
+            percent(mean(zpre_obs$years >= 1), accuracy = 1), nrow(zpre_obs),
+            percent(mean(zpost_obs$years >= 1), accuracy = 1), nrow(zpost_obs)))
+if (nrow(zel_post) < 20) {
+  cat("   (post-invasion n < 20 - too thin to read as a difference)\n")
+}
+write.csv(q6 %>% select(period, name_en, span, bucket, n, share, total, median_y, reached_1y),
+          file.path(out_dir, "q6_by_period.csv"), row.names = FALSE)
+
+p6 <- ggplot(q6, aes(share, row_lab, fill = bucket)) +
+  geom_col(width = 0.6, position = position_stack(reverse = TRUE)) +
+  geom_text(data = q6 %>% filter(share >= 0.08),
+            aes(label = percent(share, accuracy = 1)),
+            position = position_stack(vjust = 0.5, reverse = TRUE),
+            size = 2.9, colour = "white") +
+  geom_text(data = q6 %>% distinct(row_lab, median_y),
+            aes(x = 1.015, y = row_lab, label = sprintf("%.2f y", median_y)),
+            inherit.aes = FALSE, hjust = 0, size = 3.1, colour = INK, fontface = "bold") +
+  geom_text(data = q6 %>% distinct(row_lab, reached_1y),
+            aes(x = 1.115, y = row_lab, label = percent(reached_1y, accuracy = 1)),
+            inherit.aes = FALSE, hjust = 0, size = 3.1, colour = INK2) +
+  annotate("text", x = 1.015, y = length(lab_levels) + 0.72,
+           label = "median", hjust = 0, size = 2.9, colour = MUTED) +
+  annotate("text", x = 1.115, y = length(lab_levels) + 0.72,
+           label = "reached 1 y", hjust = 0, size = 2.9, colour = MUTED) +
+  scale_fill_manual(values = BUCKET_COLS, name = NULL) +
+  scale_x_continuous(labels = percent, expand = expansion(mult = c(0, 0.26))) +
+  guides(fill = guide_legend(nrow = 1)) +
+  coord_cartesian(clip = "off") +
+  labs(title = "No rupture clearly changed how long ministers last",
+       subtitle = "How long ministers stayed, by the political period in which they were appointed",
+       x = NULL, y = NULL,
+       caption = cap("Periods are bounded by the ruptures themselves - the Orange Revolution, Yanukovych's removal, the",
+                     "invasion - not by the inaugurations that followed. The war period's low median is not solid evidence",
+                     "of a war effect: it lies entirely inside Zelensky's presidency, and a period only four years old cannot",
+                     "structurally contain a six-year tenure. The truncation-proof measure on the right barely moves, and",
+                     "within Zelensky's own ministers 52% appointed before the invasion reached a year against 50% after.")) +
+  theme_min("x") +
+  theme(panel.grid.major.x = element_blank(),
+        legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
+        legend.key.size = unit(10, "pt"), legend.margin = margin(b = 4),
+        plot.margin = margin(14, 30, 10, 14))
+save_fig("q6-by-period.png", p6, 9.6, 4.6)
+
 # ======================================================================== Q2
 # Has tenure length fallen over the years?
 q2 <- observable %>%
@@ -313,9 +442,10 @@ era_band <- presidents %>%
 Y_TOP <- 8.0
 # Labels sit high, where the scatter is sparse, and each one leans away from the
 # nearest tall dot: Euromaidan to the left of its rule, the invasion to the right.
-events <- tibble(d = as.Date(c("2014-02-22", "2022-02-24")),
-                 lab = c("Euromaidan", "full-scale invasion"),
-                 hj = c(1.06, -0.06))
+# the three ruptures that bound the political periods
+events <- tibble(d = as.Date(c("2004-11-22", "2014-02-22", "2022-02-24")),
+                 lab = c("Orange Revolution", "Euromaidan", "full-scale invasion"),
+                 hj = c(1.06, 1.06, -0.06))
 
 cat("\n== Q2b: individual tenures, rolling median (+/-1.5 years) ==\n\n")
 cat(sprintf("  %d ministers plotted; rolling median spans %s to %s\n",
@@ -373,6 +503,99 @@ p2b <- ggplot(scatter, aes(start, years)) +
   theme_min("y") +
   theme(plot.margin = margin(14, 20, 10, 14))
 save_fig("q2b-scatter.png", p2b, 9.4, 5.4)
+
+# ======================================================================== Q7
+# The rolling trend on its own. It exists as the black line on the scatter, but
+# there 415 dots compete with it; alone it is legible, and it is the honest home
+# for the downward drift.
+# A wider window than the scatter's. The scatter uses +/-18 months so individual
+# shocks stay visible against the dots; here the job is the trend, and at that
+# width the rolling median is unusable for it - it swings between 0.50 and 3.37
+# years, month-to-month sd 0.19, and 2017-18 has too few appointments to compute
+# at all. +/-30 months closes every gap, halves the noise, and keeps the whole
+# series on a sane axis. Both charts label their window so they cannot be confused.
+HALF_WIN_TREND <- 913            # +/-2.5 years
+
+q7 <- tibble(d = grid) %>%
+  mutate(
+    med = map_dbl(d, function(dd) {
+      sel <- scatter$years[abs(as.numeric(scatter$start - dd)) <= HALF_WIN_TREND]
+      if (length(sel) >= 8) median(sel) else NA_real_
+    }),
+    avg = map_dbl(d, function(dd) {
+      sel <- scatter$years[abs(as.numeric(scatter$start - dd)) <= HALF_WIN_TREND]
+      if (length(sel) >= 8) mean(sel) else NA_real_
+    })
+  ) %>%
+  filter(!is.na(med)) %>%
+  mutate(mature = d <= WINDOW_END - HALF_WIN_TREND)
+
+q7_mature <- q7 %>% filter(mature)
+cat(sprintf("\n== Q7: rolling tenure, +/-%.1f-year window ==\n\n", HALF_WIN_TREND / YEAR))
+cat(sprintf("  median: %.2fy at %s -> %.2fy at %s (last mature point), %+.0f%%\n",
+            q7_mature$med[1], q7_mature$d[1],
+            tail(q7_mature$med, 1), tail(q7_mature$d, 1),
+            (tail(q7_mature$med, 1) / q7_mature$med[1] - 1) * 100))
+cat(sprintf("  mean:   %.2fy -> %.2fy, %+.0f%%\n",
+            q7_mature$avg[1], tail(q7_mature$avg, 1),
+            (tail(q7_mature$avg, 1) / q7_mature$avg[1] - 1) * 100))
+cat(sprintf("  mean-minus-median gap: %.2fy at the start, %.2fy at the end%s\n",
+            q7_mature$avg[1] - q7_mature$med[1],
+            tail(q7_mature$avg, 1) - tail(q7_mature$med, 1),
+            if (tail(q7_mature$avg, 1) - tail(q7_mature$med, 1) >
+                q7_mature$avg[1] - q7_mature$med[1])
+              " - widening, i.e. a longer right tail" else " - not widening"))
+write.csv(q7, file.path(out_dir, "q7_rolling.csv"), row.names = FALSE)
+
+ruptures <- tibble(d = as.Date(c("2004-11-22", "2014-02-22", "2022-02-24")),
+                   lab = c("Orange Revolution", "Euromaidan", "full-scale invasion"),
+                   hj = c(1.04, 1.04, -0.04))
+# Derived from the data, never hardcoded: a fixed ceiling silently clipped the
+# line off the top of an earlier draft of this chart.
+Y7 <- ceiling(max(q7$avg) * 2) / 2
+
+# Both statistics, because at this window width they agree - each falls roughly a
+# quarter and the gap between them holds near 0.39 y throughout. That constant gap
+# is itself the finding: the whole distribution shifted down modestly rather than
+# the shape changing. (At the scatter's narrower window the gap appeared to
+# collapse, which was an artifact of the instability, not a real change in skew.)
+q7_long <- q7 %>%
+  pivot_longer(c(med, avg), names_to = "stat", values_to = "v") %>%
+  mutate(stat = factor(stat, levels = c("med", "avg"),
+                       labels = c("median", "mean")))
+
+p7 <- ggplot(q7_long, aes(d, v, colour = stat)) +
+  geom_segment(data = ruptures, aes(x = d, xend = d, y = 0, yend = Y7),
+               inherit.aes = FALSE, linetype = "22", colour = MUTED, linewidth = 0.4) +
+  geom_text(data = ruptures, aes(x = d, y = Y7 * 0.96, label = lab, hjust = hj),
+            inherit.aes = FALSE, size = 2.7, colour = MUTED) +
+  # no explicit one-year rule: the 1.0 y major gridline already marks it, and a
+  # label there collided with the faded tail
+  # full series faint, then the matured part overdrawn solid
+  geom_line(linewidth = 1, alpha = 0.3) +
+  geom_line(data = q7_long %>% filter(mature), linewidth = 1) +
+  scale_colour_manual(values = c(median = BLUE, mean = ORANGE), name = NULL) +
+  scale_x_date(date_breaks = "5 years", date_labels = "%Y",
+               expand = expansion(mult = c(0.02, 0.03))) +
+  # axis from zero: the drift is real but modest and must not be exaggerated
+  scale_y_continuous(limits = c(0, Y7), breaks = seq(0, Y7, 0.5),
+                     labels = label_number(suffix = " y", accuracy = 0.1),
+                     expand = expansion(mult = c(0, 0.02))) +
+  labs(title = "The typical tenure has drifted down from about 15 months to about 11",
+       subtitle = paste("Rolling median and mean tenure of ministers appointed around each date,",
+                        "five-year window"),
+       x = NULL, y = NULL,
+       caption = cap("Read alongside q2-trend.png, which shows the share reaching a full year and does NOT trend.",
+                     "Both are correct: the median sits almost exactly at the one-year line, the most crowded part of the",
+                     "distribution, so a few points of movement in that share swing it hard. The median is knife-edged",
+                     "here; the share is robust. A five-year window is used rather than the scatter's three-year one",
+                     "because at that width the median is too unstable to read as a trend. The mean stays roughly 0.4",
+                     "years above the median throughout, so the shape of the distribution barely changed - it shifted.",
+                     "The final two and a half years are faded, where the newest appointments have not run their course.")) +
+  theme_min("y") +
+  theme(legend.position = "top", legend.text = element_text(size = 8.5, colour = INK2),
+        legend.key.width = unit(18, "pt"), legend.margin = margin(b = 2))
+save_fig("q7-rolling.png", p7, 8.6, 4.4)
 
 # ======================================================================== Q3
 # Who served longest?
@@ -527,8 +750,12 @@ save_fig("acting-share.png", p6, 7.2, 4)
 # ---------------------------------------- specification check (console only) -
 # Kept because it is the honest answer to "did tenures get shorter": the sign
 # depends on whether never-confirmed acting officials are counted.
-EARLY <- as.Date(c("1991-08-24", "1999-12-31"))
-LATE <- as.Date(c("2016-01-01", "2026-07-16"))
+# Windows are the political periods, not arbitrary decade slices: everything
+# before the Orange Revolution against everything after Euromaidan. Both sides
+# have ample n, and the endpoints are events rather than round numbers.
+EARLY <- c(periods$start[periods$id == "post-soviet"],
+           periods$end[periods$id == "post-soviet"])
+LATE <- c(periods$start[periods$id == "donbas"], WINDOW_END)
 win <- function(d, w) d %>% filter(start >= w[1], start <= w[2])
 spec_row <- function(label, dd) {
   e <- win(dd, EARLY); l <- win(dd, LATE)
@@ -542,15 +769,21 @@ specs <- bind_rows(
   spec_row("Core 11 ministries", tenures %>% filter(core)),
   spec_row("Core 11, confirmed ministers only", tenures %>% filter(core, !acting))
 )
-cat("\n== Median tenure, early vs late window, by definition ==\n\n")
+# Column headers derived from the windows, so they cannot go stale if the
+# periodisation changes.
+lab_early <- paste(format(EARLY, "%Y"), collapse = "-")
+lab_late <- paste(format(LATE, "%Y"), collapse = "-")
+cat(sprintf("\n== Median tenure, %s vs %s, by definition ==\n\n", lab_early, lab_late))
 specs %>% transmute(label,
-                    `1991-99` = sprintf("%.2fy (n=%d)", early, n_early),
-                    `2016-26` = sprintf("%.2fy (n=%d)", late, n_late),
+                    !!lab_early := sprintf("%.2fy (n=%d)", early, n_early),
+                    !!lab_late := sprintf("%.2fy (n=%d)", late, n_late),
                     change = sprintf("%+.0f%%", change_pct)) %>%
   as.data.frame() %>% print(row.names = FALSE, right = FALSE)
-cat("\nThe sign is not robust across definitions - which is why the charts above\n")
-cat("use 'share who lasted a year' instead of a median.\n")
-write.csv(specs, file.path(out_dir, "specifications.csv"), row.names = FALSE)
+cat("\nBefore the Orange Revolution against everything after Euromaidan. The sign is\n")
+cat("not robust across definitions - which is why the charts above use distributions\n")
+cat("and the 'reached a year' share instead of a median.\n")
+write.csv(specs %>% mutate(window_early = lab_early, window_late = lab_late),
+          file.path(out_dir, "specifications.csv"), row.names = FALSE)
 
 cat(sprintf("\nwrote %d figures to analysis/figures and %d tables to analysis/output\n\n",
             length(list.files(fig_dir, pattern = "\\.png$")),

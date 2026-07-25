@@ -1,5 +1,14 @@
 {
-  "_comment": "Presidential eras and cabinets of Ukraine since independence. Dates ISO. 'end': null = ongoing. Aug-Dec 1991 (no president yet) is folded into the Kravchuk era. Acting heads of state (Turchynov 2014) folded into the following era with a marker line in the viz.",
+  "_comment": "Presidential eras, cabinets, political periods and key events of Ukraine since independence. Dates ISO. 'end': null = ongoing. Aug-Dec 1991 (no president yet) is folded into the Kravchuk era. Acting heads of state (Turchynov 2014) folded into the following era with a marker line in the viz.",
+  "_analysis_window_end": "Statistics stop here rather than at the data-collection date: the Koretskyi cabinet was seated 2026-07-16, and its ministers had been in office about a week. Read by pipeline/build.py, viz/app.js and analysis/tenure_trends.R so the three cannot drift apart.",
+  "analysis_window_end": "2026-07-16",
+  "_periods": "Political periodisation by rupture, not by presidential term: the boundaries are the events themselves (Orange Revolution, Yanukovych's removal, the full-scale invasion), not the inaugurations that followed. Complements the presidential breakdown, which the periods deliberately cut across.",
+  "periods": [
+    { "id": "post-soviet", "name_en": "Post-Soviet transition", "name_uk": "Пострадянський перехід", "start": "1991-08-24", "end": "2004-11-22" },
+    { "id": "between", "name_en": "Between revolutions", "name_uk": "Між революціями", "start": "2004-11-22", "end": "2014-02-22" },
+    { "id": "donbas", "name_en": "Donbas war", "name_uk": "Війна на Донбасі", "start": "2014-02-22", "end": "2022-02-24" },
+    { "id": "fullscale", "name_en": "Full-scale war", "name_uk": "Повномасштабна війна", "start": "2022-02-24", "end": null }
+  ],
   "presidents": [
     { "id": "kravchuk", "name_en": "Kravchuk", "name_uk": "Кравчук", "start": "1991-08-24", "end": "1994-07-19" },
     { "id": "kuchma", "name_en": "Kuchma", "name_uk": "Кучма", "start": "1994-07-19", "end": "2005-01-23" },

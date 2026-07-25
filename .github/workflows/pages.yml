@@ -1,0 +1,68 @@
+# Publish viz/ to GitHub Pages.
+#
+# Pages can only serve a branch root or /docs, and the visualization lives in
+# viz/. Rather than duplicate it into docs/ - which would mean two copies of a
+# 322 KB generated file drifting apart - this uploads viz/ directly as the Pages
+# artifact, so viz/ stays the single source of truth.
+#
+# No build step: viz/data.js is committed, so the site is pure static files and
+# CI never needs Python or R.
+name: Deploy visualization to Pages
+
+on:
+  push:
+    branches: [main]
+    # Only redeploy when the published directory actually changes.
+    paths:
+      - 'viz/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; queue instead of cancelling, so a push cannot
+# leave the site half-updated.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sanity-check the published files
+        # Fail loudly rather than deploying a broken or insecure page: the entry
+        # point must exist, the dataset must be present, and no subresource may
+        # be plain http (Pages is HTTPS, so http images are mixed content and
+        # some browsers refuse them).
+        #
+        # w3.org URIs are excluded deliberately: "http://www.w3.org/2000/svg" is
+        # an XML namespace identifier, never fetched over the network, and the SVG
+        # spec requires that exact string - https there would break rendering.
+        run: |
+          set -euo pipefail
+          test -f viz/index.html
+          test -f viz/data.js
+          if grep -rn 'http://' viz/ --include='*.html' --include='*.js' --include='*.css' \
+               | grep -v 'http://www\.w3\.org/'; then
+            echo "::error::plain http:// subresource in viz/ - mixed content on HTTPS"
+            exit 1
+          fi
+          echo "viz/ looks deployable ($(du -sh viz | cut -f1))"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: viz
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

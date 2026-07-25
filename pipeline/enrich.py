@@ -103,8 +103,11 @@ def main():
                 snak = claims["P18"][0]["mainsnak"]
                 if snak.get("datavalue"):
                     fname = snak["datavalue"]["value"]
+                    # https, not http: these URLs are embedded in the published
+                    # page, which is served over HTTPS, and http would be
+                    # blocked as mixed content by some browsers.
                     image = (
-                        "http://commons.wikimedia.org/wiki/Special:FilePath/"
+                        "https://commons.wikimedia.org/wiki/Special:FilePath/"
                         + urllib.parse.quote(fname.replace(" ", "_"))
                     )
             sl = ent.get("sitelinks", {})

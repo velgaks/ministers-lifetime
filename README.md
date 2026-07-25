@@ -4,9 +4,104 @@ Tenure data for every head of ministry and prime minister of Ukraine since
 independence (24 Aug 1991), plus an interactive visualization that answers the
 question: **have ministers' tenures gotten shorter?**
 
-Open **`viz/index.html`** in a browser (works from `file://`, no server needed).
-Language toggle (УКР/EN), light/dark theme, hover any segment for details,
-click to open the person's Wikipedia article.
+### ▶ [**Explore the interactive timeline**](https://velgaks.github.io/ministers-lifetime/)
+
+Every minister as a segment on their ministry's row, 1991 to today. Language
+toggle (УКР/EN), light/dark theme, hover any segment for photo and exact dates,
+click to open the person's Wikipedia article. Also works offline — open
+`viz/index.html` directly, no server needed.
+
+## Key findings
+
+**452 tenures** across **28 ministry lineages** (the PM plus 27 ministries), built
+from Wikidata and verified against Ukrainian Wikipedia. The audit reports
+**zero open flags**. Statistics cover the 412 ministerial tenures whose length is
+knowable, and stop at **16 July 2026**, when the Koretskyi cabinet was seated —
+those ministers had been in office about a week. Every number below is
+reproducible with `Rscript analysis/tenure_trends.R`.
+
+**1. Ministers under Zelensky do last the shortest** — a median of **0.86 years**
+against 1.11 for Yanukovych, the next lowest, and 1.40 for Kuchma, the highest.
+It comes from the short tail: **24** of his ministers served under six months,
+more than in any other era.
+
+**2. But that is polarisation, not simple churn.** Zelensky also holds **5 of the
+20 longest tenures** ever recorded. Yushchenko and Yanukovych have *no* ministers
+who passed four years and none in the top twenty — their ministers clustered in
+the middle instead.
+
+**3. Tenure length has drifted down modestly — from about 15 months to 11 — but
+the share who last a year has not moved much.** 60% of post-Soviet-era appointees
+reached a year, against 50% of wartime ones. Both facts are real: the median sits
+almost exactly at the one-year mark, the most crowded part of the distribution, so
+a few points of movement in that share swing it hard. The median is knife-edged
+here; the share is robust.
+
+**4. No political rupture clearly changed how long ministers last.** Across the
+post-Soviet transition, the years between the revolutions, the Donbas war and the
+full-scale invasion, the truncation-proof measure moves only 60% → 59% → 51% →
+50%. The war period's low median is *not* good evidence of a war effect: it lies
+entirely inside Zelensky's presidency, and a period four years old cannot contain
+a six-year tenure. Splitting Zelensky's own ministers at the invasion settles it —
+**52%** appointed before reached a year, against **50%** after.
+
+**5. The ministry matters more than the era.** An education minister lasts a
+median **2.56 years**, an economy or regional-development minister **0.75** — a
+**3.4×** spread, against just 1.63× between the highest and lowest president. Only
+8 of 20 ministries have a median above one year. Economy has burned through 34.
+
+**6. War steadied the cabinet; revolution shook it.** 2014 saw **39** ministerial
+appointments, the all-time peak. 2022, the year of the invasion, saw **3** —
+thirteen times fewer, and tied for fourth-quietest since independence.
+
+**7. What changed most is *who* runs ministries.** The share of ministry spells
+held by an official never confirmed as minister went **1% → 3.5% → 13% → 27%**
+across the four decades. Half of all such spells ever recorded fall in the 2020s.
+
+**8. Treat any single headline number with suspicion.** Comparing everything
+before the Orange Revolution against everything after Euromaidan, the median
+tenure fell **35%** counting everyone — but only **2%** once never-confirmed
+acting officials are excluded, and −3% on the balanced 11-ministry panel. The
+entire apparent decline is attributable to acting officials, which is why the
+charts below use distributions and plain shares rather than one statistic.
+
+## The charts
+
+Every minister, when they were appointed against how long they lasted:
+
+![Ministers' time in office, one dot per appointment](analysis/figures/q2b-scatter.png)
+
+Finding 1 and 2 — the distribution of tenure lengths under each president:
+
+![How long each president's ministers stayed](analysis/figures/q1-by-president.png)
+
+Finding 4 — the same cut by political period instead, with the truncation-proof
+measure alongside the median:
+
+![How long ministers stayed, by political period](analysis/figures/q6-by-period.png)
+
+Finding 3 — the drift in the typical tenure, and the share reaching a year that
+does *not* trend. Read these two together:
+
+![Rolling median and mean tenure](analysis/figures/q7-rolling.png)
+
+![Share of ministers who stayed at least one year](analysis/figures/q2-trend.png)
+
+Finding 5 — which chair is hottest:
+
+![Median tenure by ministry](analysis/figures/q4-by-ministry.png)
+
+Finding 6 — when governments were shaken up:
+
+![Ministerial appointments per year](analysis/figures/q5-turnover.png)
+
+Finding 7 — the rise of unconfirmed acting officials:
+
+![Share of ministry spells led by an unconfirmed acting official](analysis/figures/acting-share.png)
+
+And the record-holders:
+
+![The twenty longest-serving ministers](analysis/figures/q3-longest.png)
 
 ## Data model
 
@@ -18,12 +113,49 @@ lineage; a short interruption (≤ 31 days) with no other officeholder in
 between is merged into a single tenure with the sub-spells preserved
 (`parts`). Acting ministers (в.о.) are included and flagged `acting`.
 
+### What counts as a new tenure when ministries are merged or split
+
+Ukrainian ministries are reorganized constantly, so this decides a lot of the
+numbers. The unit of continuity is **(lineage, person)** — not the ministry's
+name, and not the Wikidata position ID.
+
+- **Renamed, merged or reorganized within one lineage, and the minister carries
+  on → still one tenure.** Oleksandr Kubrakov became Minister of Infrastructure
+  on 2021‑05‑20; on 2022‑12‑01 that ministry absorbed Regional Development and he
+  became Vice PM — Minister for Restoration. He is **one tenure of 1085 days**
+  with `reappointments: 1` and both spells kept in `parts`. The reorganization
+  does not reset his clock. The same mechanism merges an acting spell with the
+  confirmation that follows it: Arsen Avakov is one 7.4-year tenure of 3 parts.
+- **The minister moves to a different lineage → separate tenures**, even when the
+  move happened *because* their own ministry was abolished. Svitlana Hrynchuk ran
+  Environment for 315 days; when it was folded into the Economy super-ministry in
+  July 2025 she moved to Energy, a further 125 days. Two records, not one of 440.
+- **When two lineages merge, the merged body sits on the legally-continuing
+  row**, and the absorbed row carries a gap that is explicitly acknowledged in
+  `data/report.md` rather than silently ignored (`regional` has one of 644 days).
+- **A split during a tenure breaks nothing.** Olha Buslavets was acting head of
+  the merged Energy + Environment ministry when it split in May 2020: one
+  218-day record.
+- Merging two spells also requires that **nobody else held the post in between**.
+  Yuriy Lutsenko's two stints at Internal Affairs stay separate because Vasyl
+  Tsushko served between them.
+
+The consequence is that the dataset does not inflate turnover by counting
+bureaucratic reorganizations as ministerial changes, while a genuine move to a
+different portfolio does count as a new job.
+
+**The caveat:** whether a successor ministry is "the same institution" is a
+curatorial judgment, not something the data decides. All 28 of those judgments
+are recorded with reasons in `data/positions.json` (`note_en` / `note_uk`). A
+different curator could reasonably split the transport lineage at December 2022
+and get different numbers.
+
 ## Files
 
 | Path | What it is |
 |---|---|
 | `data/positions.json` | curated lineages: names (uk/en), Wikidata position QIDs, existence windows |
-| `data/eras.json` | presidents, cabinets, key events (era coloring & stats grouping) |
+| `data/eras.json` | presidents, cabinets, political periods, key events, and the analysis window end — read by all three of `build.py`, `app.js` and the R script so they cannot disagree |
 | `data/raw.json` | raw Wikidata officeholder statements (generated by `fetch.py`) |
 | `data/patches.json` | all manual corrections & additions, each with source URL and reason |
 | `data/research/` | Wikipedia research source lists behind `patches.json` (see its README) |
@@ -34,10 +166,11 @@ between is merged into a single tenure with the sub-spells preserved
 | `pipeline/build.py` | clean → patch → merge → audit → stats → outputs |
 | `pipeline/enrich.py` | fill QIDs/photos for patch-added ministers |
 | `pipeline/reconcile.py` | diff external research lists against the dataset (used during curation) |
-| `analysis/tenure_trends.R` | the statistical analysis: specifications, survival curves, plots |
-| `analysis/figures/` | generated PNG figures |
-| `analysis/output/` | generated CSV result tables |
+| `analysis/tenure_trends.R` | the whole analysis: every chart and result table |
+| `analysis/figures/` | generated PNG figures (9) |
+| `analysis/output/` | generated CSV result tables (10) |
 | `viz/` | the interactive visualization (vanilla JS + SVG, no dependencies) |
+| `.github/workflows/pages.yml` | deploys `viz/` to GitHub Pages on push to `main` |
 
 Division of tools: Python for ingest (HTTP/SPARQL and JSON munging), **R for
 analysis and static plots**, vanilla JS for the interactive timeline.
@@ -62,42 +195,6 @@ Check `data/report.md` after a rebuild: `ack` entries in `patches.json`
 silence flags that were verified as legitimate (real vacancies, ministries
 that were temporarily abolished or merged).
 
-## Findings
-
-Run `Rscript analysis/tenure_trends.R` to reproduce all of this. The analysis
-window ends **16 July 2026**, when the Koretskyi cabinet was seated; that
-intake is excluded because those ministers had been in office about a week.
-
-**Yes, ministers under Zelensky last the shortest** — median 0.86 years against
-1.11 for the next lowest (Yanukovych). It is driven by the short tail: 24 of his
-ministers lasted under six months, more than in any other era. But it is not a
-collapse into pure churn, since 8% still served four years or more.
-→ `figures/q1-by-president.png`
-
-**There is no steady decline over the years.** The share of ministers who reach
-a full year in office goes 56% in the 1990s, 65% in the 2000s, 48% in the 2010s,
-58% in the 2020s. It oscillates with political shocks rather than trending down.
-→ `figures/q2-trend.png`
-
-**The ministry matters more than the era.** An education minister lasts a median
-2.6 years, an economy or regional-development minister 0.75 — a three-fold
-spread, wider than any gap between presidents. Economy has burned through 34
-ministers since 1991. → `figures/q4-by-ministry.png`
-
-**War steadied the cabinet; revolution shook it.** 2014 saw 39 ministerial
-appointments, the all-time peak. 2022, the year of the full-scale invasion, saw
-three. → `figures/q5-turnover.png`
-
-**What changed most is who runs ministries.** The share of ministry spells held
-by an official never confirmed as minister went 1% → 3.5% → 13% → 27% across the
-four decades. → `figures/acting-share.png`
-
-**A caution on any single headline number.** Comparing 1991–1999 against
-2016–2026, the median tenure fell 19% counting everyone, but *rose* 35% if
-never-confirmed acting officials are excluded. The sign flips with the
-definition, which is why the charts above use distributions and plain shares
-rather than one summary statistic. See `output/specifications.csv`.
-
 ## Provenance & method
 
 1. **Wikidata** — officeholder statements (P39 with start/end qualifiers) for
@@ -115,10 +212,15 @@ rather than one summary statistic. See `output/specifications.csv`.
 
 - **Tenures beginning before 24 Aug 1991 are clipped** at independence day
   (several first ministers served since the UkrSSR).
-- **Ongoing tenures are right-censored**: `ministers.json` counts their duration
-  up to the build date and marks them `ongoing`, and the viz draws the recent
-  trend line as provisional. That naive treatment understates them — see
-  Findings; the R analysis handles it with Kaplan-Meier instead.
+- **Recent tenures are right-truncated, and that biases medians downward.** A
+  minister still in office is measured only to the window end, so their record is
+  a lower bound; and a period four years old cannot contain a six-year tenure at
+  all. Three mitigations: tenures whose length is not yet knowable (still running
+  *and* begun within the final year) are excluded entirely; still-running ones are
+  marked `ongoing` and drawn hollow; and the headline comparisons use the
+  **share who reached one year**, which is immune to both problems. Where a median
+  and that share disagree — as they do for the war period — the share is the one
+  to trust.
 - **The acting-official share is an upper bound.** Recent Ukrainian politics is
   documented far more granularly than the 1990s, so a two-week acting deputy in
   1994 may never have been recorded while every 2025 one was. The rising trend
@@ -134,3 +236,9 @@ rather than one summary statistic. See `output/specifications.csv`.
 - Prime ministers are shown on the timeline but excluded from the tenure
   statistics.
 - Month-precision dates (a handful of 1990s records) use the 1st of the month.
+- **The political periods are not clean experiments.** The full-scale-war period
+  falls entirely inside one presidency, so "war" and "Zelensky" cannot be
+  separated from the period breakdown alone — which is why the analysis also
+  splits Zelensky's own ministers at the invasion date.
+- The interactive page's headline figure is one specification among several. The
+  Key findings above give the range; prefer them.

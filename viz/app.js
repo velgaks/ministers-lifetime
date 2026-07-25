@@ -208,7 +208,13 @@
   // then had been in office about a week; counting them drags every recent
   // figure down for no reason but when the data was collected. The timeline
   // above still shows them — only the numbers below exclude them.
-  const WINDOW_END = D("2026-07-16");
+  //
+  // Read from the data, not hardcoded: pipeline/build.py and
+  // analysis/tenure_trends.R take the same value from data/eras.json, and when
+  // this was a literal in three places the three disagreed.
+  const WINDOW_END = D(
+    DATA.meta.analysis_window_end || DATA.eras.analysis_window_end || DATA.meta.built
+  );
   const ministersOnly = () =>
     DATA.tenures
       .map((x, i) => ({ x, i }))
