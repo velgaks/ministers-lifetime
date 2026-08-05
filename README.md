@@ -85,7 +85,13 @@ charts below use distributions and plain shares rather than one statistic.
 
 ## The charts
 
-Every minister, when they were appointed against how long they lasted:
+Static figures, all produced by `analysis/tenure_trends.R`. Two of them have
+interactive twins on [sheet 2](https://velgaks.github.io/ministers-lifetime/runway.html),
+marked ▶ below, where each dot carries a photo, exact dates and a link to the
+person's Wikipedia article. The rest exist only here.
+
+Every minister, when they were appointed against how long they lasted
+— ▶ [explore it live](https://velgaks.github.io/ministers-lifetime/runway.html):
 
 ![Ministers' time in office, one dot per appointment](analysis/figures/q2b-scatter.png)
 
@@ -120,7 +126,8 @@ Finding 7 — the rise of unconfirmed acting officials:
 Finding 8 — the same dots as the first chart, asked a different question: not how
 long a minister lasted, but how that compares to how long their government had
 left. Read against the 45° line — on it they left when the government did, below
-it they went early, above it they kept the job through a change of government:
+it they went early, above it they kept the job through a change of government
+— ▶ [explore it live](https://velgaks.github.io/ministers-lifetime/runway.html):
 
 ![Tenure against the life left in the appointing government](analysis/figures/q8-runway.png)
 
