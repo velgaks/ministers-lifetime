@@ -1,21 +1,28 @@
-/* Ukraine ministers tenure — interactive timeline + trend analysis.
-   Vanilla JS + SVG. Data comes from data.js (window.MINISTERS_DATA). */
+/* Ukraine ministers tenure, sheet 1 — the timeline, the headline answer, the
+   records and the full table. The charts that plot individual ministers against
+   one another live on sheet 2 (runway.html).
+   Vanilla JS + SVG. Data comes from data.js (window.MINISTERS_DATA), shared
+   helpers and every analytical rule from common.js (window.ML). */
 (function () {
   "use strict";
   const DATA = window.MINISTERS_DATA;
-  if (!DATA) return;
+  if (!DATA || !window.ML) return;
 
-  const SVGNS = "http://www.w3.org/2000/svg";
-  const MS_DAY = 86400000;
-  const YEAR_DAYS = 365.25;
+  const {
+    YEAR_DAYS, el, svgel, D, median,
+    fmtDate, fmtDur, fmtYears1, nameOf, lnameOf,
+    eraOf, resolvedPool,
+    makeTooltip, attachTenureEvents: bindTenure, crossHighlight,
+  } = window.ML;
   const T0 = new Date(DATA.meta.independence + "T00:00:00");
   const T1 = new Date(DATA.meta.built + "T00:00:00");
 
   const state = {
-    lang: "uk",
+    lang: ML.loadLang(),
     colorBy: "era", // 'era' | 'duration'
-    exclActing: false,
+    exclActing: ML.loadExclActing(),
   };
+  ML.applyStoredTheme();
 
   // ---------------------------------------------------------------- i18n
   const STR = {
@@ -33,16 +40,12 @@
       timelineTitle: "Хто керував кожним міністерством, 1991 — сьогодні",
       timelineCap:
         "Кожен прямокутник — одна безперервна каденція. Напівпрозорі — виконувачі обов'язків (в.о.). Клік відкриває Вікіпедію.",
-      trendTitle: "Чи стали каденції коротшими?",
-      trendCap:
-        "Кожна точка — один міністр (без прем'єрів): дата призначення проти тривалості каденції. Лінія — ковзна медіана (вікно ±1,5 року). Кільця — міністри, які були на посаді на момент зміни уряду (це нижня межа). Підписані найдовші каденції. Останній відрізок лінії напівпрозорий — найновіші призначення ще «не дозріли».",
-      eraTitle: "Медіанна каденція за президентами",
-      eraCap: "Міністри, призначені за каденції відповідного президента.",
       recordsTitle: "Рекорди",
       recLongest: "Найдовша каденція",
       recShortest: "Найкоротша каденція",
       recReturns: "Найбільше повернень у те саме крісло",
       recMulti: "Найбільше різних портфелів",
+      toRunway: "Аналіз каденцій →",
       tableSummary: "Показати всі дані таблицею",
       tableNote: (cut, built) =>
         `Стовпець «Днів» — тривалість до ${cut}, як і в усій статистиці. Зірочка* — міністри, призначені після цієї дати: для них показано днів на ${built}.`,
@@ -51,7 +54,6 @@
       ongoing: "триває",
       acting: "в.о.",
       actingLegend: "в.о. (виконувач обов'язків)",
-      censoredLegend: "чинний міністр (каденція триває)",
       durLegend: ["до 6 міс.", "6–12 міс.", "1–2 роки", "2–4 роки", "4+ роки"],
       tooltipCabinet: "Уряд",
       tooltipEra: "Президент",
@@ -95,16 +97,12 @@
       timelineTitle: "Who ran each ministry, 1991 — today",
       timelineCap:
         "Each rectangle is one continuous tenure. Translucent = acting ministers. Click opens Wikipedia.",
-      trendTitle: "Are tenures getting shorter?",
-      trendCap:
-        "Each dot is one minister (PMs excluded): appointment date vs tenure length. The line is a rolling median (±1.5-year window). Rings are ministers still in office when the government changed, so a lower bound. The longest tenures are named. The line's final stretch is translucent — the newest appointments have not 'matured' yet.",
-      eraTitle: "Median tenure by president",
-      eraCap: "Ministers appointed during each president's time in office.",
       recordsTitle: "Records",
       recLongest: "Longest tenure",
       recShortest: "Shortest tenure",
       recReturns: "Most returns to the same chair",
       recMulti: "Most different portfolios",
+      toRunway: "Tenure analysis →",
       tableSummary: "Show all data as a table",
       tableNote: (cut, built) =>
         `The Days column measures to ${cut}, as every statistic here does. An asterisk* marks ministers appointed after that date, showing days as of ${built} instead.`,
@@ -113,7 +111,6 @@
       ongoing: "ongoing",
       acting: "acting",
       actingLegend: "acting minister",
-      censoredLegend: "current minister (tenure ongoing)",
       durLegend: ["under 6 months", "6–12 months", "1–2 years", "2–4 years", "4+ years"],
       tooltipCabinet: "Cabinet",
       tooltipEra: "President",
@@ -145,58 +142,6 @@
 
   // ------------------------------------------------------------- helpers
   const $ = (s) => document.querySelector(s);
-  function el(tag, attrs, text) {
-    const n = document.createElement(tag);
-    if (attrs) for (const k in attrs) n.setAttribute(k, attrs[k]);
-    if (text != null) n.textContent = text;
-    return n;
-  }
-  function svgel(tag, attrs) {
-    const n = document.createElementNS(SVGNS, tag);
-    if (attrs) for (const k in attrs) n.setAttribute(k, attrs[k]);
-    return n;
-  }
-  const D = (s) => new Date(s + "T00:00:00");
-
-  function fmtDate(s) {
-    if (!s) return t("ongoing");
-    const d = D(s);
-    return d.toLocaleDateString(state.lang === "uk" ? "uk-UA" : "en-GB", {
-      day: "numeric", month: "short", year: "numeric",
-    });
-  }
-
-  function fmtDur(days) {
-    const y = Math.floor(days / YEAR_DAYS);
-    const m = Math.round((days - y * YEAR_DAYS) / 30.44);
-    const uk = state.lang === "uk";
-    const yTxt = uk
-      ? (y % 10 === 1 && y % 100 !== 11 ? "рік" : y % 10 >= 2 && y % 10 <= 4 && (y % 100 < 12 || y % 100 > 14) ? "роки" : "років")
-      : (y === 1 ? "yr" : "yrs");
-    const mTxt = uk ? "міс." : "mo";
-    if (days < 45) return `${days} ${uk ? "дн." : "d"}`;
-    if (y === 0) return `${Math.max(1, m)} ${mTxt}`;
-    if (m === 0 || m === 12) return `${m === 12 ? y + 1 : y} ${yTxt}`;
-    return `${y} ${yTxt} ${m} ${mTxt}`;
-  }
-  const fmtYears1 = (days) =>
-    (days / YEAR_DAYS).toLocaleString(state.lang === "uk" ? "uk-UA" : "en-US", {
-      minimumFractionDigits: 1, maximumFractionDigits: 1,
-    }) + (state.lang === "uk" ? " р." : " y");
-
-  // The era in force is the one whose start is the latest not after the date.
-  // Matching start-and-end and returning the first hit put anyone appointed
-  // exactly on a transition date into the OUTGOING era — which showed Avakov,
-  // appointed 22 Feb 2014, in Yanukovych's colour.
-  function latestBefore(list, dateStr) {
-    const d = D(dateStr);
-    let hit = null;
-    for (const item of list) if (D(item.start) <= d) hit = item;
-    return hit;
-  }
-  const eraOf = (dateStr) =>
-    latestBefore(DATA.eras.presidents, dateStr) || DATA.eras.presidents[0];
-  const cabinetOf = (dateStr) => latestBefore(DATA.eras.cabinets, dateStr);
   // Same boundaries as the distribution charts in analysis/tenure_trends.R, so
   // one quantity is binned one way across the whole project.
   function durBucket(days) {
@@ -208,164 +153,17 @@
       ? "f-" + eraOf(ten.start).id
       : "f-dur-" + durBucket(ten.days);
   }
-  // Statistics stop at the July 2026 government change. Ministers appointed
-  // then had been in office about a week; counting them drags every recent
-  // figure down for no reason but when the data was collected. The timeline
-  // above still shows them — only the numbers below exclude them.
-  //
-  // Read from the data, not hardcoded: pipeline/build.py and
-  // analysis/tenure_trends.R take the same value from data/eras.json, and when
-  // this was a literal in three places the three disagreed.
-  const WINDOW_END = D(
-    DATA.meta.analysis_window_end || DATA.eras.analysis_window_end || DATA.meta.built
-  );
-  // Tenures whose length is not yet knowable are dropped: still running at the
-  // cutoff AND begun within the final year, so they could not have reached a year
-  // even in principle. Same rule as `resolved` in analysis/tenure_trends.R and
-  // the stats block in pipeline/build.py, so all three report the same n.
-  const UNKNOWABLE_BEFORE = new Date(WINDOW_END.getTime() - 365 * MS_DAY);
-  const ministersOnly = () =>
-    DATA.tenures
-      .map((x, i) => ({ x, i }))
-      .filter(({ x }) => x.lineage !== "pm" && D(x.start) < WINDOW_END)
-      .map(({ x, i }) => {
-        // <= not <: a tenure ending exactly on the cutoff has ended. Many did -
-        // the cutoff IS a government change - and treating them as ongoing
-        // wrongly dropped them as "unknowable" below.
-        const ended = x.end && D(x.end) <= WINDOW_END;
-        const endEff = ended ? D(x.end) : WINDOW_END;
-        return {
-          ...x,
-          _idx: i,
-          days: Math.max(1, Math.round((endEff - D(x.start)) / MS_DAY)),
-          ongoing: !ended,
-        };
-      })
-      .filter((x) => !(x.ongoing && D(x.start) > UNKNOWABLE_BEFORE));
+  // The observation window, the pool rules, the formatters and the era lookups
+  // all live in common.js so this sheet and the runway sheet cannot disagree.
+  // `resolvedPool` drops tenures whose length is not yet knowable - still running
+  // at the cutoff and begun within the final year. The timeline below still draws
+  // every tenure; only the numbers use this pool.
   const statsPool = () =>
-    ministersOnly().filter((x) => !(state.exclActing && x.acting));
-  function median(xs) {
-    if (!xs.length) return null;
-    const s = [...xs].sort((a, b) => a - b);
-    return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
-  }
-  function wikiUrl(ten) {
-    const preferUk = state.lang === "uk";
-    const title = preferUk ? ten.ukwiki || ten.enwiki : ten.enwiki || ten.ukwiki;
-    if (!title) return null;
-    const host =
-      title === ten.ukwiki && ten.ukwiki
-        ? "uk.wikipedia.org"
-        : "en.wikipedia.org";
-    return `https://${host}/wiki/${encodeURIComponent(title.replace(/ /g, "_"))}`;
-  }
-  const nameOf = (x) =>
-    state.lang === "uk" ? x.name_uk || x.name_en : x.name_en || x.name_uk;
-  // Source names mix "Surname Given Patronymic" with "Given Surname". For chart
-  // labels drop the patronymic so the annotations stay short and comparable;
-  // tooltips and the table keep the full form.
-  const shortName = (x) => {
-    const parts = nameOf(x).split(/\s+/);
-    if (parts.length < 3) return nameOf(x);
-    const kept = parts.filter(
-      (p) => !/(ович|евич|євич|йович|івна|ївна|овна|евна)$/i.test(p)
-    );
-    return (kept.length >= 2 ? kept : parts).slice(0, 2).join(" ");
-  };
-  const lnameOf = (l) => (state.lang === "uk" ? l.name_uk : l.name_en);
+    resolvedPool().filter((x) => !(state.exclActing && x.acting));
 
   // ------------------------------------------------------------- tooltip
-  const tooltip = $("#tooltip");
-  function showTooltip(ten, ev) {
-    tooltip.textContent = "";
-    const head = el("div", { class: "tt-head" });
-    if (ten.image) {
-      const img = el("img", { src: ten.image + (ten.image.includes("?") ? "&" : "?") + "width=88", alt: "" });
-      img.onerror = () => img.remove();
-      head.appendChild(img);
-    }
-    const hh = el("div");
-    hh.appendChild(el("div", { class: "tt-name" }, nameOf(ten)));
-    const lin = DATA.lineages.find((l) => l.id === ten.lineage);
-    hh.appendChild(el("div", { class: "tt-role" }, lnameOf(lin)));
-    head.appendChild(hh);
-    tooltip.appendChild(head);
-
-    const dates = el("div", { class: "tt-line" });
-    const strong = el("strong", null, fmtDur(ten.days));
-    dates.appendChild(strong);
-    dates.appendChild(
-      document.createTextNode(` · ${fmtDate(ten.start)} — ${ten.end ? fmtDate(ten.end) : t("ongoing")}`)
-    );
-    tooltip.appendChild(dates);
-
-    const cab = cabinetOf(ten.start);
-    const era = eraOf(ten.start);
-    const info = el("div", { class: "tt-line" });
-    info.textContent =
-      `${t("tooltipEra")}: ${state.lang === "uk" ? era.name_uk : era.name_en}` +
-      (cab ? ` · ${t("tooltipCabinet")}: ${state.lang === "uk" ? cab.name_uk : cab.name_en}` : "");
-    tooltip.appendChild(info);
-
-    const badges = el("div");
-    if (ten.acting || ten.has_acting_part) badges.appendChild(el("span", { class: "badge" }, t("acting")));
-    if (ten.ongoing) badges.appendChild(el("span", { class: "badge" }, t("ongoing")));
-    if (ten.reappointments > 0)
-      badges.appendChild(el("span", { class: "badge" }, `${ten.reappointments} ${t("tooltipSpells")}`));
-    if (badges.childNodes.length) tooltip.appendChild(badges);
-
-    if (wikiUrl(ten)) tooltip.appendChild(el("div", { class: "tt-hint" }, t("tooltipHint")));
-    tooltip.style.display = "block";
-    moveTooltip(ev);
-  }
-  function moveTooltip(ev) {
-    const pad = 14;
-    const r = tooltip.getBoundingClientRect();
-    let x = ev.clientX + pad, y = ev.clientY + pad;
-    if (x + r.width > window.innerWidth - 8) x = ev.clientX - r.width - pad;
-    if (y + r.height > window.innerHeight - 8) y = ev.clientY - r.height - pad;
-    tooltip.style.left = x + "px";
-    tooltip.style.top = y + "px";
-  }
-  function hideTooltip() {
-    tooltip.style.display = "none";
-  }
-
-  function attachTenureEvents(node, ten, idx) {
-    node.addEventListener("pointerenter", (ev) => {
-      showTooltip(ten, ev);
-      crossHighlight(idx, true);
-    });
-    node.addEventListener("pointermove", moveTooltip);
-    node.addEventListener("pointerleave", () => {
-      hideTooltip();
-      crossHighlight(idx, false);
-    });
-    node.addEventListener("focus", (ev) => {
-      const r = node.getBoundingClientRect();
-      showTooltip(ten, { clientX: r.left + r.width / 2, clientY: r.top });
-      crossHighlight(idx, true);
-    });
-    node.addEventListener("blur", () => {
-      hideTooltip();
-      crossHighlight(idx, false);
-    });
-    const url = wikiUrl(ten);
-    if (url) {
-      node.addEventListener("click", () => window.open(url, "_blank", "noopener"));
-      node.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          window.open(url, "_blank", "noopener");
-        }
-      });
-    }
-  }
-  function crossHighlight(idx, on) {
-    document.querySelectorAll(`[data-idx="${idx}"]`).forEach((n) => {
-      n.classList.toggle("hl", on);
-    });
-  }
+  const tip = makeTooltip();
+  const attachTenureEvents = (node, ten, idx) => bindTenure(tip, node, ten, idx);
 
   // ------------------------------------------------------------ timeline
   function renderTimeline() {
@@ -543,149 +341,6 @@
       t("heroNote")(fmtDate(windowEndStr).replace(/\.$/, ""))));
   }
 
-  // ------------------------------------------------------------- trend
-  function renderTrend() {
-    const host = $("#scatter-host");
-    host.textContent = "";
-    const pool = statsPool();
-    const width = Math.max(620, host.clientWidth - 4);
-    const height = 360;
-    const mL = 44, mR = 16, mT = 14, mB = 30;
-    const plotW = width - mL - mR, plotH = height - mT - mB;
-    const maxY = Math.max(...pool.map((p) => p.days)) / YEAR_DAYS;
-    const yMax = Math.ceil(maxY);
-    const x = (dateStr) => mL + ((D(dateStr) - T0) / (WINDOW_END - T0)) * plotW;
-    const y = (days) => mT + plotH - (days / YEAR_DAYS / yMax) * plotH;
-
-    const svg = svgel("svg", { width, height, viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": t("trendTitle") });
-
-    for (let yy = 0; yy <= yMax; yy += 2) {
-      const py = y(yy * YEAR_DAYS);
-      svg.appendChild(svgel("line", { x1: mL, x2: mL + plotW, y1: py, y2: py, class: "gridline" }));
-      const lbl = svgel("text", { x: mL - 8, y: py + 4, class: "axis", "text-anchor": "end" });
-      lbl.textContent = yy;
-      svg.appendChild(lbl);
-    }
-    for (let yr = 1995; yr <= WINDOW_END.getFullYear(); yr += 5) {
-      const px = x(`${yr}-01-01`);
-      const lbl = svgel("text", { x: px, y: height - 8, class: "axis", "text-anchor": "middle" });
-      lbl.textContent = yr;
-      svg.appendChild(lbl);
-    }
-
-    // Rolling median on a monthly grid. A +-18-month window (3 years total)
-    // tracks the shocks; anything wider flattens 2005 and 2014 into the trend.
-    const pts = pool
-      .map((p) => ({ t: D(p.start).getTime(), days: p.days }))
-      .sort((a, b) => a.t - b.t);
-    const win = 18 * 30.44 * MS_DAY;
-    const pathPts = [];
-    for (let d = new Date(1993, 0, 1); d <= WINDOW_END; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) {
-      const tt = d.getTime();
-      const sel = pts.filter((p) => Math.abs(p.t - tt) <= win).map((p) => p.days);
-      pathPts.push(sel.length ? { t: tt, v: median(sel) } : null);
-    }
-    // The last stretch is drawn faint: with an 18-month half-window the newest
-    // appointments have not had time to reveal how long they will last.
-    const matured = WINDOW_END.getTime() - 1.5 * YEAR_DAYS * MS_DAY;
-    let dSolid = "", dProv = "", pen = false, penP = false;
-    pathPts.forEach((p) => {
-      if (!p) { pen = penP = false; return; }
-      const px = mL + ((p.t - T0.getTime()) / (WINDOW_END - T0)) * plotW;
-      const py = y(p.v);
-      if (p.t <= matured) {
-        dSolid += (pen ? "L" : "M") + px.toFixed(1) + " " + py.toFixed(1);
-        pen = true; penP = false;
-      } else {
-        if (!penP && dSolid) dProv += "M" + px.toFixed(1) + " " + py.toFixed(1);
-        else dProv += (penP ? "L" : "M") + px.toFixed(1) + " " + py.toFixed(1);
-        penP = true;
-      }
-    });
-    if (dSolid) svg.appendChild(svgel("path", { d: dSolid, class: "trend" }));
-    if (dProv) svg.appendChild(svgel("path", { d: dProv, class: "trend provisional" }));
-
-    // dots
-    pool.forEach((ten) => {
-      const idx = ten._idx;
-      const cls = state.colorBy === "era" ? "f-" + eraOf(ten.start).id : "f-dur-" + durBucket(ten.days);
-      const c = svgel("circle", {
-        cx: x(ten.start).toFixed(1), cy: y(ten.days).toFixed(1), r: 4.5,
-        class: `dot ${cls}` + (ten.ongoing ? ` censored c-${eraOf(ten.start).id}` : ""),
-        "data-idx": idx, tabindex: 0,
-      });
-      attachTenureEvents(c, ten, idx);
-      svg.appendChild(c);
-    });
-
-    // Name the standout long tenures. Placement is greedy: try right of the dot,
-    // then left, then above/below, and skip the label entirely rather than let
-    // it collide with one already placed or run outside the plot.
-    const placed = [];
-    [...pool].sort((a, b) => b.days - a.days).slice(0, 7).forEach((ten) => {
-      const cx = x(ten.start), cy = y(ten.days);
-      const text = shortName(ten);
-      const w = text.length * 5.3, h = 11;
-      const options = [
-        [cx + 9, cy + 3.5, "start"],
-        [cx - 9, cy + 3.5, "end"],
-        [cx, cy - 9, "middle"],
-        [cx, cy + 15, "middle"],
-      ];
-      for (const [tx, ty, anchor] of options) {
-        const x0 = anchor === "start" ? tx : anchor === "end" ? tx - w : tx - w / 2;
-        const box = { x0, x1: x0 + w, y0: ty - h, y1: ty + 3 };
-        const clashes = placed.some(
-          (p) => !(box.x1 < p.x0 || box.x0 > p.x1 || box.y1 < p.y0 || box.y0 > p.y1)
-        );
-        if (clashes || box.x0 < mL || box.x1 > mL + plotW || box.y0 < mT) continue;
-        placed.push(box);
-        const lbl = svgel("text", { x: tx.toFixed(1), y: ty.toFixed(1), class: "outlier", "text-anchor": anchor });
-        lbl.textContent = text;
-        svg.appendChild(lbl);
-        break;
-      }
-    });
-
-    host.appendChild(svg);
-
-    const legend = $("#trend-legend");
-    legend.textContent = "";
-    const cens = el("span", { class: "item" });
-    cens.appendChild(el("span", { class: "sw ring" }));
-    cens.appendChild(document.createTextNode(t("censoredLegend")));
-    legend.appendChild(cens);
-  }
-
-  // ------------------------------------------------------- era medians
-  function renderEraBars() {
-    const host = $("#erabars-host");
-    host.textContent = "";
-    const pool = statsPool();
-    const rows = DATA.eras.presidents.map((p) => {
-      const sel = pool.filter((x) => eraOf(x.start).id === p.id);
-      return { p, med: median(sel.map((x) => x.days)), n: sel.length };
-    });
-    const width = Math.max(300, host.clientWidth - 4);
-    const rowH = 34, mL = 110, mR = 64;
-    const height = rows.length * rowH + 8;
-    const maxV = Math.max(...rows.map((r) => r.med || 0));
-    const svg = svgel("svg", { width, height, viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": t("eraTitle") });
-    rows.forEach((r, i) => {
-      const y0 = 4 + i * rowH;
-      const lbl = svgel("text", { x: mL - 10, y: y0 + 16, class: "rowlabel", "text-anchor": "end" });
-      lbl.textContent = state.lang === "uk" ? r.p.name_uk : r.p.name_en;
-      svg.appendChild(lbl);
-      if (r.med == null) return;
-      const w = Math.max(3, ((width - mL - mR) * r.med) / maxV);
-      svg.appendChild(svgel("rect", { x: mL, y: y0 + 2, width: w, height: 20, rx: 4, class: "f-" + r.p.id }));
-      const val = svgel("text", { x: mL + w + 8, y: y0 + 17, class: "rowlabel" });
-      val.textContent = fmtYears1(r.med) + `  (n=${r.n})`;
-      svg.appendChild(val);
-    });
-    host.appendChild(svg);
-  }
-
   // ---------------------------------------------------------- records
   function renderRecords() {
     const host = $("#records");
@@ -782,6 +437,9 @@
     else console.warn("viz: missing element", sel);
   }
   function renderChrome() {
+    // The shared formatters in common.js read their language from ML, so this has
+    // to happen before anything is formatted.
+    ML.setLang(state.lang);
     // Ukrainian dates format as "25 лип. 2026 р." — already ending in a period —
     // so trim it and let the sentence supply its own punctuation in both languages.
     const noDot = (s) => s.replace(/\.$/, "");
@@ -799,12 +457,12 @@
     if (eraBtn) eraBtn.setAttribute("aria-pressed", state.colorBy === "era");
     if (durBtn) durBtn.setAttribute("aria-pressed", state.colorBy === "duration");
     setText("#acting-label-txt", t("exclActing"));
+    // The checkbox reflects the stored preference, which the other sheet can have
+    // changed since this page last rendered.
+    const chk = $("#acting-chk");
+    if (chk) chk.checked = state.exclActing;
     setText("#timeline-title", t("timelineTitle"));
     setText("#timeline-cap", t("timelineCap"));
-    setText("#trend-title", t("trendTitle"));
-    setText("#trend-cap", t("trendCap"));
-    setText("#era-title", t("eraTitle"));
-    setText("#era-cap", t("eraCap"));
     setText("#table-summary", t("tableSummary"));
     setText("#table-note", t("tableNote")(cut, built));
     setText("#footer-note", t("footer")(cut, built));
@@ -814,38 +472,35 @@
       repoLink.textContent = t("repo");
       repoLink.href = "https://github.com/velgaks/ministers-lifetime";
     }
-    const dark = document.documentElement.getAttribute("data-theme") === "dark" ||
-      (!document.documentElement.getAttribute("data-theme") &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setText("#theme-btn", dark ? t("themeLight") : t("themeDark"));
+    setText("#sheet-link", t("toRunway"));
+    setText("#theme-btn", ML.isDark() ? t("themeLight") : t("themeDark"));
   }
 
   function renderAll() {
     renderChrome();
     renderHero();
     renderTimeline();
-    renderTrend();
-    renderEraBars();
     renderRecords();
     renderTable();
   }
 
   // ------------------------------------------------------------ events
+  // Language and theme persist, so following the link to the other sheet does not
+  // silently reset either one.
   $("#lang-btn").addEventListener("click", () => {
     state.lang = state.lang === "uk" ? "en" : "uk";
+    ML.saveLang(state.lang);
     renderAll();
   });
   $("#theme-btn").addEventListener("click", () => {
-    const root = document.documentElement;
-    const cur = root.getAttribute("data-theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+    ML.toggleTheme();
     renderAll();
   });
   $("#color-era").addEventListener("click", () => { state.colorBy = "era"; renderAll(); });
   $("#color-dur").addEventListener("click", () => { state.colorBy = "duration"; renderAll(); });
   $("#acting-chk").addEventListener("change", (e) => {
     state.exclActing = e.target.checked;
+    ML.saveExclActing(state.exclActing);
     renderAll();
   });
   let resizeTimer = null;

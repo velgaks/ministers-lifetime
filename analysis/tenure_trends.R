@@ -56,6 +56,14 @@ presidents <- as_tibble(raw$eras$presidents) %>%
 periods <- as_tibble(raw$eras$periods) %>%
   mutate(start = as.Date(start),
          end = if_else(is.na(end), WINDOW_END, as.Date(end)))
+
+# Cabinets, for Q8. A "cabinet" here is a government named after its prime
+# minister, so its end date is a change of PM - which is what a minister has to
+# survive to keep the job. Sorted because the Q8 lookup walks the list in order.
+cabinets <- as_tibble(raw$eras$cabinets) %>%
+  mutate(start = as.Date(start),
+         end = if_else(is.na(end), WINDOW_END, as.Date(end))) %>%
+  arrange(start)
 # distinct names from the person columns, so the join cannot collide
 lineage_names <- as_tibble(raw$lineages) %>%
   select(lineage = id, ministry_en = name_en, ministry_uk = name_uk)
@@ -495,6 +503,137 @@ p2b <- ggplot(scatter, aes(start, years)) +
   theme_min("y") +
   theme(plot.margin = margin(14, 20, 10, 14))
 save_fig("q2b-scatter.png", p2b, 9.4, 5.4)
+
+# ======================================================================== Q8
+# Not how long a minister lasted, but how that compares to how long the
+# government that appointed them had left. Q2b already plots start date against
+# duration; this asks a different question of the same dots, and the answer is
+# read off a single reference line rather than off either axis.
+#
+# runway  = appointment to the end of the cabinet in office at appointment
+# served  = the tenure itself
+#
+# On the 45-degree line the minister left when the government did. Below it they
+# went early - fired, resigned, or replaced mid-term. Above it they kept the job
+# through a change of prime minister.
+#
+# Deliberately no tolerance band on the canvas: "within a fortnight of" is a
+# threshold, and the shares move with it (see the sensitivity print below), so
+# the chart shows position and only the console commits to a cut.
+
+# The cabinet in office at the appointment. Two ministers were appointed during
+# an inter-cabinet gap - there were five such gaps, 11 to 30 days, all at the
+# biggest reshuffles - and for them the runway runs to the end of the next
+# cabinet formed, the government they actually served under. Avakov is one of
+# them: appointed on the day of the 2014 handover, he serves under Yatsenyuk.
+runway_end <- function(d) {
+  hit <- which(cabinets$start <= d & d < cabinets$end)
+  if (length(hit)) return(cabinets$end[hit[1]])
+  nxt <- which(cabinets$start > d)
+  if (length(nxt)) cabinets$end[nxt[1]] else NA_real_
+}
+
+q8 <- tenures %>%
+  mutate(runway = as.numeric(map_dbl(start, runway_end) - as.numeric(start)) / YEAR,
+         over = years - runway,
+         status = if_else(acting, "acting official, never confirmed", "confirmed minister"))
+stopifnot(nrow(q8) == 415, all(q8$runway > 0), !any(is.na(q8$runway)))
+
+# The +/-14d band exists only for these console numbers.
+BAND <- 14 / YEAR
+side <- function(o, band = BAND) {
+  if_else(abs(o) <= band, "left with it", if_else(o < 0, "left early", "outlived it"))
+}
+q8 <- q8 %>% mutate(place = side(over))
+
+cat("\n== Q8: tenure against the life the appointing government had left ==\n\n")
+q8 %>% count(place) %>% mutate(share = percent(n / sum(n), accuracy = 1)) %>%
+  as.data.frame() %>% print(row.names = FALSE, right = FALSE)
+cat("\n  by status:\n")
+q8 %>% count(status, place) %>% group_by(status) %>%
+  mutate(share = percent(n / sum(n), accuracy = 1)) %>% ungroup() %>%
+  select(-n) %>% pivot_wider(names_from = place, values_from = share) %>%
+  as.data.frame() %>% print(row.names = FALSE, right = FALSE)
+cat("\n  the 'left with it' share depends on the tolerance, so it stays off the chart:\n")
+for (tol in c(7, 14, 30)) {
+  s <- table(side(q8$over, tol / YEAR))
+  cat(sprintf("    +/-%2dd  early %2.0f%%  with %2.0f%%  outlived %2.0f%%\n", tol,
+              100 * s[["left early"]] / nrow(q8), 100 * s[["left with it"]] / nrow(q8),
+              100 * s[["outlived it"]] / nrow(q8)))
+}
+cat("\n  longest survivors past their government:\n")
+q8 %>% slice_max(over, n = 6) %>%
+  transmute(name_en, ministry_en, runway_y = round(runway, 2),
+            served_y = round(years, 2), extra_days = round(over * YEAR)) %>%
+  as.data.frame() %>% print(row.names = FALSE, right = FALSE)
+write.csv(q8 %>% select(name_en, ministry_en, lineage, start, end, president,
+                        acting, still_in, runway, years, over, place),
+          file.path(out_dir, "q8_runway.csv"), row.names = FALSE)
+
+STATUS_COLS <- c("confirmed minister" = BLUE,
+                 "acting official, never confirmed" = ORANGE)
+# One ceiling for both axes. A square panel needs equal ranges, not just equal
+# units: the alternative that fits the data tighter - x to 5.5, y to 7.5 - is a
+# portrait panel, and clipping y to 5.5 to square it up would throw the six
+# longest-serving ministers off the top, who are the whole point of the labels.
+# The cost is an empty strip beyond x = 5.4, since no government ever had more
+# than that left to run. The region labels live there and earn it back.
+Q8_MAX <- ceiling(max(q8$years, q8$runway) * 2) / 2
+
+p8 <- ggplot(q8, aes(runway, years, colour = status)) +
+  # the line the whole chart is read against
+  geom_abline(slope = 1, intercept = 0, colour = MUTED, linewidth = 0.4) +
+  annotate("text", x = Q8_MAX * 0.84, y = Q8_MAX * 0.84, angle = 45,
+           label = "left when their government did", vjust = -0.6,
+           size = 2.7, colour = MUTED) +
+  # Region labels sit inside their regions, out in the unpopulated right-hand
+  # strip. The top left corner is where Avakov and Fedorov are, and a label
+  # there landed on top of their names.
+  annotate("text", x = Q8_MAX * 0.46, y = Q8_MAX * 0.985, hjust = 0,
+           label = "outlived their government", size = 2.9, colour = INK2) +
+  annotate("text", x = Q8_MAX * 0.99, y = Q8_MAX * 0.21, hjust = 1,
+           label = "left before it fell", size = 2.9, colour = INK2) +
+  # ministers still in office are hollow: their length is a lower bound. The
+  # legend takes its key from the filled layer only - drawn from this one it
+  # showed a hollow ring against "confirmed minister", which the caption defines
+  # as meaning something else entirely.
+  geom_point(data = q8 %>% filter(!still_in), size = 1.7, alpha = 0.6) +
+  geom_point(data = q8 %>% filter(still_in), shape = 21, fill = "white",
+             stroke = 1.1, size = 2.1, show.legend = FALSE) +
+  ggrepel::geom_text_repel(
+    data = q8 %>% slice_max(over, n = 8),
+    aes(label = name_en), size = 2.9, colour = INK, seed = 1,
+    min.segment.length = 0.2, segment.colour = MUTED, segment.size = 0.3,
+    box.padding = 0.45, point.padding = 0.3, max.overlaps = Inf,
+    # keep the names clear of the region label along the top
+    ylim = c(NA, Q8_MAX * 0.93), show.legend = FALSE) +
+  scale_colour_manual(values = STATUS_COLS, name = NULL,
+                      breaks = names(STATUS_COLS)) +
+  guides(colour = guide_legend(override.aes = list(shape = 16, size = 2.6,
+                                                  alpha = 1))) +
+  scale_x_continuous(labels = label_number(suffix = " y"),
+                     breaks = seq(0, 8, 1), expand = expansion(mult = 0.02)) +
+  scale_y_continuous(labels = label_number(suffix = " y"),
+                     breaks = seq(0, 8, 1), expand = expansion(mult = 0.02)) +
+  # equal units on both axes, or the reference line would not be the 45 degrees
+  # the reader measures against
+  coord_fixed(xlim = c(0, Q8_MAX), ylim = c(0, Q8_MAX), clip = "off") +
+  labs(title = "An acting minister almost never survives a change of government",
+       subtitle = paste("Each dot is one minister, prime ministers excluded: the life left",
+                        "in the government\nthat appointed them, against how long they",
+                        "actually stayed."),
+       x = "life left in the appointing government", y = "time served",
+       caption = cap("Hollow marks were still in office at the cutoff, so their length is a lower bound.")) +
+  theme_min("y") +
+  theme(panel.grid.major.x = element_line(colour = GRID, linewidth = 0.4),
+        legend.position = "top", legend.justification = "left",
+        legend.direction = "horizontal", legend.margin = margin(b = 2),
+        axis.title = element_text(size = 8.5, colour = MUTED))
+# coord_fixed centres the panel in whatever space is left, and the title is laid
+# out against the panel rather than the canvas - so an over-wide figure indents
+# the title and clips it. Height is width plus the chrome above and below, which
+# leaves the square panel filling the full width.
+save_fig("q8-runway.png", p8, 7.4, 9.0)
 
 # ======================================================================== Q7
 # The rolling trend on its own. It exists as the black line on the scatter, but

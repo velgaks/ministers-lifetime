@@ -10,6 +10,7 @@
 <div class="wrap">
   <header>
     <div class="topbar">
+      <a id="sheet-link" class="ctl sheetlink" href="runway.html"></a>
       <button id="lang-btn" class="ctl" type="button">EN</button>
       <button id="theme-btn" class="ctl" type="button">Темна</button>
     </div>
@@ -35,22 +36,6 @@
     <div id="tl-legend" class="legend"></div>
   </section>
 
-  <section class="card">
-    <div class="twocol">
-      <div>
-        <h2 id="trend-title"></h2>
-        <p id="trend-cap" class="cap"></p>
-        <div id="scatter-host"></div>
-        <div id="trend-legend" class="legend"></div>
-      </div>
-      <div>
-        <h2 id="era-title"></h2>
-        <p id="era-cap" class="cap"></p>
-        <div id="erabars-host"></div>
-      </div>
-    </div>
-  </section>
-
   <section id="records" class="tiles"></section>
 
   <details class="tablewrap">
@@ -67,6 +52,7 @@
 </div>
 <div id="tooltip" role="tooltip"></div>
 <script src="data.js"></script>
+<script src="common.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
