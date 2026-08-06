@@ -243,7 +243,7 @@
     const XMAX = Math.ceil(Math.max(...rows.map((r) => r.runway)) / YEAR_DAYS * 2) / 2;
     const YMAX = Math.ceil(Math.max(...rows.map((r) => r.days)) / YEAR_DAYS * 2) / 2;
     const availW = Math.max(260, (host.clientWidth || 900) - mL - mR - 2);
-    const per = Math.min(availW / XMAX, 690 / YMAX);   // pixels per year
+    const per = Math.min(availW / XMAX, 780 / YMAX);   // pixels per year
     const W = XMAX * per, H = YMAX * per;
     // rounded only on the attributes; the margins absorb the sub-pixel remainder,
     // and W/H stay exact so the two axes keep identical pixels-per-year
