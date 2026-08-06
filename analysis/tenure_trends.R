@@ -536,7 +536,8 @@ runway_end <- function(d) {
 q8 <- tenures %>%
   mutate(runway = as.numeric(map_dbl(start, runway_end) - as.numeric(start)) / YEAR,
          over = years - runway,
-         status = if_else(acting, "acting official, never confirmed", "confirmed minister"))
+         status = if_else(acting, "acting official, never confirmed", "confirmed minister"),
+         pres_lab = factor(president, levels = presidents$id, labels = presidents$name_en))
 stopifnot(nrow(q8) == 415, all(q8$runway > 0), !any(is.na(q8$runway)))
 
 # The +/-14d band exists only for these console numbers.
@@ -561,6 +562,31 @@ for (tol in c(7, 14, 30)) {
               100 * s[["left early"]] / nrow(q8), 100 * s[["left with it"]] / nrow(q8),
               100 * s[["outlived it"]] / nrow(q8)))
 }
+# The chart colours by president, so the obvious question is whether the eras
+# differ - and they appear to, dramatically. They mostly do not. Outliving a
+# government is mechanically harder the longer that government lasts, and the
+# runway roughly doubled: this is a fact about cabinet longevity, not about
+# ministers, which is why the chart's title stays on the overall split.
+cat("\n  by president - and why this is NOT the chart's headline:\n")
+q8 %>%
+  group_by(pres_lab) %>%
+  summarise(n = n(),
+            outlived = percent(mean(over > BAND), accuracy = 1),
+            med_runway = sprintf("%.2fy", median(runway)), .groups = "drop") %>%
+  as.data.frame() %>% print(row.names = FALSE, right = FALSE)
+cat(sprintf(
+  "  Outliving falls from %s under Kuchma to %s under Zelensky, but the median\n",
+  percent(mean(q8$over[q8$president == "kuchma"] > BAND), accuracy = 1),
+  percent(mean(q8$over[q8$president == "zelensky"] > BAND), accuracy = 1)))
+cat(sprintf("  runway more than doubles over the same span (%.2fy to %.2fy; Shmyhal's\n",
+            median(q8$runway[q8$president == "kuchma"]),
+            median(q8$runway[q8$president == "zelensky"])))
+cat(sprintf("  cabinet alone ran %.1f years). Runway and outliving correlate at r = %.2f,\n",
+            max(as.numeric(cabinets$end - cabinets$start)) / YEAR,
+            cor(q8$runway, as.numeric(q8$over > BAND))))
+cat("  so the era pattern is largely governments lasting longer, not ministers\n")
+cat("  becoming weaker. Only 12 tenures are censored by the window here.\n")
+
 cat("\n  longest survivors past their government:\n")
 q8 %>% slice_max(over, n = 6) %>%
   transmute(name_en, ministry_en, runway_y = round(runway, 2),
@@ -570,34 +596,35 @@ write.csv(q8 %>% select(name_en, ministry_en, lineage, start, end, president,
                         acting, still_in, runway, years, over, place),
           file.path(out_dir, "q8_runway.csv"), row.names = FALSE)
 
-STATUS_COLS <- c("confirmed minister" = BLUE,
-                 "acting official, never confirmed" = ORANGE)
-# One ceiling for both axes. A square panel needs equal ranges, not just equal
-# units: the alternative that fits the data tighter - x to 5.5, y to 7.5 - is a
-# portrait panel, and clipping y to 5.5 to square it up would throw the six
-# longest-serving ministers off the top, who are the whole point of the labels.
-# The cost is an empty strip beyond x = 5.4, since no government ever had more
-# than that left to run. The region labels live there and earn it back.
-Q8_MAX <- ceiling(max(q8$years, q8$runway) * 2) / 2
+# Each axis stops where its own data does. A shared ceiling squared the panel up
+# but ran x out to 7.5 years when no government ever had more than 5.4 left,
+# spending a quarter of the canvas on nothing. What must not change is the units:
+# coord_fixed keeps one year the same length on both axes, which is the only
+# thing making the reference line the 45 degrees the reader measures against.
+# Equal units with unequal ranges is a portrait panel, and that is the honest
+# shape here - squaring it by clipping y would throw the six longest-serving
+# ministers off the top, who are the whole point of the labels.
+Q8_X <- ceiling(max(q8$runway) * 2) / 2
+Q8_Y <- ceiling(max(q8$years) * 2) / 2
 
-p8 <- ggplot(q8, aes(runway, years, colour = status)) +
+p8 <- ggplot(q8, aes(runway, years, colour = pres_lab)) +
   # the line the whole chart is read against
   geom_abline(slope = 1, intercept = 0, colour = MUTED, linewidth = 0.4) +
-  annotate("text", x = Q8_MAX * 0.84, y = Q8_MAX * 0.84, angle = 45,
+  annotate("text", x = Q8_X * 0.86, y = Q8_X * 0.86, angle = 45,
            label = "left when their government did", vjust = -0.6,
            size = 2.7, colour = MUTED) +
-  # Region labels sit inside their regions, out in the unpopulated right-hand
-  # strip. The top left corner is where Avakov and Fedorov are, and a label
-  # there landed on top of their names.
-  annotate("text", x = Q8_MAX * 0.46, y = Q8_MAX * 0.985, hjust = 0,
+  # Region labels sit in the two sparse pockets: along the top, clear of every
+  # dot but Avakov's, and the gap below the line on the right. The top left
+  # corner is where Avakov and Fedorov are, and a label there landed on top of
+  # their names.
+  annotate("text", x = Q8_X * 0.40, y = Q8_Y * 0.985, hjust = 0,
            label = "outlived their government", size = 2.9, colour = INK2) +
-  annotate("text", x = Q8_MAX * 0.99, y = Q8_MAX * 0.21, hjust = 1,
+  annotate("text", x = Q8_X * 0.99, y = Q8_Y * 0.30, hjust = 1,
            label = "left before it fell", size = 2.9, colour = INK2) +
   # ministers still in office are hollow: their length is a lower bound. The
   # legend takes its key from the filled layer only - drawn from this one it
-  # showed a hollow ring against "confirmed minister", which the caption defines
-  # as meaning something else entirely.
-  geom_point(data = q8 %>% filter(!still_in), size = 1.7, alpha = 0.6) +
+  # showed a hollow ring, which the caption defines as meaning something else.
+  geom_point(data = q8 %>% filter(!still_in), size = 1.7, alpha = 0.65) +
   geom_point(data = q8 %>% filter(still_in), shape = 21, fill = "white",
              stroke = 1.1, size = 2.1, show.legend = FALSE) +
   ggrepel::geom_text_repel(
@@ -606,34 +633,38 @@ p8 <- ggplot(q8, aes(runway, years, colour = status)) +
     min.segment.length = 0.2, segment.colour = MUTED, segment.size = 0.3,
     box.padding = 0.45, point.padding = 0.3, max.overlaps = Inf,
     # keep the names clear of the region label along the top
-    ylim = c(NA, Q8_MAX * 0.93), show.legend = FALSE) +
-  scale_colour_manual(values = STATUS_COLS, name = NULL,
-                      breaks = names(STATUS_COLS)) +
-  guides(colour = guide_legend(override.aes = list(shape = 16, size = 2.6,
-                                                  alpha = 1))) +
+    ylim = c(NA, Q8_Y * 0.93), show.legend = FALSE) +
+  scale_colour_manual(values = ERA_COLS_LAB, name = NULL,
+                      breaks = presidents$name_en) +
+  guides(colour = guide_legend(nrow = 1, override.aes =
+                                 list(shape = 16, size = 2.6, alpha = 1))) +
   scale_x_continuous(labels = label_number(suffix = " y"),
                      breaks = seq(0, 8, 1), expand = expansion(mult = 0.02)) +
   scale_y_continuous(labels = label_number(suffix = " y"),
                      breaks = seq(0, 8, 1), expand = expansion(mult = 0.02)) +
-  # equal units on both axes, or the reference line would not be the 45 degrees
-  # the reader measures against
-  coord_fixed(xlim = c(0, Q8_MAX), ylim = c(0, Q8_MAX), clip = "off") +
-  labs(title = "An acting minister almost never survives a change of government",
+  coord_fixed(xlim = c(0, Q8_X), ylim = c(0, Q8_Y), clip = "off") +
+  # The title is the overall split, NOT the fall in the colour series. Ministers
+  # under Kuchma outlived their government 64% of the time against 14% under
+  # Zelensky, which looks like a finding and is mostly an artifact: the median
+  # runway doubled over the same span (0.98y to 2.32y, Shmyhal's cabinet alone
+  # ran 5.4 years), and outliving a government is mechanically harder the longer
+  # it lasts. See the console note below.
+  labs(title = "More than a third of ministers outlive their government",
        subtitle = paste("Each dot is one minister, prime ministers excluded: the life left",
-                        "in the government\nthat appointed them, against how long they",
-                        "actually stayed."),
-       x = "life left in the appointing government", y = "time served",
+                        "in the government that\nappointed them, against how long they",
+                        "actually stayed. Colour is the appointing president."),
+       x = "the government's remaining life when it appointed them", y = "time served",
        caption = cap("Hollow marks were still in office at the cutoff, so their length is a lower bound.")) +
   theme_min("y") +
   theme(panel.grid.major.x = element_line(colour = GRID, linewidth = 0.4),
         legend.position = "top", legend.justification = "left",
         legend.direction = "horizontal", legend.margin = margin(b = 2),
+        legend.text = element_text(size = 8.5),
         axis.title = element_text(size = 8.5, colour = MUTED))
-# coord_fixed centres the panel in whatever space is left, and the title is laid
-# out against the panel rather than the canvas - so an over-wide figure indents
-# the title and clips it. Height is width plus the chrome above and below, which
-# leaves the square panel filling the full width.
-save_fig("q8-runway.png", p8, 7.4, 9.0)
+# coord_fixed centres the panel in whatever space is left and the title is laid
+# out against the panel, not the canvas, so an over-wide figure indents the title
+# and clips it. These dimensions leave the portrait panel filling the width.
+save_fig("q8-runway.png", p8, 6.6, 9.2)
 
 # ======================================================================== Q7
 # The rolling trend on its own. It exists as the black line on the scatter, but

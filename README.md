@@ -123,13 +123,23 @@ Finding 7 — the rise of unconfirmed acting officials:
 
 ![Share of ministry spells led by an unconfirmed acting official](analysis/figures/acting-share.png)
 
-Finding 8 — the same dots as the first chart, asked a different question: not how
-long a minister lasted, but how that compares to how long their government had
-left. Read against the 45° line — on it they left when the government did, below
-it they went early, above it they kept the job through a change of government
+The same dots as the first chart, asked a different question: not how long a
+minister lasted, but how that compares to how long their government had left.
+Read against the 45° line — on it they left when the government did, below it
+they went early, above it they kept the job through a change of government
 — ▶ [explore it live](https://velgaks.github.io/ministers-lifetime/runway.html):
 
 ![Tenure against the life left in the appointing government](analysis/figures/q8-runway.png)
+
+Colour is the appointing president, and it invites a conclusion the data does not
+support. Ministers outlived their government 64% of the time under Kuchma against
+12% under Zelensky — but the median runway more than doubled over the same span
+(0.98 → 2.32 years; Shmyhal's cabinet alone ran 5.4 years), and outliving a
+government is mechanically harder the longer it lasts. Runway and outliving
+correlate at **r = −0.36**. That is a fact about cabinet longevity, not about
+ministers, which is why it is neither the chart's title nor a finding above. The
+acting-official split behind finding 8 is in the console output and in
+`analysis/output/q8_runway.csv`.
 
 And the record-holders:
 
