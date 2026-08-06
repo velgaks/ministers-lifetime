@@ -242,8 +242,11 @@
     // for this data.
     const XMAX = Math.ceil(Math.max(...rows.map((r) => r.runway)) / YEAR_DAYS * 2) / 2;
     const YMAX = Math.ceil(Math.max(...rows.map((r) => r.days)) / YEAR_DAYS * 2) / 2;
-    const availW = Math.max(260, (host.clientWidth || 900) - mL - mR - 2);
-    const per = Math.min(availW / XMAX, 780 / YMAX);   // pixels per year
+    // Width drives everything: the scatter fills its card. Height follows from
+    // it, because one year has to be the same number of pixels on both axes or
+    // the 45° line stops meaning what it says - so a full-width chart of data
+    // that is 5.5 years wide and 7.5 tall is a tall chart. That is the trade.
+    const per = Math.max(260, (host.clientWidth || 900) - mL - mR - 2) / XMAX;
     const W = XMAX * per, H = YMAX * per;
     // rounded only on the attributes; the margins absorb the sub-pixel remainder,
     // and W/H stay exact so the two axes keep identical pixels-per-year

@@ -198,20 +198,6 @@ rect.placebar { rx: 2; }
 .placebar.p-0 { fill: var(--place-0); }
 .placebar.p-1 { fill: var(--place-1); }
 .placebar.p-2 { fill: var(--place-2); }
-/* Runway card. Equal pixels-per-year on both axes is non-negotiable - it is what
-   makes the 45° line mean anything - and the data is 5.5 years wide by 7.5 tall,
-   so the panel can only ever be portrait. Filling a 1146px card would need a
-   1563px-tall chart, so instead the scatter keeps a sane size and the space
-   beside it carries the things that read against it: the three region shares and
-   the acting split of the very same dots. */
-.runwaycols { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 1fr); gap: 26px; }
-.runwayside { display: flex; flex-direction: column; gap: 22px; }
-.statcol { display: grid; gap: 12px; }
-.statcol .tile { padding: 12px 16px; }
-.statcol .tile .val { font-size: 26px; }
-.card h3 { font-size: 15px; margin: 0 0 2px; }
-@media (max-width: 1000px) { .runwaycols { grid-template-columns: minmax(0, 1fr); } }
-
 /* a control that governs only the card it sits in, rather than the whole page */
 .cardctl { display: flex; justify-content: flex-end; margin: -4px 0 10px; }
 .cardctl label.chk {
