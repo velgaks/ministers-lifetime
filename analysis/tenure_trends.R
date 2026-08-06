@@ -19,6 +19,7 @@ suppressPackageStartupMessages({
   library(ggplot2)
   library(scales)
   library(ggrepel)
+  library(patchwork)
 })
 
 # ---------------------------------------------------------------- paths -----
@@ -607,7 +608,7 @@ write.csv(q8 %>% select(name_en, ministry_en, lineage, start, end, president,
 Q8_X <- ceiling(max(q8$runway) * 2) / 2
 Q8_Y <- ceiling(max(q8$years) * 2) / 2
 
-p8 <- ggplot(q8, aes(runway, years, colour = pres_lab)) +
+p8_top <- ggplot(q8, aes(runway, years, colour = pres_lab)) +
   # the line the whole chart is read against
   geom_abline(slope = 1, intercept = 0, colour = MUTED, linewidth = 0.4) +
   annotate("text", x = Q8_X * 0.86, y = Q8_X * 0.86, angle = 45,
@@ -636,35 +637,102 @@ p8 <- ggplot(q8, aes(runway, years, colour = pres_lab)) +
     ylim = c(NA, Q8_Y * 0.93), show.legend = FALSE) +
   scale_colour_manual(values = ERA_COLS_LAB, name = NULL,
                       breaks = presidents$name_en) +
-  guides(colour = guide_legend(nrow = 1, override.aes =
+  # Two rows. Six presidential names on one line run wider than the panel and
+  # the last one gets cut off the canvas.
+  guides(colour = guide_legend(nrow = 2, override.aes =
                                  list(shape = 16, size = 2.6, alpha = 1))) +
   scale_x_continuous(labels = label_number(suffix = " y"),
                      breaks = seq(0, 8, 1), expand = expansion(mult = 0.02)) +
   scale_y_continuous(labels = label_number(suffix = " y"),
                      breaks = seq(0, 8, 1), expand = expansion(mult = 0.02)) +
   coord_fixed(xlim = c(0, Q8_X), ylim = c(0, Q8_Y), clip = "off") +
-  # The title is the overall split, NOT the fall in the colour series. Ministers
-  # under Kuchma outlived their government 64% of the time against 14% under
-  # Zelensky, which looks like a finding and is mostly an artifact: the median
-  # runway doubled over the same span (0.98y to 2.32y, Shmyhal's cabinet alone
-  # ran 5.4 years), and outliving a government is mechanically harder the longer
-  # it lasts. See the console note below.
-  labs(title = "More than a third of ministers outlive their government",
-       subtitle = paste("Each dot is one minister, prime ministers excluded: the life left",
-                        "in the government that\nappointed them, against how long they",
-                        "actually stayed. Colour is the appointing president."),
-       x = "the government's remaining life when it appointed them", y = "time served",
-       caption = cap("Hollow marks were still in office at the cutoff, so their length is a lower bound.")) +
+  labs(x = "the government's remaining life when it appointed them", y = "time served") +
   theme_min("y") +
   theme(panel.grid.major.x = element_line(colour = GRID, linewidth = 0.4),
         legend.position = "top", legend.justification = "left",
         legend.direction = "horizontal", legend.margin = margin(b = 2),
         legend.text = element_text(size = 8.5),
         axis.title = element_text(size = 8.5, colour = MUTED))
-# coord_fixed centres the panel in whatever space is left and the title is laid
-# out against the panel, not the canvas, so an over-wide figure indents the title
-# and clips it. These dimensions leave the portrait panel filling the width.
-save_fig("q8-runway.png", p8, 6.6, 9.2)
+
+# The acting split, as its own panel under the scatter. The scatter cannot carry
+# it any more now that colour is the president, and it is the finding the console
+# reports most sharply: one never-confirmed official in 42 outlived the government
+# that appointed him. Same three outcomes, one hue light to dark, because they are
+# an ordered sequence rather than unrelated categories.
+PLACE_LVL <- c("left early", "left with it", "outlived it")
+PLACE_COLS <- setNames(c("#86b6ef", "#2a78d6", "#0d366b"), PLACE_LVL)
+q8_bars <- q8 %>%
+  mutate(place = factor(place, levels = PLACE_LVL)) %>%
+  count(status, place, .drop = FALSE) %>%
+  group_by(status) %>%
+  mutate(total = sum(n), share = n / total,
+         xmax = cumsum(share), xmid = xmax - share / 2) %>%
+  ungroup() %>%
+  filter(n > 0) %>%
+  # Short labels on purpose. patchwork aligns the two panels' axes, so this
+  # plot's y-axis gutter is also the scatter's: "never confirmed (n=42)" was
+  # 1.3in wide and took that much off the scatter's width, which then shrank its
+  # height too, since coord_fixed ties the two.
+  mutate(row = factor(if_else(status == "confirmed minister",
+                              sprintf("confirmed (%d)", total),
+                              sprintf("acting (%d)", total)),
+                      levels = c(sprintf("confirmed (%d)", sum(!q8$acting)),
+                                 sprintf("acting (%d)", sum(q8$acting)))))
+
+p8b <- ggplot(q8_bars, aes(share, row, fill = place)) +
+  # reverse = TRUE, or ggplot stacks the factor right-to-left while the cumsum
+  # above runs left-to-right, and every percentage lands on the wrong segment
+  geom_col(width = 0.6, position = position_stack(reverse = TRUE)) +
+  # Light segment takes ink, the two darker ones white. A segment too thin to
+  # hold its number gets it just past the bar instead - which is the 2% that the
+  # whole panel exists to show.
+  geom_text(data = q8_bars %>% filter(share >= 0.08),
+            aes(x = xmid, label = percent(share, accuracy = 1),
+                colour = place == "left early"),
+            size = 3, fontface = "bold", show.legend = FALSE) +
+  geom_text(data = q8_bars %>% filter(share < 0.08),
+            aes(x = xmax + 0.01, label = percent(share, accuracy = 1)),
+            hjust = 0, size = 3, fontface = "bold", colour = INK) +
+  scale_colour_manual(values = c(`TRUE` = INK, `FALSE` = "white")) +
+  scale_fill_manual(values = PLACE_COLS, name = NULL, breaks = PLACE_LVL) +
+  scale_x_continuous(labels = percent, expand = expansion(mult = c(0, 0.05))) +
+  labs(title = "Acting officials almost never outlive theirs",
+       x = NULL, y = NULL) +
+  theme_min("x") +
+  theme(plot.title = element_text(face = "bold", size = 11, colour = INK,
+                                  margin = margin(b = 6)),
+        legend.position = "bottom", legend.justification = "left",
+        legend.direction = "horizontal", legend.margin = margin(t = 0),
+        legend.text = element_text(size = 8.5),
+        axis.text.y = element_text(size = 9))
+
+# Scatter on top, the acting split beneath it, one figure. Heights are in the
+# same units, and the top share has to cover the scatter's fixed aspect
+# (5.5 by 7.5 years) or coord_fixed letterboxes the panel and leaves a gap.
+p8 <- p8_top / p8b +
+  plot_layout(heights = c(7.9, 0.95)) +
+  plot_annotation(
+    title = "More than a third of ministers outlive their government",
+    # The colour series looks like a finding and mostly is not: outliving falls
+    # from 64% under Kuchma to 12% under Zelensky, but the median runway more
+    # than doubled over the same span and outliving a government is mechanically
+    # harder the longer it lasts. The console output says so at length.
+    subtitle = paste("Each dot is one minister, prime ministers excluded: the life left",
+                     "in the government that\nappointed them, against how long they",
+                     "actually stayed. Colour is the appointing president."),
+    caption = cap("Hollow marks were still in office at the cutoff, so their length is a lower bound.",
+                  "'Left with it' means within a fortnight of the change of government."),
+    theme = theme(
+      plot.title = element_text(face = "bold", size = 13, colour = INK),
+      plot.subtitle = element_text(size = 9.5, colour = INK2, margin = margin(b = 10)),
+      plot.caption = element_text(size = 7.6, colour = MUTED, hjust = 0,
+                                  lineheight = 1.35, margin = margin(t = 10)),
+      plot.margin = margin(14, 18, 10, 14)))
+# Tall by necessity: coord_fixed ties the scatter panel's height to its width
+# times 7.5/5.5, so the figure has to be tall enough for the panel to reach the
+# full width. Too short and the panel is sized by height instead, shrinking away
+# from both edges and leaving slack the chart cannot use.
+save_fig("q8-runway.png", p8, 8.0, 13.3)
 
 # ======================================================================== Q7
 # The rolling trend on its own. It exists as the black line on the scatter, but
