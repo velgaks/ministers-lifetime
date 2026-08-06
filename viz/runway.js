@@ -39,35 +39,32 @@
       toIndex: "← Життєвий цикл міністра (таймлайн)",
       chartTitle: "Каденція проти залишку життя уряду",
       chartCap:
-        "Горизонталь — скільки залишалося уряду, який призначив міністра. Вертикаль — скільки міністр насправді пробув. На діагоналі — пішов разом з урядом; нижче — пішов раніше; вище — зберіг посаду попри зміну уряду. Кільця — чинні міністри, для них тривалість є нижньою межею.",
+        "Горизонталь — скільки залишалося жити уряду на той момент, коли він призначив міністра. Вертикаль — скільки міністр насправді пробув. На діагоналі — пішов разом з урядом; нижче — пішов раніше; вище — зберіг посаду попри зміну уряду. Кільця — чинні міністри, для них тривалість є нижньою межею.",
       actingTitle: "В.о. майже ніколи не переживає зміну уряду",
       actingCap:
         "Ті самі міністри, розкладені за тим, як їхня каденція співвідноситься з життям уряду.",
       diagonal: "пішов разом з урядом",
       regionAbove: "зберіг посаду попри зміну уряду",
       regionBelow: "пішов раніше, ніж упав уряд",
-      axisX: "залишок життя уряду, який призначив",
+      axisX: "залишалося уряду на момент призначення",
       axisY: "тривалість каденції",
       placeEarly: "Пішли раніше, ніж упав уряд",
       placeWith: "Пішли разом з урядом",
       placeOutlived: "Пережили свій уряд",
       placeEarlyShort: "раніше", placeWithShort: "разом", placeOutlivedShort: "пережили",
       ministers: (n) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? "міністр" : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? "міністри" : "міністрів"}`,
-      legendConfirmed: "затверджений міністр",
-      legendActing: "в.о. — ніколи не затверджений",
       legendRing: "чинний міністр (каденція триває)",
       rowActing: "в.о.", rowConfirmed: "затверджені",
-      ttRunway: "Уряду залишалося",
-      ttOutlived: "пережив на",
-      ttEarly: "пішов раніше на",
-      ttWith: "пішов разом з урядом",
-      exclActing: "Не враховувати в.о. у двох графіках нижче",
+      ttRunwayAt: (dur) => `На момент призначення уряду залишалося ${dur}`,
+      ttEarly: (dur) => `Пішов за ${dur} до відставки уряду`,
+      ttOutlived: (dur) => `Залишився ще на ${dur} після зміни уряду`,
+      ttWith: "Пішов разом з урядом",
+      exclActing: "Не враховувати в.о.",
       trendTitle: "Чи стали каденції коротшими?",
       trendCap:
         "Кожна точка — один міністр (без прем'єрів): дата призначення проти тривалості каденції. Лінія — ковзна медіана (вікно ±1,5 року). Кільця — міністри, які були на посаді на момент зміни уряду (це нижня межа). Підписані найдовші каденції. Останній відрізок лінії напівпрозорий — найновіші призначення ще «не дозріли».",
       eraTitle: "Медіанна каденція за президентами",
       eraCap: "Міністри, призначені за каденції відповідного президента.",
-      censoredLegend: "чинний міністр (каденція триває)",
       credit: "Графіка: Валентин Гацко, TG: @gorbach_squad.",
       repo: "Дані, код і метод: github.com/velgaks/ministers-lifetime",
       footer: (cut, n, band) =>
@@ -81,35 +78,32 @@
       toIndex: "← The Lifetime of a Minister (timeline)",
       chartTitle: "Tenure against the life left in the appointing government",
       chartCap:
-        "Across: how much life the government that appointed them had left. Up: how long they actually stayed. On the diagonal they left when the government did; below it they went early; above it they kept the job through a change of government. Rings are ministers still in office, so their length is a lower bound.",
+        "Across: how much life the appointing government still had left on the day it appointed them. Up: how long they actually stayed. On the diagonal they left when the government did; below it they went early; above it they kept the job through a change of government. Rings are ministers still in office, so their length is a lower bound.",
       actingTitle: "An acting minister almost never survives a change of government",
       actingCap:
         "The same ministers, split by how their tenure compares to the life of their government.",
       diagonal: "left when their government did",
       regionAbove: "outlived their government",
       regionBelow: "left before it fell",
-      axisX: "life left in the appointing government",
+      axisX: "government’s remaining life at the appointment",
       axisY: "time served",
       placeEarly: "Left before their government fell",
       placeWith: "Left when their government did",
       placeOutlived: "Outlived their government",
       placeEarlyShort: "left early", placeWithShort: "left with it", placeOutlivedShort: "outlived it",
       ministers: (n) => `${n} minister${n === 1 ? "" : "s"}`,
-      legendConfirmed: "confirmed minister",
-      legendActing: "acting official, never confirmed",
       legendRing: "current minister (tenure ongoing)",
       rowActing: "acting", rowConfirmed: "confirmed",
-      ttRunway: "Government had left",
-      ttOutlived: "outlived it by",
-      ttEarly: "went early by",
-      ttWith: "left when the government did",
-      exclActing: "Exclude acting ministers from the two charts below",
+      ttRunwayAt: (dur) => `At appointment the government had ${dur} left`,
+      ttEarly: (dur) => `Left ${dur} before the government fell`,
+      ttOutlived: (dur) => `Stayed ${dur} past the change of government`,
+      ttWith: "Left when the government did",
+      exclActing: "Exclude acting ministers",
       trendTitle: "Are tenures getting shorter?",
       trendCap:
         "Each dot is one minister (PMs excluded): appointment date vs tenure length. The line is a rolling median (±1.5-year window). Rings are ministers still in office when the government changed, so a lower bound. The longest tenures are named. The line's final stretch is translucent — the newest appointments have not 'matured' yet.",
       eraTitle: "Median tenure by president",
       eraCap: "Ministers appointed during each president's time in office.",
-      censoredLegend: "current minister (tenure ongoing)",
       credit: "Chart: Valentyn Hatsko, TG: @gorbach_squad.",
       repo: "Data, code and method: github.com/velgaks/ministers-lifetime",
       footer: (cut, n, band) =>
@@ -145,13 +139,15 @@
     t(p === "early" ? "placeEarlyShort" : p === "with" ? "placeWithShort" : "placeOutlivedShort");
 
   const tip = makeTooltip();
-  // The extra tooltip line: what the dot's position actually says.
-  const ttExtra = (d) => {
-    const head = `${t("ttRunway")}: ${fmtDur(d.runway)}`;
-    if (d.place === "with") return `${head} · ${t("ttWith")}`;
-    const verb = d.place === "outlived" ? t("ttOutlived") : t("ttEarly");
-    return `${head} · ${verb} ${fmtDur(Math.abs(d.over))}`;
-  };
+  // Two lines, because both durations need to say what they are measured FROM.
+  // As one line - "Government had left: 3y 4m" - it read as the time remaining
+  // when the minister LEFT, so Solskyi looked wrong: the government had 3y 4m
+  // left when he was appointed, and he went 1y 2m before it fell.
+  const ttExtra = (d) => [
+    STR[state.lang].ttRunwayAt(fmtDur(d.runway)),
+    d.place === "with" ? t("ttWith")
+      : STR[state.lang][d.place === "outlived" ? "ttOutlived" : "ttEarly"](fmtDur(Math.abs(d.over))),
+  ];
 
   // -------------------------------------------------------- name the outliers
   // Greedy placement shared by both scatters: rank the rows, try each candidate
@@ -237,50 +233,60 @@
     const host = $("#runway-host");
     host.textContent = "";
     const mL = 48, mR = 18, mT = 16, mB = 42;
-    // Square panel with equal ranges on both axes. Equal units are what makes the
-    // 45° line mean anything, and equal units on a non-square panel is a portrait
-    // chart; squaring it by clipping the y axis would throw the longest-serving
-    // ministers off the top. The cost is an empty strip past 5.4 years, where no
-    // government ever had that much left - the region labels live there.
-    const avail = Math.max(300, (host.clientWidth || 900) - mL - mR - 2);
-    const S = Math.max(300, Math.min(avail, 720));
-    const width = S + mL + mR, height = S + mT + mB;
-    const MAX = Math.ceil(Math.max(...rows.map((r) => Math.max(r.days, r.runway))) / YEAR_DAYS * 2) / 2;
-    const xs = (yv) => mL + (yv / MAX) * S;
-    const ys = (yv) => mT + S - (yv / MAX) * S;
+    // Each axis stops where its own data does. They shared one ceiling when the
+    // panel was square, which ran the x axis out to 7.5 years even though no
+    // government ever had more than 5.4 left - a quarter of the canvas holding
+    // nothing. What must NOT change is the pixels-per-year, identical on both
+    // axes: that is the only thing making the 45° line mean what it says. Equal
+    // units with unequal ranges gives a portrait panel, which is the honest shape
+    // for this data.
+    const XMAX = Math.ceil(Math.max(...rows.map((r) => r.runway)) / YEAR_DAYS * 2) / 2;
+    const YMAX = Math.ceil(Math.max(...rows.map((r) => r.days)) / YEAR_DAYS * 2) / 2;
+    const availW = Math.max(260, (host.clientWidth || 900) - mL - mR - 2);
+    const per = Math.min(availW / XMAX, 690 / YMAX);   // pixels per year
+    const W = XMAX * per, H = YMAX * per;
+    // rounded only on the attributes; the margins absorb the sub-pixel remainder,
+    // and W/H stay exact so the two axes keep identical pixels-per-year
+    const width = Math.round(W + mL + mR), height = Math.round(H + mT + mB);
+    const xs = (v) => mL + v * per;
+    const ys = (v) => mT + H - v * per;
     const svg = svgel("svg", {
       width, height, viewBox: `0 0 ${width} ${height}`,
       role: "img", "aria-label": t("chartTitle"),
     });
 
-    // gridlines + axis ticks, one per year on both axes
-    for (let v = 0; v <= MAX; v += 1) {
-      const py = ys(v), px = xs(v);
-      svg.appendChild(svgel("line", { x1: mL, x2: mL + S, y1: py, y2: py, class: "gridline" }));
-      svg.appendChild(svgel("line", { x1: px, x2: px, y1: mT, y2: mT + S, class: "gridline" }));
+    // gridlines + axis ticks, one per year, each axis to its own extent
+    for (let v = 0; v <= YMAX; v += 1) {
+      const py = ys(v);
+      svg.appendChild(svgel("line", { x1: mL, x2: mL + W, y1: py, y2: py, class: "gridline" }));
       const yl = svgel("text", { x: mL - 8, y: py + 4, class: "axis", "text-anchor": "end" });
       yl.textContent = v;
       svg.appendChild(yl);
-      const xl = svgel("text", { x: px, y: mT + S + 16, class: "axis", "text-anchor": "middle" });
+    }
+    for (let v = 0; v <= XMAX; v += 1) {
+      const px = xs(v);
+      svg.appendChild(svgel("line", { x1: px, x2: px, y1: mT, y2: mT + H, class: "gridline" }));
+      const xl = svgel("text", { x: px, y: mT + H + 16, class: "axis", "text-anchor": "middle" });
       xl.textContent = v;
       svg.appendChild(xl);
     }
     // axis titles
-    const xt = svgel("text", { x: mL + S / 2, y: height - 6, class: "axis", "text-anchor": "middle" });
+    const xt = svgel("text", { x: mL + W / 2, y: height - 6, class: "axis", "text-anchor": "middle" });
     xt.textContent = t("axisX");
     svg.appendChild(xt);
     const yt = svgel("text", {
-      x: 12, y: mT + S / 2, class: "axis", "text-anchor": "middle",
-      transform: `rotate(-90 12 ${mT + S / 2})`,
+      x: 12, y: mT + H / 2, class: "axis", "text-anchor": "middle",
+      transform: `rotate(-90 12 ${mT + H / 2})`,
     });
     yt.textContent = t("axisY");
     svg.appendChild(yt);
 
-    // the line the whole chart is read against
+    // The line the whole chart is read against. It stops at XMAX, where the x
+    // axis runs out, rather than at the top right corner.
     svg.appendChild(svgel("line", {
-      x1: xs(0), y1: ys(0), x2: xs(MAX), y2: ys(MAX), class: "diagonal",
+      x1: xs(0), y1: ys(0), x2: xs(XMAX), y2: ys(XMAX), class: "diagonal",
     }));
-    const dLab = MAX * 0.84, dx = xs(dLab), dy = ys(dLab);
+    const dLab = XMAX * 0.86, dx = xs(dLab), dy = ys(dLab);
     const dl = svgel("text", {
       x: dx, y: dy - 6, class: "eventlabel", "text-anchor": "middle",
       transform: `rotate(-45 ${dx} ${dy - 6})`,
@@ -288,23 +294,34 @@
     dl.textContent = t("diagonal");
     svg.appendChild(dl);
 
-    // region labels, out in the unpopulated right-hand strip
-    const above = svgel("text", { x: xs(MAX * 0.46), y: ys(MAX * 0.975), class: "regionlabel" });
+    // Region labels. With the empty right-hand strip gone they sit in the two
+    // sparse pockets inside the data: the top edge, above every dot but Avakov's,
+    // and the gap below the line on the right.
+    const above = svgel("text", { x: xs(XMAX * 0.40), y: ys(YMAX * 0.985), class: "regionlabel" });
     above.textContent = t("regionAbove");
     svg.appendChild(above);
+    // Middle of the widest band on the right-hand side that is free of dots and
+    // still below the diagonal in BOTH languages - the Ukrainian label is nearly
+    // twice the width of the English one, so a gap that clears one can clip the
+    // other.
     const below = svgel("text", {
-      x: xs(MAX * 0.99), y: ys(MAX * 0.21), class: "regionlabel", "text-anchor": "end",
+      x: xs(XMAX * 0.995), y: ys(YMAX * 0.262), class: "regionlabel", "text-anchor": "end",
     });
     below.textContent = t("regionBelow");
     svg.appendChild(below);
 
-    // dots — finished filled, still-in-office hollow
+    // Dots — finished filled, still-in-office hollow. Coloured by the president
+    // who appointed them, matching the trend scatter and the era bars below, so
+    // the whole sheet reads with one colour key. Acting status used to be the
+    // encoding here, but the bar chart states that split outright, with numbers;
+    // spending the scatter's colour on it too said the same thing twice.
     rows.forEach((d) => {
+      const era = eraOf(d.start).id;
       const c = svgel("circle", {
         cx: xs(d.runway / YEAR_DAYS).toFixed(1),
         cy: ys(d.days / YEAR_DAYS).toFixed(1),
         r: 4,
-        class: `dot f-${d.status}` + (d.ongoing ? ` censored c-${d.status}` : ""),
+        class: `dot f-${era}` + (d.ongoing ? ` censored c-${era}` : ""),
         "data-idx": d._idx, tabindex: 0,
       });
       attachTenureEvents(tip, c, d, d._idx, ttExtra);
@@ -319,19 +336,25 @@
 
     placeNames(svg, rows, (r) => r.over,
       (r) => xs(r.runway / YEAR_DAYS), (r) => ys(r.days / YEAR_DAYS),
-      { x0: mL, y0: mT, x1: mL + S, y1: mT + S }, 8);
+      { x0: mL, y0: mT, x1: mL + W, y1: mT + H }, 8);
 
-    const legend = $("#runway-legend");
-    legend.textContent = "";
+    eraLegend($("#runway-legend"));
+  }
+
+  // Six presidents plus the hollow-ring convention. Shared by both scatters,
+  // since colour is mandatory to explain and each card has to stand on its own.
+  function eraLegend(host) {
+    host.textContent = "";
     const item = (swClass, label) => {
       const s = el("span", { class: "item" });
       s.appendChild(el("span", { class: "sw " + swClass }));
       s.appendChild(document.createTextNode(label));
       return s;
     };
-    legend.appendChild(item("b-confirmed", t("legendConfirmed")));
-    legend.appendChild(item("b-acting", t("legendActing")));
-    legend.appendChild(item("ring", t("legendRing")));
+    DATA.eras.presidents.forEach((p) => {
+      host.appendChild(item("b-" + p.id, ML.uk() ? p.name_uk : p.name_en));
+    });
+    host.appendChild(item("ring", t("legendRing")));
   }
 
   // ------------------------------------------------- acting vs confirmed
@@ -419,7 +442,10 @@
     const pool = statsPool();
     if (!pool.length) return;
     const width = Math.max(620, (host.clientWidth || 700) - 4);
-    const height = 360;
+    // Grows with the card rather than sitting at a fixed 360: on its own
+    // full-width row a short chart is all letterbox, and the vertical axis is
+    // where the whole question lives.
+    const height = Math.round(Math.min(460, Math.max(340, width * 0.36)));
     const mL = 44, mR = 16, mT = 14, mB = 30;
     const plotW = width - mL - mR, plotH = height - mT - mB;
     const yMax = Math.ceil(Math.max(...pool.map((p) => p.days)) / YEAR_DAYS);
@@ -494,12 +520,7 @@
     placeNames(svg, pool, (r) => r.days, (r) => x(r.start), (r) => y(r.days),
       { x0: mL, y0: mT, x1: mL + plotW, y1: mT + plotH }, 7);
 
-    const legend = $("#trend-legend");
-    legend.textContent = "";
-    const cens = el("span", { class: "item" });
-    cens.appendChild(el("span", { class: "sw ring" }));
-    cens.appendChild(document.createTextNode(t("censoredLegend")));
-    legend.appendChild(cens);
+    eraLegend($("#trend-legend"));
   }
 
   // ------------------------------------------------------- era medians
@@ -511,8 +532,14 @@
       const sel = pool.filter((x) => eraOf(x.start).id === p.id);
       return { p, med: median(sel.map((x) => x.days)), n: sel.length };
     });
-    const width = Math.max(300, (host.clientWidth || 340) - 4);
-    const rowH = 34, mL = 110, mR = 64;
+    // Floored at 380 rather than 300: the two margins alone take 214, so a
+    // narrower canvas leaves under 90px of actual bar. Below that the .scrollx
+    // wrapper scrolls it.
+    const width = Math.max(380, (host.clientWidth || 340) - 4);
+    // mR has to hold the whole value label, which sits past the end of the bar.
+    // At 64 it did not: in the old two-column card "1,4 р. (n=96)" was rendering
+    // as "1,4 р. (n=9" with the rest over the edge.
+    const rowH = 34, mL = 110, mR = 104;
     const height = rows.length * rowH + 8;
     const maxV = Math.max(...rows.map((r) => r.med || 0));
     const svg = svgel("svg", {
@@ -557,10 +584,11 @@
     setText("#trend-cap", t("trendCap"));
     setText("#era-title", t("eraTitle"));
     setText("#era-cap", t("eraCap"));
-    setText("#acting-label-txt", t("exclActing"));
-    // reflect the stored preference, which the other sheet can have changed
-    const chk = $("#acting-chk");
-    if (chk) chk.checked = state.exclActing;
+    // One toggle per card now that the two charts have a row each. They share a
+    // single stored preference, so they stay in step with each other and with the
+    // timeline sheet.
+    document.querySelectorAll(".excl-label").forEach((n) => { n.textContent = t("exclActing"); });
+    document.querySelectorAll(".excl-chk").forEach((n) => { n.checked = state.exclActing; });
     const cut = fmtDate(DATA.meta.analysis_window_end || DATA.meta.built).replace(/\.$/, "");
     setText("#footer-note", STR[state.lang].footer(cut, rows.length, BAND_DAYS));
     setText("#footer-credit", t("credit"));
@@ -589,10 +617,12 @@
     ML.toggleTheme();
     renderAll();
   });
-  $("#acting-chk").addEventListener("change", (e) => {
-    state.exclActing = e.target.checked;
-    ML.saveExclActing(state.exclActing);
-    renderAll();
+  document.querySelectorAll(".excl-chk").forEach((n) => {
+    n.addEventListener("change", (e) => {
+      state.exclActing = e.target.checked;
+      ML.saveExclActing(state.exclActing);
+      renderAll();
+    });
   });
   let resizeTimer = null;
   window.addEventListener("resize", () => {

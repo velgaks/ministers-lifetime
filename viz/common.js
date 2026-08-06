@@ -224,9 +224,14 @@ window.ML = (function () {
         (cab ? ` · ${str("cabinet")}: ${uk() ? cab.name_uk : cab.name_en}` : "");
       node.appendChild(info);
 
-      // The runway sheet adds its own line here: how the tenure compares to the
-      // life the appointing government had left.
-      if (extraLine) node.appendChild(el("div", { class: "tt-line" }, extraLine));
+      // The runway sheet adds its own lines here: how the tenure compares to the
+      // life the appointing government had left. Accepts an array, because a
+      // single line could not say what each duration was measured from.
+      if (extraLine) {
+        [].concat(extraLine).forEach((s) => {
+          if (s) node.appendChild(el("div", { class: "tt-line" }, s));
+        });
+      }
 
       const badges = el("div");
       // Two different facts, and they were sharing one badge: `acting` means never

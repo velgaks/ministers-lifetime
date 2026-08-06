@@ -260,13 +260,6 @@ circle.dot:hover, circle.dot.hl { stroke: var(--ink); }
 .sw.b-confirmed { background: var(--status-confirmed); }
 .sw.b-acting { background: var(--status-acting); }
 
-/* two-column analysis block. minmax(0, …) rather than a bare fr: an fr track will
-   not shrink below its content's min-content, so the trend chart's 620px floor
-   stretched the column and pushed the whole card wider instead of letting the
-   .scrollx wrapper scroll it. */
-.twocol { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 18px; }
-@media (max-width: 900px) { .twocol { grid-template-columns: minmax(0, 1fr); } }
-
 /* records tiles */
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 18px; }
 .tile {
